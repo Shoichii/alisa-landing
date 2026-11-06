@@ -437,6 +437,31 @@ footer{background:linear-gradient(180deg,rgba(10,4,5,0),rgba(10,4,5,.92) 58%)}
 .v6-up:active .ar{translate:0 1px}
 .v6-up:focus-visible{outline:2px solid var(--cream);outline-offset:4px}
 #top:focus{outline:none}
+@media (max-width:700px){
+.wrap.v2p{max-width:calc(100% - 2*var(--gut))}
+.sec-head.v2p,.pro-copy.v2p{margin-left:calc(var(--gut) - max(16px,env(safe-area-inset-left,0px)));margin-right:calc(var(--gut) - max(16px,env(safe-area-inset-right,0px)))}
+.v2p{box-shadow:inset 0 0 0 1px rgba(242,231,216,.11),0 28px 56px -28px rgba(0,0,0,.75)}
+}
+@media (max-width:700px) and (prefers-reduced-motion:no-preference){
+.sec{padding-top:clamp(96px,16vh,150px);padding-bottom:clamp(140px,22vh,220px)}
+.sec{padding-top:clamp(96px,16svh,150px);padding-bottom:clamp(140px,22svh,220px)}
+.sec.prereg{padding-top:48px}
+.sec.mapsec{padding-top:clamp(140px,26vh,240px)}
+.sec.mapsec{padding-top:clamp(140px,26svh,240px)}
+.v2p{background:linear-gradient(180deg,rgba(30,9,13,.82),rgba(21,7,10,.9) 150px,rgba(12,5,7,.95) 340px)}
+.partners .wrap.v2p{padding:0;background:none;box-shadow:none}
+.partners .sec-head{padding:28px 16px 0;background:linear-gradient(180deg,rgba(30,9,13,.82),rgba(21,7,10,.9) 150px,rgba(15,6,8,.92));box-shadow:inset 0 1px 0 var(--line),inset 1px 0 0 var(--line),inset -1px 0 0 var(--line)}
+.partners .fit{margin-top:0;padding:36px 16px 28px;background:rgba(15,6,8,.92);box-shadow:inset 0 -1px 0 var(--line),inset 1px 0 0 var(--line),inset -1px 0 0 var(--line),0 18px 36px -24px rgba(0,0,0,.7)}
+.partners .sub-h{position:relative;width:fit-content;max-width:100%;margin-top:clamp(120px,20vh,200px);padding:16px 16px 14px;background:rgba(15,6,8,.92);box-shadow:inset 0 0 0 1px var(--line),0 18px 36px -24px rgba(0,0,0,.7)}
+.partners .sub-h{margin-top:clamp(120px,20svh,200px)}
+.partners .sub-h::before{content:"";position:absolute;left:0;top:0;width:48px;height:2px;background:var(--red);box-shadow:0 0 14px rgba(227,38,47,.8)}
+.partners .steps,.partners .formats,.partners .gains{margin-top:12px}
+.partners .steps li,.partners .gains li{background:rgba(15,6,8,.92);box-shadow:inset 0 0 0 1px var(--line),0 18px 36px -24px rgba(0,0,0,.7)}
+.partners .gains li{padding:16px 16px 20px}
+.partners .fmt{background:linear-gradient(180deg,rgba(30,21,22,.925),rgba(19,10,11,.92));box-shadow:inset 0 0 0 1px var(--line),0 18px 36px -24px rgba(0,0,0,.7)}
+.partners .pt-band{margin-top:clamp(120px,20vh,200px);background:linear-gradient(100deg,rgba(65,14,17,.94),rgba(26,8,10,.92));box-shadow:inset 0 0 0 1px rgba(227,38,47,.45),0 18px 36px -24px rgba(0,0,0,.7)}
+.partners .pt-band{margin-top:clamp(120px,20svh,200px)}
+}
 </style>
 
 <div class="world" id="world" aria-hidden="true">
