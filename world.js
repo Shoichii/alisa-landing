@@ -207,7 +207,7 @@ function dplane(p){var u=PP.u,w=p.w,h=p.h,k=p.k,px=p.px,s=SHD[k],i,d;
   if(s)for(i=0;i<s.length;i++){d=s[i];gl.uniform1f(u.uK,0);gl.uniform4f(u.uQ,0,0,w,h);gl.uniform4f(u.uE,d[2],d[0],d[1],0);gl.uniform4f(u.uCo,d[3],d[4],d[5],d[6]);rect(p,d[0]-3*d[2],d[1]-3*d[2],w+d[0]+3*d[2],h+d[1]+3*d[2]);}
   if(k==='frame'){gl.uniform1f(u.uK,2);gl.uniform4f(u.uQ,w/2,0,w*.8,240);rect(p,-w*.3,-240,w*1.3,0);}
   if(p.hang){gl.uniform1f(u.uK,1);gl.uniform4f(u.uQ,w/2,0,0,0);rect(p,w/2-1-2/px,-700,w/2+1+2/px,0);}
-  gl.uniform1f(u.uK,4);gl.uniform4f(u.uE,k==='cut'?.9672:1,k==='cut'?-.02:0,0,0);gl.bindTexture(gl.TEXTURE_2D,p.tex);rect(p,p.tr[0],p.tr[1],p.tr[2],p.tr[3]);}
+  gl.uniform1f(u.uK,4);gl.uniform4f(u.uE,k==='cut'?1.3817:1,k==='cut'?-.02857:0,0,0);gl.bindTexture(gl.TEXTURE_2D,p.tex);rect(p,p.tr[0],p.tr[1],p.tr[2],p.tr[3]);}
 
 function room(){return NV+4<=CAP*4;}
 function vx(x,y,a,b,k,r,l,w,R,G,B,A){var o=NV*12;DB[o]=x;DB[o+1]=y;DB[o+2]=a;DB[o+3]=b;DB[o+4]=k;DB[o+5]=r;DB[o+6]=l;DB[o+7]=w;DB[o+8]=R;DB[o+9]=G;DB[o+10]=B;DB[o+11]=A;NV++;}
