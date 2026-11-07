@@ -469,6 +469,9 @@ footer{background:linear-gradient(180deg,rgba(10,4,5,0),rgba(10,4,5,.92) 58%)}
 .partners .pt-band{margin-top:clamp(120px,20vh,200px);background:linear-gradient(100deg,rgba(65,14,17,.94),rgba(26,8,10,.92));box-shadow:inset 0 0 0 1px rgba(227,38,47,.45),0 18px 36px -24px rgba(0,0,0,.7)}
 .partners .pt-band{margin-top:clamp(120px,20svh,200px)}
 }
+.w-gl{position:absolute;left:0;top:0;width:100%;height:100%;display:block}
+.world.gl .w-fog,.world.gl .w-cam,.world.gl .w-motes,.world.gl:not(.nogl)::after,.world.gl::before,.world.gl.nogl .w-gl{display:none}
+.world.gl:not(.still){bottom:auto;height:100vh;height:100lvh}
 </style>
 
 <div class="world" id="world" aria-hidden="true">
@@ -536,7 +539,7 @@ footer{background:linear-gradient(180deg,rgba(10,4,5,0),rgba(10,4,5,.92) 58%)}
       <p class="lede">У каждого своя тайна и своя причина идти до конца. Знакомьтесь с героями до премьеры.</p>
     </div>
     <div class="ppl" style="margin-top:32px">
-      <a class="person hero-c" href="universe.html#heroes"><div class="ph art real"><img src="img/ph_alice_bg.webp" alt="Алиса Вельская" loading="lazy"></div><b>Алиса Вельская</b><small>Капитан</small></a>
+      <a class="person hero-c" href="universe.html#heroes"><div class="ph art real"><img src="img/ph_alice_bg.webp?v=3" alt="Алиса Вельская" loading="lazy"></div><b>Алиса Вельская</b><small>Капитан</small></a>
       <a class="person hero-c" href="universe.html#heroes"><div class="ph art real"><img src="img/ph_velsky_bg.webp" alt="Александр Вельский" loading="lazy"></div><b>Александр Вельский</b><small>Профессор истории</small></a>
       <a class="person hero-c" href="universe.html#heroes"><div class="ph art real"><img src="img/ph_sofi_bg.webp" alt="Софи Зайцева" loading="lazy"></div><b>Софи Зайцева</b><small>Координатор экспедиций</small></a>
       <a class="person hero-c" href="universe.html#heroes"><div class="ph art real"><img src="img/ph_semen_bg.webp" alt="Семён Попов" loading="lazy"></div><b>Семён Попов</b><small>Служба, долг и семья, которая расходится по разным домам</small></a>
@@ -779,6 +782,7 @@ footer{background:linear-gradient(180deg,rgba(10,4,5,0),rgba(10,4,5,.92) 58%)}
 <a class="v6-up" id="v6Up" href="#top" aria-label="Наверх" title="Наверх"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="bg" d="M5.25 5.25 9.75.75h37.5v37.5l-9 9H.75V9.75z"/><path class="th tg" pathLength="100" d="M5.25 5.25 9.75.75h37.5v37.5l-9 9H.75V9.75z"/><path class="th" pathLength="100" d="M5.25 5.25 9.75.75h37.5v37.5l-9 9H.75V9.75z"/><circle class="pn" cx="5.25" cy="5.25" r="3.1"/><circle class="ph" cx="4.4" cy="4.4" r="1"/><path class="ar" d="M24 32V16.5m-6.5 6.5 6.5-6.5 6.5 6.5"/></svg></a>
 
 <script src="regions.js?v=d95fe10f"></script>
+<script src="world.js?v=e62cfdf3"></script>
 <script>
 (function(){
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -939,14 +943,14 @@ pf.addEventListener('submit',function(e){e.preventDefault();var miss=[].filter.c
   if(miss.length){$('ptErr').textContent='Заполните имя, компанию и контакт, чтобы мы могли ответить.';miss[0].focus();return;}
   pf.reset();pf.hidden=true;$('ptOk').hidden=false;});
 function loop(ts){if(mapVis)lights(ts/1000);requestAnimationFrame(loop);}
-if(RM)lights(0);else requestAnimationFrame(loop);
+if(RM)lights(0);else if(window.v6w)v6w.on(function(ts){if(mapVis)lights(ts/1000);});else requestAnimationFrame(loop);
 })();
 </script>
 <script src="tubus.js?v=43fe00c1"></script>
 <script src="fog.js?v=62ab5b0e"></script>
 <script>
 (function(){
-var world=document.getElementById('world');if(!world)return;
+var world=document.getElementById('world');if(!world||world.classList.contains('gl'))return;
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var camEl=document.getElementById('wCam'),scene=document.getElementById('wScene'),fc=document.getElementById('wFog'),mc=document.getElementById('wMotes'),mx=mc.getContext('2d');
 var W=1,H=1,K=1,P=1000,OY=.5,XS=1,FAR=4800,SMALL=false,MD=1,cz=0,lx=0,ly=0,tlx=0,tly=0,PR=0,YR=0,fog=null;
