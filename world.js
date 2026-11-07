@@ -17,7 +17,7 @@ function sm(a,b,v){var t=cl((v-a)/(b-a),0,1);return t*t*(3-2*t);}
 
 var HD='#ifdef GL_FRAGMENT_PRECISION_HIGH\nprecision highp float;\n#else\nprecision mediump float;\n#endif\n';
 var VG='uniform vec4 uS;uniform float uB;vec4 vg(vec4 c){vec2 f=vec2(gl_FragCoord.x*uS.z,uS.y-gl_FragCoord.y*uS.w),e=(f-vec2(.5,.44)*uS.xy)/(vec2(.96,.86)*uS.xy);'+
- 'float v=.8*clamp((length(e)-.46)/.54,0.,1.),d=min(f.x,uS.x-f.x),b=.96*(1.-clamp((d-12.)/14.,0.,1.))*uB;v=1.-(1.-v)*(1.-b);return vec4(c.rgb*(1.-v)+vec3(.0392,.0157,.0196)*(v*c.a),c.a);}\n';
+ 'float v=.8*clamp((length(e)-.46)/.54,0.,1.),d=min(f.x,uS.x-f.x),b=.96*(1.-clamp((d-12.)/14.,0.,1.))*uB;v=1.-(1.-v)*(1.-b);return vec4(c.rgb*((1.-v)*.7)+vec3(.0392,.0157,.0196)*(v*c.a),c.a);}\n';
 var VT='attribute vec2 a;varying vec2 vT;void main(){vT=a*.5+.5;gl_Position=vec4(a,0.,1.);}';
 var FF='uniform vec2 R,M,L;uniform float T,K;uniform vec3 C;uniform sampler2D uN,uY;'+
  'void main(){vec2 uv=gl_FragCoord.xy/R;float asp=R.x/R.y;vec2 p=vec2(uv.x*asp,uv.y),l=vec2((L.x-M.x*.04)*asp,L.y+M.y*.04),d=p-l;float r=length(d),a=atan(d.y,d.x);'+
