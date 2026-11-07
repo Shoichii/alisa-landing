@@ -235,7 +235,7 @@ p{margin:0;text-wrap:pretty}
 .ph.sil.gr{background:linear-gradient(180deg,#24162F,#0E0814)}
 .ph.sil img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:drop-shadow(0 0 1px rgba(255,170,140,.22))}
 .ph.sil.gr img{filter:drop-shadow(0 0 1px rgba(200,170,255,.25))}
-.people .person small{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.8em}
+.people .person small{min-height:2.8em}
 .trow{margin-top:clamp(32px,4vw,48px);display:flex;flex-direction:column;gap:16px}
 .trow-h{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .trow-h h3{font-size:clamp(20px,2vw,26px)}
@@ -483,15 +483,33 @@ footer{background:linear-gradient(180deg,rgba(10,4,5,0),rgba(10,4,5,.92) 58%)}
 }
 @media (min-width:701px) and (hover:hover){.nav ul a:hover{color:var(--light);background:rgba(242,231,216,.07)}}
 @media (max-width:700px){.nav.solid{background:rgba(10,4,5,.92)}.nav.open{background:#0A0405}.nav ul{background:#0A0405}.nav .nv-th{display:none!important}.nav ul li a[aria-current]::before{content:"";display:inline-block;width:7px;height:7px;margin-right:10px;border-radius:50%;vertical-align:.12em;background:var(--red);box-shadow:0 0 8px rgba(227,38,47,.9)}}
+.spine.serial i{background:#E8957A}
 .spine.book i{background:#C9A46A}
 .spine.comic i{background:#9DB3C4}
-@media (max-width:700px){
-.shelf{justify-content:flex-start;gap:6px;margin-inline:-4px;padding:0 4px 6px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:none;background:linear-gradient(90deg,transparent,var(--line-2),transparent) 0 100%/100% 1px no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 14px),transparent);mask-image:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 14px),transparent)}
+.spine.tabletop i{background:#93AD7E}
+.spine.deck i{background:#B7A0D4}
+.spine.out{display:none}
+.shelf{justify-content:flex-start;gap:8px;padding:0 28px 6px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scroll-padding-inline:28px;scrollbar-width:none;background:linear-gradient(90deg,transparent,var(--line-2),transparent) 0 100%/100% 1px no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent,#000 28px,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,transparent,#000 28px,#000 calc(100% - 28px),transparent)}
 .shelf::-webkit-scrollbar{display:none}
-.shelf::after{display:none}
-.spine{flex-basis:32px;scroll-snap-align:center}
+.shelf::before,.shelf::after{content:"";position:static;flex:1 0 0;height:0;background:none}
+.spine{flex-basis:46px;scroll-snap-align:center}
+.spine b{white-space:normal;text-wrap:balance;max-height:100%;line-height:1.1;text-align:center}
+.spine .cover strong{overflow-wrap:anywhere}
+.shelf.in .spine:not(.out){animation:spIn .45s cubic-bezier(.16,1,.3,1) both}
+@keyframes spIn{from{opacity:0;translate:0 16px}}
+@media (prefers-reduced-motion:reduce){.shelf.in .spine:not(.out){animation:none}}
+@media (max-width:700px){
+.shelf{gap:6px;margin-inline:-4px;padding:0 4px 6px;scroll-padding-inline:4px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 14px),transparent);mask-image:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 14px),transparent)}
+.spine{flex-basis:32px}
 .spine.sel{flex-basis:min(200px,54vw)}
 }
+.pin .lb.u{left:50%;right:auto;top:auto;bottom:38px;translate:-50% 0}
+.pin .lb.l2{line-height:1.15;text-align:right}
+.pin .lb.b{left:50%;right:auto;top:30px;translate:-50% 0}
+.tb-code{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 12px 12px 16px;border:1.5px dashed rgba(124,13,22,.55);background:rgba(124,13,22,.05)}
+.tb-code span{font:600 12px/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:#7A5A44}
+.tb-code b{margin-right:auto;font:400 clamp(24px,2.4vw,30px)/1 var(--f-display);letter-spacing:.06em;color:var(--blood);user-select:all}
+.tb-code .tb-ghost{min-height:40px}
 footer{padding-block:28px 40px;background:var(--ink);isolation:auto}
 footer .wrap{padding-top:24px}
 .fin{position:relative;padding-block:clamp(96px,14vh,170px) clamp(56px,8vw,96px);background:linear-gradient(180deg,rgba(10,4,5,0),rgba(10,4,5,.86) 22%,var(--ink) 62%)}
@@ -574,7 +592,7 @@ footer .wrap{padding-top:24px}
       <li><a href="universe.html">Вселенная</a></li>
       <li><a href="#game">Игра</a></li>
       <li><a href="#map">Карта</a></li>
-      <li><a href="#reels">Фильмы и книги</a></li>
+      <li><a href="#reels">Мир Алисы</a></li>
       <li><a href="team.html">Команда</a></li>
       <li><a href="#partners">Партнёрам</a></li>
     </ul>
@@ -623,10 +641,10 @@ footer .wrap{padding-top:24px}
       <p class="lede">У каждого своя тайна и своя причина идти до конца. Знакомьтесь с героями до премьеры.</p>
     </div>
     <div class="ppl" style="margin-top:32px">
-      <a class="person hero-c" href="universe.html#heroes"><div class="ph art real"><img src="img/ph_alice_bg.webp?v=3" alt="Алиса Вельская" loading="lazy"></div><b>Алиса Вельская</b><small>Капитан</small></a>
+      <a class="person hero-c" href="universe.html#heroes"><div class="ph art real"><img src="img/ph_alice_bg.webp?v=3" alt="Алиса Вельская" loading="lazy"></div><b>Алиса Вельская</b><small>Капитан ФСБ</small></a>
       <a class="person hero-c" href="universe.html#heroes"><div class="ph art real"><img src="img/ph_velsky_bg.webp" alt="Александр Вельский" loading="lazy"></div><b>Александр Вельский</b><small>Профессор истории</small></a>
       <a class="person hero-c" href="universe.html#heroes"><div class="ph art real"><img src="img/ph_sofi_bg.webp" alt="Софи Зайцева" loading="lazy"></div><b>Софи Зайцева</b><small>Координатор экспедиций</small></a>
-      <a class="person hero-c" href="universe.html#heroes"><div class="ph art real"><img src="img/ph_semen_bg.webp" alt="Семён Попов" loading="lazy"></div><b>Семён Попов</b><small>Служба, долг и семья, которая расходится по разным домам</small></a>
+      <a class="person hero-c" href="universe.html#heroes"><div class="ph art real"><img src="img/ph_semen_bg.webp" alt="Семён Попов" loading="lazy"></div><b>Семён Попов</b><small>Стажёр ФСБ. Служба, долг и семья, которая расходится по разным домам</small></a>
     </div>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px"><a class="btn" href="universe.html">Вся вселенная</a><a class="btn ghost" href="team.html">Команда фильма и игр</a></div>
   </div>
@@ -753,7 +771,7 @@ footer .wrap{padding-top:24px}
     </div>
     <div class="tb-stage">
       <div class="cryptex" id="cryptex" role="group" aria-label="Кодовый замок тубуса"><span class="cap l" aria-hidden="true"></span><div class="rings" id="tbRings"></div><span class="cap r" aria-hidden="true"></span></div>
-      <div class="tb-paper" id="tbPaper" hidden><div class="tb-sheet"><div class="tb-in"><h3>Шифр разгадан</h3><p>Слово верное. Настоящее расследование начнётся в декабре 2026: запишитесь, и в день открытия мы пришлём приглашение.</p><div class="row"><a class="btn" href="#prereg">Записаться в штаб</a><button class="tb-ghost" type="button" id="tbReset">Закрыть тубус</button></div></div></div><span class="tb-roll" aria-hidden="true"></span></div>
+      <div class="tb-paper" id="tbPaper" hidden><div class="tb-sheet"><div class="tb-in"><h3>Шифр разгадан</h3><p>Слово верное. За разгаданный шифр вам положена награда: промокод на редкую улику в штабе.</p><div class="tb-code"><span>Промокод</span><b id="tbCodeV">ТУБУС-26</b><button class="tb-ghost" type="button" id="tbCopy">Скопировать</button></div><p>Настоящее расследование начнётся в декабре 2026. Запишитесь, и в день открытия мы пришлём приглашение, а улика будет ждать в профиле.</p><div class="row"><a class="btn" href="#prereg" id="tbJoin">Записаться в штаб</a><button class="tb-ghost" type="button" id="tbReset">Закрыть тубус</button></div></div></div><span class="tb-roll" aria-hidden="true"></span></div>
       <div class="tb-under"><p class="tb-how"><span class="kb">Кольца крутятся мышью, колёсиком и стрелками. Букву можно просто набрать на клавиатуре.</span><span class="tc">Тяните кольцо вверх или вниз. Нажмите на букву над кольцом или под ним, и оно повернётся к ней.</span></p><button class="tb-ghost" type="button" id="tbSound" aria-pressed="false">Звук щелчков</button></div>
       <p class="vh" id="tbStatus" aria-live="polite"></p>
     </div>
@@ -775,21 +793,34 @@ footer .wrap{padding-top:24px}
   <i class="uv-mark" data-ring="3" style="right:11%;top:9%"></i>
   <div class="wrap v2p v2r" style="--pw:1040px">
     <div class="sec-head">
-      <h2>Фильмы, игры, книги и комиксы</h2>
+      <h2>Мир Алисы Вельской</h2>
     </div>
     <div class="reel-tabs" id="reelTabs" role="group" aria-label="Фильтр"></div>
     <div class="shelf" id="shelf">
-      <button class="spine film sel" type="button" aria-label="Братство Хранителей" aria-pressed="true" data-d="Рабочее название полнометражного фильма вселенной. Производство начнётся в январе 2027, дату премьеры объявим позже."><i></i><b>Братство Хранителей</b><span class="cover"><span class="ph"></span><strong>Братство Хранителей</strong><em>производство с января 2027</em></span></button>
-      <button class="spine film" type="button" aria-label="Тизер фильма" aria-pressed="false" data-d="Первые кадры: мир Алисы Вельской и её команда."><i></i><b>Тизер фильма</b><span class="cover"><span class="ph"></span><strong>Тизер фильма</strong><em>скоро</em></span></button>
+      <button class="spine film sel" type="button" aria-label="Алиса Вельская: Проклятие Мнишек" aria-pressed="true" data-d="Полнометражный фильм вселенной Алисы Вельской. Подробности объявим позже."><i></i><b>Алиса Вельская: Проклятие Мнишек</b><span class="cover"><span class="ph"></span><strong>Алиса Вельская: Проклятие Мнишек</strong><em>Полнометражный фильм</em></span></button>
+      <button class="spine film" type="button" aria-label="Вельский: Архив тайн" aria-pressed="false" data-d="Полнометражный фильм вселенной Алисы Вельской. Подробности объявим позже."><i></i><b>Вельский: Архив тайн</b><span class="cover"><span class="ph"></span><strong>Вельский: Архив тайн</strong><em>Полнометражный фильм</em></span></button>
+      <button class="spine film" type="button" aria-label="Яровея" aria-pressed="false" data-d="Полнометражный фильм вселенной Алисы Вельской. Подробности объявим позже."><i></i><b>Яровея</b><span class="cover"><span class="ph"></span><strong>Яровея</strong><em>Полнометражный фильм</em></span></button>
+      <button class="spine film" type="button" aria-label="Исток: Начало" aria-pressed="false" data-d="Полнометражный фильм вселенной Алисы Вельской. Подробности объявим позже."><i></i><b>Исток: Начало</b><span class="cover"><span class="ph"></span><strong>Исток: Начало</strong><em>Полнометражный фильм</em></span></button>
+      <button class="spine serial" type="button" aria-label="Алиса Вельская: Охотница за легендами" aria-pressed="false" data-d="Сериал, первый сезон: 12 серий по 55 минут."><i></i><b>Алиса Вельская: Охотница за легендами</b><span class="cover"><span class="ph"></span><strong>Алиса Вельская: Охотница за легендами</strong><em>Сезон 1 · 12 × 55 мин</em></span></button>
+      <button class="spine serial" type="button" aria-label="Алиса Вельская: Тени Константинополя" aria-pressed="false" data-d="Сериал, второй сезон: 12 серий по 55 минут."><i></i><b>Алиса Вельская: Тени Константинополя</b><span class="cover"><span class="ph"></span><strong>Алиса Вельская: Тени Константинополя</strong><em>Сезон 2 · 12 × 55 мин</em></span></button>
       <button class="spine game" type="button" aria-label="Старт расследования" aria-pressed="false" data-d="Пролог в браузере: пропавший тубус, первые свидетели и союзники. После него открывается штаб."><i></i><b>Старт расследования</b><span class="cover"><span class="ph"></span><strong>Старт расследования</strong><em>декабрь 2026</em></span></button>
-      <button class="spine game" type="button" aria-label="Северная экспедиция" aria-pressed="false" data-d="Переславль, Петербург и Карелия: монастырские архивы, острова и легенды Русского Севера."><i></i><b>Северная экспедиция</b><span class="cover"><span class="ph"></span><strong>Северная экспедиция</strong><em>глава 1, в разработке</em></span></button>
-      <button class="spine game" type="button" aria-label="Восточный маршрут" aria-pressed="false" data-d="Казань, Тамбов и Ростов-на-Дону: семейная история рода Вельских."><i></i><b>Восточный маршрут</b><span class="cover"><span class="ph"></span><strong>Восточный маршрут</strong><em>глава 2, в разработке</em></span></button>
-      <button class="spine game" type="button" aria-label="Большая экспедиция" aria-pressed="false" data-d="Каппадокия: подземные города и скальные монастыри для тех, кто прошёл первые главы."><i></i><b>Большая экспедиция</b><span class="cover"><span class="ph"></span><strong>Большая экспедиция</strong><em>в планах</em></span></button>
-      <button class="spine book" type="button" aria-label="Охотница за легендами" aria-pressed="false" data-d="Первая книга, от лица самой Алисы: исчезновение отца, Софи и первые шаги по оставленному им следу."><i></i><b>Охотница за легендами</b><span class="cover"><span class="ph"></span><strong>Охотница за легендами</strong><em>книга 1, в работе</em></span></button>
-      <button class="spine comic" type="button" aria-label="Легенды Наследий" aria-pressed="false" data-d="Исторические выпуски-приквелы: легенды Наследий и прошлое Братства Хранителей задолго до Алисы."><i></i><b>Легенды Наследий</b><span class="cover"><span class="ph"></span><strong>Легенды Наследий</strong><em>в планах</em></span></button>
+      <button class="spine game" type="button" aria-label="Северная экспедиция" aria-pressed="false" data-d="Санкт-Петербург, Псков, Великий Новгород, Карелия и Вельск: архивы, древние кремли и легенды Русского Севера."><i></i><b>Северная экспедиция</b><span class="cover"><span class="ph"></span><strong>Северная экспедиция</strong><em>глава 1, в разработке</em></span></button>
+      <button class="spine game" type="button" aria-label="Восточный маршрут" aria-pressed="false" data-d="Тамбов, Казань, Ростов-на-Дону, Азов и Екатеринбург: семейная история рода Вельских."><i></i><b>Восточный маршрут</b><span class="cover"><span class="ph"></span><strong>Восточный маршрут</strong><em>глава 2, в разработке</em></span></button>
+      <button class="spine game" type="button" aria-label="Большая экспедиция" aria-pressed="false" data-d="Стамбул: первая международная экспедиция для тех, кто прошёл первые главы."><i></i><b>Большая экспедиция</b><span class="cover"><span class="ph"></span><strong>Большая экспедиция</strong><em>в планах</em></span></button>
+      <button class="spine comic" type="button" aria-label="Алиса Вельская: Начало" aria-pressed="false" data-d="Комикс вселенной Алисы Вельской, 12+."><i></i><b>Алиса Вельская: Начало</b><span class="cover"><span class="ph"></span><strong>Алиса Вельская: Начало</strong><em>Комикс · 12+</em></span></button>
+      <button class="spine comic" type="button" aria-label="Алиса Вельская: За гранью легенд" aria-pressed="false" data-d="Комикс вселенной Алисы Вельской, 18+."><i></i><b>Алиса Вельская: За гранью легенд</b><span class="cover"><span class="ph"></span><strong>Алиса Вельская: За гранью легенд</strong><em>Комикс · 18+</em></span></button>
+      <button class="spine comic" type="button" aria-label="Багровый Орден: Хроники пяти семей" aria-pressed="false" data-d="Комикс вселенной Алисы Вельской, 18+."><i></i><b>Багровый Орден: Хроники пяти семей</b><span class="cover"><span class="ph"></span><strong>Багровый Орден: Хроники пяти семей</strong><em>Комикс · 18+</em></span></button>
+      <button class="spine comic" type="button" aria-label="Хранители: Первый Завет" aria-pressed="false" data-d="Комикс вселенной Алисы Вельской, 18+."><i></i><b>Хранители: Первый Завет</b><span class="cover"><span class="ph"></span><strong>Хранители: Первый Завет</strong><em>Комикс · 18+</em></span></button>
+      <button class="spine book" type="button" aria-label="Алиса Вельская: Проклятие Мнишек" aria-pressed="false" data-d="Художественная книга вселенной Алисы Вельской."><i></i><b>Алиса Вельская: Проклятие Мнишек</b><span class="cover"><span class="ph"></span><strong>Алиса Вельская: Проклятие Мнишек</strong><em>Художественная книга</em></span></button>
+      <button class="spine tabletop" type="button" aria-label="Алиса Вельская: Хроники наследия" aria-pressed="false" data-d="Приключенческая настольная игра по вселенной Алисы Вельской."><i></i><b>Алиса Вельская: Хроники наследия</b><span class="cover"><span class="ph"></span><strong>Алиса Вельская: Хроники наследия</strong><em>Приключенческая настольная игра</em></span></button>
+      <button class="spine tabletop" type="button" aria-label="Алиса Вельская: Тайны Ордена" aria-pressed="false" data-d="Карточная игра по вселенной Алисы Вельской."><i></i><b>Алиса Вельская: Тайны Ордена</b><span class="cover"><span class="ph"></span><strong>Алиса Вельская: Тайны Ордена</strong><em>Карточная игра</em></span></button>
+      <button class="spine tabletop" type="button" aria-label="Сказъ" aria-pressed="false" data-d="Настольная игра. Пока под рабочим названием."><i></i><b>Сказъ</b><span class="cover"><span class="ph"></span><strong>Сказъ</strong><em>Настольная игра</em></span></button>
+      <button class="spine deck" type="button" aria-label="Алиса Вельская: Путь открытий" aria-pressed="false" data-d="Колода аффирмаций по вселенной Алисы Вельской."><i></i><b>Алиса Вельская: Путь открытий</b><span class="cover"><span class="ph"></span><strong>Алиса Вельская: Путь открытий</strong><em>Колода аффирмаций</em></span></button>
+      <button class="spine deck" type="button" aria-label="Хранители: Сила внутри" aria-pressed="false" data-d="Колода аффирмаций по вселенной Алисы Вельской."><i></i><b>Хранители: Сила внутри</b><span class="cover"><span class="ph"></span><strong>Хранители: Сила внутри</strong><em>Колода аффирмаций</em></span></button>
+      <button class="spine deck" type="button" aria-label="Багровый Орден: Кодекс воли" aria-pressed="false" data-d="Колода аффирмаций по вселенной Алисы Вельской."><i></i><b>Багровый Орден: Кодекс воли</b><span class="cover"><span class="ph"></span><strong>Багровый Орден: Кодекс воли</strong><em>Колода аффирмаций</em></span></button>
     </div>
     <div class="reel-info">
-      <div><h3 id="rT">Братство Хранителей</h3><p id="rD">Рабочее название полнометражного фильма вселенной. Производство начнётся в январе 2027, дату премьеры объявим позже.</p></div>
+      <div><h3 id="rT">Алиса Вельская: Проклятие Мнишек</h3><p id="rD">Полнометражный фильм вселенной Алисы Вельской. Подробности объявим позже.</p></div>
       <div class="reel-arrows"><button type="button" id="rPrev" aria-label="Предыдущий"><svg viewBox="0 0 18 18"><path d="M11 3 5 9l6 6"/></svg></button><button type="button" id="rNext" aria-label="Следующий"><svg viewBox="0 0 18 18"><path d="m7 3 6 6-6 6"/></svg></button></div>
     </div>
   </div>
@@ -964,15 +995,8 @@ var IC={
  books:'<path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/>',
  outdoor:'<path d="M3 20 12 4l9 16zM9 20l3-5 3 5"/>'};
 var CATN={coffee:'Кофейни',hotel:'Отели',bakery:'Пекарни',food:'Рестораны',beauty:'Красота',museum:'Музеи',books:'Книжные',outdoor:'Отдых'};
-var ROUTE=[
- {t:'Москва',x:148,y:253,s:'l',e:'Старт расследования',w:'Отправная точка',st:1,d:'Университет, аудитория профессора Вельского и музей, из которого пропал тубус.',l:['Исторические музеи и архивы','Университетские корпуса','Старые московские улицы'],g:'Первое дело: музей, кафе у трассы, заправка.'},
- {t:'Переславль-Залесский',sh:'Переславль',x:174,y:238,e:'Глава 1',w:'Ярославская область',st:1,d:'Опись из архива ведёт сюда. Монастырский архив и человек, который видел профессора.',l:['Горицкий монастырь','Плещеево озеро','Музей-усадьба «Ботик Петра I»'],g:'Первая вылазка после старта.'},
- {t:'Санкт-Петербург',sh:'Петербург',x:166,y:180,s:'l',e:'Глава 1',w:'Северо-Запад',st:1,d:'Архивная зацепка и проводник, который помогает увидеть фрагмент прошлого.',l:['Архивы и библиотеки','Музеи на набережных','Исторический центр'],g:'Северная экспедиция.'},
- {t:'Карелия',x:216,y:166,e:'Глава 1',w:'Петрозаводск, Онежское озеро',st:1,d:'Озёра, острова и легенды Русского Севера.',l:['Остров Кижи','Онежское озеро','Петрозаводск'],g:'Северная экспедиция.'},
- {t:'Казань',x:216,y:330,e:'Глава 2',w:'Республика Татарстан',st:0,d:'Восточный маршрут экспедиции.',l:['Казанский кремль','Старо-Татарская слобода','Волга'],g:'Восточный маршрут.'},
- {t:'Тамбов',x:138,y:303,s:'l',e:'Глава 2',w:'Тамбовская область',st:0,d:'Провинциальный архив и семейная история рода Вельских.',l:['Краеведческий музей','Усадьбы области','Старый центр'],g:'Восточный маршрут.'},
- {t:'Ростов-на-Дону',sh:'Ростов',x:86,y:358,s:'l',e:'Глава 2',w:'Ростовская область',st:0,d:'Южная точка маршрута.',l:['Набережная Дона','Старочеркасск','Краеведческий музей'],g:'Восточный маршрут.'},
- {t:'Каппадокия',off:1,e:'Большая экспедиция',w:'Турция',st:0,d:'Подземные города и скальные монастыри. Экспедиция для тех, кто прошёл первые главы.',l:['Подземный город Деринкую','Долина Гёреме','Каймаклы'],g:'Откроется после второй главы.'}];
+var ROUTE=[{"t":"Москва","x":148,"y":253,"e":"Старт расследования","w":"Отправная точка","st":1,"d":"Университет, аудитория профессора Вельского и музей, из которого пропал тубус.","l":["Исторические музеи и архивы","Университетские корпуса","Старые московские улицы"],"g":"Первое дело: музей, кафе у трассы, заправка."},{"t":"Калуга","x":124,"y":263,"s":"l","e":"Старт расследования","w":"Калужская область","st":1,"d":"После Калуги след профессора складывается в маршрут: каждая новая точка даёт Алисе фрагмент его замысла.","l":["Каменный мост","Гостиные ряды","Берег Оки"],"g":"Первая вылазка после старта."},{"t":"Тамбов","x":138,"y":303,"s":"l","e":"Глава 2","w":"Тамбовская область","st":0,"d":"Провинциальный архив и семейная история рода Вельских.","l":["Краеведческий музей","Усадьбы области","Старый центр"],"g":"Восточный маршрут."},{"t":"Псков","x":124,"y":160,"s":"l","e":"Глава 1","w":"Псковская область","st":1,"d":"Древний кремль на слиянии Псковы и Великой. Ещё одна точка маршрута, оставленного Александром.","l":["Псковский кремль","Мирожский монастырь","Изборская крепость"],"g":"Северная экспедиция."},{"t":"Казань","x":216,"y":330,"e":"Глава 2","w":"Республика Татарстан","st":0,"d":"Восточный маршрут экспедиции.","l":["Казанский кремль","Старо-Татарская слобода","Волга"],"g":"Восточный маршрут."},{"t":"Ростов-на-Дону","x":90,"y":364,"s":"b","e":"Глава 2","w":"Ростовская область","st":0,"d":"Южная точка маршрута.","l":["Набережная Дона","Старочеркасск","Краеведческий музей"],"g":"Восточный маршрут."},{"t":"Азов","x":66,"y":344,"s":"l","e":"Глава 2","w":"Ростовская область","st":0,"d":"Крепость у выхода к Азовскому морю. Отсюда маршрут поворачивает к Чёрному морю.","l":["Азовская крепость","Пороховой погреб","Устье Дона"],"g":"Восточный маршрут."},{"t":"Санкт-Петербург","x":170,"y":174,"s":"u","e":"Глава 1","w":"Северо-Запад","st":1,"d":"Архивная зацепка и проводник, который помогает увидеть фрагмент прошлого.","l":["Архивы и библиотеки","Музеи на набережных","Исторический центр"],"g":"Северная экспедиция."},{"t":"Екатеринбург","x":316,"y":346,"e":"Глава 2","w":"Свердловская область","st":0,"d":"Урал и город, где оборвалась история последней царской семьи.","l":["Храм на Крови","Ганина Яма","Плотинка"],"g":"Восточный маршрут."},{"t":"Вельск","x":234,"y":222,"e":"Глава 1","w":"Архангельская область","st":1,"d":"Небольшой северный город на реке Вель.","l":["Река Вель","Деревянный центр","Краеведческий музей"],"g":"Северная экспедиция."},{"t":"Великий Новгород","sh":"Великий<br>Новгород","x":153,"y":195,"s":"l l2","e":"Глава 1","w":"Новгородская область","st":1,"d":"Один из древнейших городов Руси: детинец, берестяные грамоты и Ярославово дворище.","l":["Новгородский детинец","Ярославово дворище","Юрьев монастырь"],"g":"Северная экспедиция."},{"t":"Карелия","x":216,"y":166,"e":"Глава 1","w":"Петрозаводск, Онежское озеро","st":1,"d":"Озёра, острова и легенды Русского Севера.","l":["Остров Кижи","Онежское озеро","Петрозаводск"],"g":"Северная экспедиция."},{"t":"Стамбул","off":1,"e":"Большая экспедиция","w":"Турция","st":0,"d":"Финал маршрута: Азов, Чёрное море и византийские связи выводят расследование за пределы России.","l":["Айя-София","Цистерна Базилика","Галата"],"g":"Первая международная экспедиция."}];
+var RPATH=[0, 1, 2, 6, 5, 4, 8, 9, 11, 7, 10, 3];
 var PART=[
  {cl:1,t:'Москва и Золотое кольцо',x:150,y:256,n:13,l:['Кофейня «Улика»','Отель «Архивариус»','Музей-квест «Тайник»','Пекарня «Хлебный след»','Книжный «Переплёт»','Гостиница «Посадский двор», Сергиев Посад','Медоварня «Тихий ход», Суздаль'],q:'Тринадцать мест на старте маршрута, среди них кофейня с шифром на стакане и музей-квест по мотивам первого дела.'},
  {c:'hotel',t:'Отель «Сверено»',city:'Санкт-Петербург',x:160,y:172,q:'Архивная зацепка: проводник ждёт в лобби в 21:40.',r:'40 очков опыта',o:'Поздний выезд'},
@@ -1003,12 +1027,12 @@ function showPart(i){var c=PART[i];setPressed(i);
   if(c.cl){card.innerHTML='<div class="ep">'+c.n+' мест-партнёров</div><h3>'+c.t+'</h3><div class="where">Старт маршрута</div><p>'+c.q+'</p><ul>'+c.l.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>';return;}
   card.innerHTML='<div class="ep">'+CATN[c.c]+'</div><h3>'+c.t+'</h3><div class="where">'+c.city+'</div><div class="ph"></div><p>'+c.q+'</p><ul>'+li('Награда в игре',c.r)+li('Для игроков',c.o)+'</ul>';}
 function drawRoute(){if(routePath)routePath.remove();
-  routePath=mk('M'+[0,1,3,2,4,5,6].map(function(k){return ROUTE[k].x+' '+ROUTE[k].y;}).join(' L'),'route');svg.appendChild(routePath);}
+  routePath=mk('M'+RPATH.map(function(k){return ROUTE[k].x+' '+ROUTE[k].y;}).join(' L'),'route');svg.appendChild(routePath);}
 function render(){pinsBox.innerHTML='';var old=document.querySelector('.offmap');if(old)old.remove();
   if(layer==='route'){drawRoute();$('legend').hidden=true;
-    ROUTE.forEach(function(c,i){if(c.off){var o=el('div','offmap');var b=el('button','pin soon');b.type='button';b.dataset.i=i;b.innerHTML='<span class="d"></span>';b.setAttribute('aria-label',c.t);b.onclick=function(){showRoute(i);};o.appendChild(b);o.appendChild(document.createTextNode('Каппадокия, Турция'));$('board').appendChild(o);return;}
+    ROUTE.forEach(function(c,i){if(c.off){var o=el('div','offmap');var b=el('button','pin soon');b.type='button';b.dataset.i=i;b.innerHTML='<span class="d"></span>';b.setAttribute('aria-label',c.t);b.onclick=function(){showRoute(i);};o.appendChild(b);o.appendChild(document.createTextNode('Стамбул, Турция'));$('board').appendChild(o);return;}
       var b=el('button','pin'+(c.st?'':' soon'));b.type='button';b.dataset.i=i;var p=pct(c.x,c.y);b.style.left=p.left;b.style.top=p.top;b.setAttribute('aria-label',c.t+'. '+c.e);
-      b.innerHTML='<span class="d"></span><span class="lb'+(c.s==='l'?' l':'')+'">'+(c.sh||c.t)+'</span>';b.onclick=function(){showRoute(i);};pinsBox.appendChild(b);});
+      b.innerHTML='<span class="d"></span><span class="lb'+(c.s?' '+c.s:'')+'">'+(c.sh||c.t)+'</span>';b.onclick=function(){showRoute(i);};pinsBox.appendChild(b);});
     showRoute(0);
   }else{if(routePath){routePath.remove();routePath=null;}$('legend').hidden=false;
     PART.forEach(function(c,i){if(catF&&!c.cl&&c.c!==catF)return;var b=el('button','pin cat'+(c.cl?' cl':''));b.type='button';b.dataset.i=i;var p=pct(c.x,c.y);b.style.left=p.left;b.style.top=p.top;b.setAttribute('aria-label',c.t);
@@ -1043,15 +1067,15 @@ CARDS.forEach(function(c){var h=el('div','holo'+(c[2]?' rare':''));h.innerHTML='
   h.addEventListener('pointerleave',function(){f.style.setProperty('--rx','0deg');f.style.setProperty('--ry','0deg');layoutFan();});});
 layoutFan();addEventListener('resize',layoutFan);
 
-var TABS=[['all','Всё'],['film','Фильмы'],['game','Игры'],['book','Книги'],['comic','Комиксы']];
+var TABS=[['all','Все'],['film','Фильмы'],['serial','Сериалы'],['game','Видеоигра'],['comic','Комиксы'],['book','Книги'],['tabletop','Настольные игры'],['deck','Колоды']];
 var spines=[].slice.call($('shelf').children),rsel=0,rf='all';
 function vis(){return spines.map(function(s,i){return i;}).filter(function(i){return rf==='all'||spines[i].classList.contains(rf);});}
 function drawShelf(){var v=vis();if(v.indexOf(rsel)<0)rsel=v[0];
-  spines.forEach(function(s,i){s.classList.toggle('sel',i===rsel);s.classList.toggle('dim',v.indexOf(i)<0);s.setAttribute('aria-pressed',i===rsel);});
+  spines.forEach(function(s,i){s.classList.toggle('sel',i===rsel);s.classList.toggle('out',v.indexOf(i)<0);s.setAttribute('aria-pressed',i===rsel);});
   $('rT').textContent=spines[rsel].getAttribute('aria-label');$('rD').textContent=spines[rsel].dataset.d;shelfTo();}
-function shelfTo(){var sh=$('shelf');if(sh.scrollWidth<=sh.clientWidth+1)return;setTimeout(function(){var s=spines[rsel];sh.scrollTo({left:s.offsetLeft+s.offsetWidth/2-sh.clientWidth/2,behavior:RM?'auto':'smooth'});},RM?0:520);}
+function shelfTo(){var sh=$('shelf');if(sh.scrollWidth<=sh.clientWidth+1)return;clearTimeout(sh._t);sh._t=setTimeout(function(){var r=spines[rsel].getBoundingClientRect(),q=sh.getBoundingClientRect();sh.scrollTo({left:sh.scrollLeft+r.left-q.left+r.width/2-sh.clientWidth/2,behavior:RM?'auto':'smooth'});},RM?0:540);}
 spines.forEach(function(s,i){s.onclick=function(){if(vis().indexOf(i)<0)return;rsel=i;drawShelf();};});
-var rt=$('reelTabs');TABS.forEach(function(t){var b=el('button');b.type='button';b.textContent=t[1];b.setAttribute('aria-pressed',t[0]===rf);b.onclick=function(){rf=t[0];rt.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b);});drawShelf();};rt.appendChild(b);});
+var rt=$('reelTabs');TABS.forEach(function(t){var b=el('button');b.type='button';b.textContent=t[1];b.setAttribute('aria-pressed',t[0]===rf);b.onclick=function(){rf=t[0];rt.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b);});var sh=$('shelf');sh.classList.remove('in');void sh.offsetWidth;sh.classList.add('in');drawShelf();};rt.appendChild(b);});
 $('rPrev').onclick=function(){var v=vis(),k=v.indexOf(rsel);rsel=v[(k-1+v.length)%v.length];drawShelf();};
 $('rNext').onclick=function(){var v=vis(),k=v.indexOf(rsel);rsel=v[(k+1)%v.length];drawShelf();};
 
@@ -1398,5 +1422,11 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){bui
 if(RM||!window.IntersectionObserver){shown=true;box.classList.add('live');req();return;}
 var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();show();}},{threshold:.35});io.observe(box);
 })();
+(function(){var c=document.getElementById('tbCopy'),v=document.getElementById('tbCodeV'),j=document.getElementById('tbJoin'),f=document.getElementById('prForm');if(!c||!v)return;
+function pick(){var r=document.createRange(),s=getSelection();r.selectNodeContents(v);s.removeAllRanges();s.addRange(r);}
+function done(){c.textContent='Скопировано';clearTimeout(c._t);c._t=setTimeout(function(){c.textContent='Скопировать';},1800);}
+c.addEventListener('click',function(){var t=v.textContent;if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,pick);else pick();});
+if(j&&f)j.addEventListener('click',function(){f.dataset.src='tubus';});
+if(f)f.addEventListener('submit',function(){var m=document.getElementById('prMsg');if(f.dataset.src==='tubus'&&m.className==='pr-msg')m.textContent='Вы в списке. Промокод '+v.textContent+' сработает в штабе в день открытия.';});})();
 </script>
 </body></html>
