@@ -364,6 +364,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 footer nav{display:flex;gap:20px;flex-wrap:wrap}
 footer a{text-decoration:none}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+/* кнопка «Партнёрам», закреплённая на всех страницах */
+.pfab{position:fixed;z-index:53;left:max(16px,env(safe-area-inset-left,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));text-decoration:none;filter:drop-shadow(0 10px 24px rgba(0,0,0,.6));transition:translate .2s ease-out,filter .2s ease-out;-webkit-tap-highlight-color:transparent}
+.pfab span{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 20px 0 16px;font:400 15px/1 "Molot","Arial Black",Impact,sans-serif;text-transform:uppercase;word-spacing:-.12em;color:#fff;background:linear-gradient(180deg,#E3262F,#A9141C);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.pfab svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (hover:hover){.pfab:hover{translate:0 -2px;filter:drop-shadow(0 14px 28px rgba(227,38,47,.5))}}
+.pfab:active{scale:.96}
+@media (max-width:520px){.pfab span{min-height:46px;padding:0 14px 0 12px;font-size:13px}}
 </style>
 <style>
 :root{--dim:#9C8780;--gut:max(clamp(10px,2.6vw,40px),env(safe-area-inset-left,0px),env(safe-area-inset-right,0px))}
@@ -594,13 +601,14 @@ footer .wrap{padding-top:24px}
       <li><a href="#map">Карта</a></li>
       <li><a href="#reels">Мир Алисы</a></li>
       <li><a href="team.html">Команда</a></li>
-      <li><a href="#partners">Партнёрам</a></li>
+      <li><a href="events.html">События</a></li><li><a href="partners.html">Партнёрам</a></li>
     </ul>
     <a class="btn" href="#prereg">Войти в штаб</a>
     <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navList"><i></i></button>
   </div>
 </header>
 
+<a class="pfab" href="partners.html" aria-label="Страница для партнёров"><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 12h18M11 12v2h2v-2"/></svg>Партнёрам</span></a>
 <main id="top">
 <section class="hero" id="hero" aria-label="Алиса Вельская">
   <div class="stars" aria-hidden="true"><i></i><i></i></div>
@@ -784,7 +792,7 @@ footer .wrap{padding-top:24px}
       <h2>Команда</h2>
       <p class="lede">Люди, которые снимают фильм и создают игры вселенной.</p>
     </div>
-    <div class="trow"><div class="trow-h"><h3>Команда фильма</h3><div class="arrows"><button type="button" data-t="tFilm" data-d="-1" aria-label="Листать назад"><svg viewBox="0 0 18 18"><path d="M11 3 5 9l6 6"/></svg></button><button type="button" data-t="tFilm" data-d="1" aria-label="Листать вперёд"><svg viewBox="0 0 18 18"><path d="m7 3 6 6-6 6"/></svg></button></div></div><div class="track" id="tFilm"><article class="person"><div class="ph art real"><img src="img/team/svyat.webp" alt="Святослав Серебряков" loading="lazy"></div><b>Святослав Серебряков</b><small>Автор идеи, продюсер, режиссёр</small></article><article class="person"><div class="ph art real"><img src="img/team/nino.webp" alt="Нино Ломидзе" loading="lazy"></div><b>Нино Ломидзе</b><small>Продюсер</small></article><article class="person"><div class="ph art real"><img src="img/team/maria.webp" alt="Мария Азорнова" loading="lazy"></div><b>Мария Азорнова</b><small>Сценарист</small></article><article class="person"><div class="ph art real"><img src="img/team/grigorii.webp" alt="Григорий Калмыков" loading="lazy"></div><b>Григорий Калмыков</b><small>Оператор-постановщик</small></article><article class="person"><div class="ph art real"><img src="img/team/maksim.webp" alt="Максим Тюрин" loading="lazy"></div><b>Максим Тюрин</b><small>Кастинг-директор</small></article><article class="person"><div class="ph art real"><img src="img/team/kadir.webp" alt="Кадир Хыдыр" loading="lazy"></div><b>Кадир Хыдыр</b><small>Турецкий продюсер, режиссёр</small></article><article class="person"><div class="ph art real"><img src="img/team/nazim.webp" alt="Назим Эрдинч Туран" loading="lazy"></div><b>Назим Эрдинч Туран</b><small>Турецкий креативный продюсер</small></article><article class="person"><div class="ph art real"><img src="img/team/abaris.webp" alt="Абарис Гаура" loading="lazy"></div><b>Абарис Гаура</b><small>Вице-президент Гильдии финансистов</small></article></div></div><div class="trow gr"><div class="trow-h"><h3>Игровая команда</h3><div class="arrows"><button type="button" data-t="tGame" data-d="-1" aria-label="Листать назад"><svg viewBox="0 0 18 18"><path d="M11 3 5 9l6 6"/></svg></button><button type="button" data-t="tGame" data-d="1" aria-label="Листать вперёд"><svg viewBox="0 0 18 18"><path d="m7 3 6 6-6 6"/></svg></button></div></div><div class="track" id="tGame"><article class="person"><div class="ph art real"><img src="img/team/yulia.webp" alt="Юлия" loading="lazy"></div><b>Юлия</b><small>Соавтор, арт-директор</small></article><article class="person"><div class="ph art real"><img src="img/team/tanya.webp" alt="Татьяна" loading="lazy"></div><b>Татьяна</b><small>Ведущий художник</small></article><article class="person"><div class="ph art real"><img src="img/team/viktoria.webp" alt="Виктория" loading="lazy"></div><b>Виктория</b><small>Художник</small></article><article class="person"><div class="ph art real"><img src="img/team/vasiliy.webp" alt="Василий" loading="lazy"></div><b>Василий</b><small>Разработчик</small></article><article class="person"><div class="ph art real"><img src="img/team/andrey.webp" alt="Андрей" loading="lazy"></div><b>Андрей</b><small>Сценарист</small></article><article class="person"><div class="ph art real"><img src="img/team/lesya.webp" alt="Олеся" loading="lazy"></div><b>Олеся</b><small>Дизайнер</small></article><article class="person"><div class="ph art real"><img src="img/team/jenya.webp" alt="Евгения" loading="lazy"></div><b>Евгения</b><small>Дизайнер</small></article><article class="person"><div class="ph sil gr"><img src="img/team/sil_man.webp" alt="" loading="lazy"></div><b>Данила</b><small>Геймдизайнер</small></article></div></div>
+    <div class="trow"><div class="trow-h"><h3>Команда фильма</h3><div class="arrows"><button type="button" data-t="tFilm" data-d="-1" aria-label="Листать назад"><svg viewBox="0 0 18 18"><path d="M11 3 5 9l6 6"/></svg></button><button type="button" data-t="tFilm" data-d="1" aria-label="Листать вперёд"><svg viewBox="0 0 18 18"><path d="m7 3 6 6-6 6"/></svg></button></div></div><div class="track" id="tFilm"><article class="person"><div class="ph art real"><img src="img/team/svyat.webp" alt="Святослав Серебряков" loading="lazy"></div><b>Святослав Серебряков</b><small>Автор идеи, продюсер, режиссёр</small></article><article class="person"><div class="ph art real"><img src="img/team/nino.webp" alt="Нино Ломидзе" loading="lazy"></div><b>Нино Ломидзе</b><small>Продюсер</small></article><article class="person"><div class="ph art real"><img src="img/team/maria.webp" alt="Мария Азорнова" loading="lazy"></div><b>Мария Азорнова</b><small>Сценарист</small></article><article class="person"><div class="ph art real"><img src="img/team/grigorii.webp" alt="Григорий Калмыков" loading="lazy"></div><b>Григорий Калмыков</b><small>Оператор-постановщик</small></article><article class="person"><div class="ph art real"><img src="img/team/maksim.webp" alt="Максим Тюрин" loading="lazy"></div><b>Максим Тюрин</b><small>Кастинг-директор</small></article><article class="person"><div class="ph art real"><img src="img/team/kadir.webp" alt="Кадир Хыдыр" loading="lazy"></div><b>Кадир Хыдыр</b><small>Турецкий продюсер, режиссёр</small></article><article class="person"><div class="ph art real"><img src="img/team/nazim.webp" alt="Назим Эрдинч Туран" loading="lazy"></div><b>Назим Эрдинч Туран</b><small>Турецкий креативный продюсер</small></article><article class="person"><div class="ph art real"><img src="img/team/abaris.webp" alt="Абарис Гаура" loading="lazy"></div><b>Абарис Гаура</b><small>Вице-президент Гильдии финансистов</small></article></div></div><div class="trow gr"><div class="trow-h"><h3>Игровая команда</h3><div class="arrows"><button type="button" data-t="tGame" data-d="-1" aria-label="Листать назад"><svg viewBox="0 0 18 18"><path d="M11 3 5 9l6 6"/></svg></button><button type="button" data-t="tGame" data-d="1" aria-label="Листать вперёд"><svg viewBox="0 0 18 18"><path d="m7 3 6 6-6 6"/></svg></button></div></div><div class="track" id="tGame"><article class="person"><div class="ph art real"><img src="img/team/yulia.webp" alt="Юлия" loading="lazy"></div><b>Юлия</b><small>Креативный директор</small></article><article class="person"><div class="ph art real"><img src="img/team/tanya.webp" alt="Татьяна" loading="lazy"></div><b>Татьяна</b><small>Ведущий художник</small></article><article class="person"><div class="ph art real"><img src="img/team/viktoria.webp" alt="Виктория" loading="lazy"></div><b>Виктория</b><small>Художник</small></article><article class="person"><div class="ph art real"><img src="img/team/vasiliy.webp" alt="Василий" loading="lazy"></div><b>Василий</b><small>Старший разработчик</small></article><article class="person"><div class="ph art real"><img src="img/team/andrey.webp" alt="Андрей" loading="lazy"></div><b>Андрей</b><small>Сценарист</small></article><article class="person"><div class="ph art real"><img src="img/team/lesya.webp" alt="Олеся" loading="lazy"></div><b>Олеся</b><small>Реклама</small></article><article class="person"><div class="ph art real"><img src="img/team/jenya.webp" alt="Евгения" loading="lazy"></div><b>Евгения</b><small>Дизайнер</small></article><article class="person"><div class="ph sil gr"><img src="img/team/sil_man.webp" alt="" loading="lazy"></div><b>Данила</b><small>Геймдизайнер</small></article></div></div>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px"><a class="btn" href="team.html">Вся команда</a></div>
   </div>
 </section>
@@ -867,7 +875,7 @@ footer .wrap{padding-top:24px}
 
     <div class="pt-band">
       <div><h3>Найдём вашему делу место в истории</h3><p>Оставьте заявку, и мы предложим, как вписать ваш бизнес во вселенную.</p></div>
-      <div class="act"><button class="btn" type="button" id="ptOpen">Стать партнёром</button></div>
+      <div class="act"><button class="btn" type="button" id="ptOpen">Стать партнёром</button><a class="btn ghost" href="partners.html">Подробнее о партнёрстве</a></div>
     </div>
   </div>
 </section>
@@ -933,7 +941,7 @@ footer .wrap{padding-top:24px}
 <footer>
   <div class="wrap">
     <span>© 2026 «Алиса Вельская»</span>
-    <nav><a href="#top">Telegram</a><a href="#top">ВКонтакте</a><a href="#top">Политика конфиденциальности</a></nav>
+    <nav><a href="events.html">События</a><a href="partners.html">Партнёрам</a><a href="#top">Telegram</a><a href="#top">ВКонтакте</a><a href="#top">Политика конфиденциальности</a></nav>
   </div>
 </footer>
 <a class="v6-up" id="v6Up" href="#top" aria-label="Наверх" title="Наверх"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="bg" d="M5.25 5.25 9.75.75h37.5v37.5l-9 9H.75V9.75z"/><path class="th tg" pathLength="100" d="M5.25 5.25 9.75.75h37.5v37.5l-9 9H.75V9.75z"/><path class="th" pathLength="100" d="M5.25 5.25 9.75.75h37.5v37.5l-9 9H.75V9.75z"/><circle class="pn" cx="5.25" cy="5.25" r="3.1"/><circle class="ph" cx="4.4" cy="4.4" r="1"/><path class="ar" d="M24 32V16.5m-6.5 6.5 6.5-6.5 6.5 6.5"/></svg></a>
@@ -1088,6 +1096,7 @@ var BIZ=[['Кофейня','Здесь назначают встречи. Бар
 document.querySelectorAll('.chips button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.chips button').forEach(function(x){x.setAttribute('aria-selected',x===b);});var d=BIZ[+b.dataset.i];$('fitT').textContent=d[0];$('fitP').textContent=d[1];};});
 var dlg=$('ptDlg'),pf=$('ptForm');
 $('ptOpen').onclick=function(){pf.hidden=false;$('ptOk').hidden=true;$('ptErr').textContent='';dlg.showModal();};
+if(location.hash==='#apply'){setTimeout(function(){$('partners').scrollIntoView();$('ptOpen').click();},300);}
 $('ptClose').onclick=function(){dlg.close();};
 dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
 pf.addEventListener('submit',function(e){e.preventDefault();var miss=[].filter.call(pf.querySelectorAll('[required]'),function(i){return !i.value.trim();});

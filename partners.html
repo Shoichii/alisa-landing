@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Партнёрам: вселенная Алисы Вельской</title>
+<meta name="description" content="Вселенная Алисы Вельской для бизнеса: место в сюжете фильма, сериала, игр, книг и экспедиций. От кофейни до региона.">
+<link rel="canonical" href="https://alicevelskaya.ru/partners.html">
+<meta name="theme-color" content="#0A0405">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Алиса Вельская">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://alicevelskaya.ru/partners.html">
+<meta property="og:title" content="Партнёрам: вселенная Алисы Вельской">
+<meta property="og:description" content="Вселенная Алисы Вельской для бизнеса: место в сюжете фильма, сериала, игр, книг и экспедиций. От кофейни до региона.">
+<meta property="og:image" content="https://alicevelskaya.ru/img/og.jpg">
+<link rel="preload" href="fonts/molot.otf" as="font" type="font/otf" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+@font-face{font-family:"Molot";src:url(fonts/molot.otf) format("opentype");font-display:swap}
+/* Тёмная вишнёвая сцена с графитом: контровой свет, лучи, звёзды, дымка; всё по центру, герои в полный рост, цифры как улики на доске. Molot для заголовков и цифр, Inter для текста. */
+:root{
+  --ink:#0C0507;--wine:#22080F;--blood:#5A0F22;--red:#B3163E;--red-hi:#E8557A;
+  --light:#F4ECE8;--cream:#F2E8E6;--mute:#BFA9AC;--dim:#8A7377;--gold:#A9A4AB;--graph:#3A373D;
+  --line:rgba(242,232,230,.13);--line-2:rgba(242,232,230,.26);
+  --f-display:"Molot","Arial Black",Impact,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box;letter-spacing:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font:400 17px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:2px solid var(--red-hi);outline-offset:3px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-transform:uppercase;word-spacing:-.14em;margin:0;line-height:1;text-wrap:balance}
+p{margin:0}
+.wrap{width:min(1200px,100%);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{position:relative;padding-block:clamp(64px,9vw,120px)}
+.head{display:flex;flex-direction:column;gap:14px;max-width:780px}
+.head h2{font-size:clamp(32px,4.6vw,60px);color:#fff}
+.head p{color:var(--mute);font-size:clamp(17px,1.4vw,19px);max-width:62ch}
+#grain{position:fixed;inset:-64px;z-index:4;pointer-events:none;opacity:.08;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.4 0'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media (prefers-reduced-motion:no-preference){#grain{animation:grain .6s steps(1) infinite}}
+@keyframes grain{0%{translate:0 0}17%{translate:-24px 16px}33%{translate:16px -32px}50%{translate:-40px -8px}67%{translate:32px 24px}83%{translate:-8px 40px}}
+
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 26px;font:400 16px/1 var(--f-display);text-transform:uppercase;word-spacing:-.12em;text-decoration:none;color:var(--cream);background:linear-gradient(180deg,#5A565E,#2E2B32);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);transition:filter .2s ease-out,translate .2s ease-out;overflow:hidden}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,230,200,.45) 50%,transparent 70%);background-size:250% 100%;background-position:150% 0;transition:background-position .7s ease-out;pointer-events:none}
+.btn.ghost{color:var(--cream);background:rgba(242,232,230,.06);box-shadow:inset 0 0 0 1px var(--line-2)}
+@media (hover:hover){.btn:hover{filter:brightness(1.15);translate:0 -2px}.btn:hover::after{background-position:-50% 0}}
+.btn:active{scale:.97}
+.src-l{font-size:12.5px;line-height:1.4;color:var(--dim)}
+.src-l a{color:var(--mute);text-underline-offset:2px;text-decoration-color:var(--line-2)}
+
+#smoke{position:fixed;inset:0;z-index:3;pointer-events:none;overflow:hidden;opacity:.55;mix-blend-mode:screen}
+#smoke i{position:absolute;width:70vmax;height:70vmax;border-radius:50%;filter:blur(60px);background:radial-gradient(closest-side,rgba(210,50,90,.22),rgba(210,50,90,.06) 55%,transparent)}
+#smoke i:nth-child(1){left:-20vmax;top:10vh}
+#smoke i:nth-child(2){right:-25vmax;top:40vh;background:radial-gradient(closest-side,rgba(230,110,140,.16),transparent)}
+#smoke i:nth-child(3){left:20vw;top:70vh;background:radial-gradient(closest-side,rgba(166,161,168,.07),transparent)}
+#smoke i:nth-child(4){left:40vw;top:-30vh}
+@media (prefers-reduced-motion:no-preference){#smoke i{animation:drift 38s ease-in-out infinite alternate}#smoke i:nth-child(2){animation-duration:46s;animation-delay:-12s}#smoke i:nth-child(3){animation-duration:52s;animation-delay:-20s}#smoke i:nth-child(4){animation-duration:44s;animation-delay:-6s}}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(12vw,-6vh) scale(1.15)}100%{transform:translate(-8vw,8vh) scale(.95)}}
+#rays{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;filter:blur(6px);mix-blend-mode:screen}
+/* ГЕРОЙ: как на сайте, герои по центру, текст и кнопки поверх */
+.hero{position:relative;height:clamp(640px,100svh,1000px);min-height:640px;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse 60% 64% at 50% 40%,#7A1430 0%,#45091B 38%,#1C050C 68%,var(--ink) 92%)}
+.hero .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,140,160,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,140,160,.06) 1px,transparent 1px);background-size:120px 120px;background-position:center;mask-image:radial-gradient(ellipse 70% 55% at 50% 40%,#000 30%,transparent 78%);z-index:0}
+.bloom{position:absolute;left:50%;top:30%;width:min(70vw,900px);aspect-ratio:1;translate:-50% -50%;border-radius:50%;z-index:1;background:radial-gradient(circle,rgba(255,236,228,.9) 0%,rgba(166,161,168,.5) 9%,rgba(179,22,62,.3) 28%,transparent 62%);mix-blend-mode:screen}
+@media (prefers-reduced-motion:no-preference){.bloom{animation:breathe 7s ease-in-out infinite}}
+@keyframes breathe{50%{opacity:.78;scale:1.05}}
+.stage{position:absolute;left:50%;bottom:0;height:100%;aspect-ratio:16/9;translate:-50% 0;scale:1.09;transform-origin:50% 22%;z-index:2;pointer-events:none}
+.stage .ch{position:absolute;height:100%;width:auto;max-width:none;filter:drop-shadow(0 0 1px rgba(255,236,230,.9)) drop-shadow(0 0 18px rgba(255,150,160,.35)) drop-shadow(0 30px 40px rgba(0,0,0,.6)) brightness(.92) contrast(1.04)}
+.ch.sofi{left:16.7%;top:10%}
+.ch.velsky{left:52%;top:11%;height:92%!important}
+.ch.alice{left:34.2%;top:4.54%}
+.shade{position:absolute;inset:auto 0 0;height:58%;z-index:3;background:linear-gradient(180deg,rgba(12,5,7,0),rgba(12,5,7,.5) 38%,rgba(12,5,7,.9) 70%,var(--ink) 100%);pointer-events:none}
+#dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+.vign{position:absolute;inset:0;z-index:6;pointer-events:none;background:radial-gradient(ellipse 90% 80% at 50% 40%,transparent 55%,rgba(12,5,7,.7))}
+.stars{position:absolute;inset:clamp(40px,8vh,90px) clamp(14px,2.4vw,40px) auto;height:40%;z-index:7;pointer-events:none}
+.stars i{position:absolute;width:16px;height:16px;background:var(--light);clip-path:polygon(50% 0,58% 42%,100% 50%,58% 58%,50% 100%,42% 58%,0 50%,42% 42%);opacity:.75}
+.stars i:nth-child(1){left:0;top:0}.stars i:nth-child(2){right:0;top:0}
+@media (prefers-reduced-motion:no-preference){.stars i{animation:tw 3.2s ease-in-out infinite}.stars i:nth-child(2){animation-delay:1.2s}}
+@keyframes tw{50%{opacity:.25;scale:.6}}
+.hero-copy{position:absolute;left:0;right:0;bottom:clamp(48px,8vh,96px);z-index:8;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.hero-copy h1{font-size:clamp(32px,4.6vw,66px);line-height:.98;max-width:min(26ch,100%);color:#fff;text-shadow:0 0 40px rgba(210,50,90,.6),0 0 2px rgba(255,255,255,.8),0 8px 30px rgba(0,0,0,.6)}
+.hero-copy .sub{color:rgba(242,232,230,.9);font-size:clamp(16px,1.4vw,19px);line-height:1.55;max-width:60ch;text-shadow:0 2px 14px rgba(0,0,0,.8)}
+.hero-copy .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:2px}
+.lines{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.lines span{padding:6px 12px;font-size:13.5px;font-weight:500;color:var(--light);background:rgba(12,5,7,.55);box-shadow:inset 0 0 0 1px var(--line);backdrop-filter:blur(6px)}
+@media (max-width:700px){.stage{width:165vw;height:auto;top:40px;bottom:auto}.hero-copy{gap:14px}.hero-copy .sub{font-size:15px}.hero-copy .row .btn{flex:1 1 100%}.bloom{top:24%}.lines span{font-size:12.5px;padding:5px 10px}}
+
+/* СУТЬ */
+.essence{background:var(--ink)}
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:44px}
+.pillar{padding:26px 22px;box-shadow:inset 0 0 0 1px var(--line);display:flex;flex-direction:column;gap:10px}
+.pillar h3{font-size:clamp(20px,2vw,26px);color:var(--light)}
+.pillar p{font-size:15.5px;color:var(--mute);line-height:1.5}
+@media (max-width:860px){.pillars{grid-template-columns:1fr}}
+.heroes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:56px}
+.person .ph{aspect-ratio:3/4;max-width:100%;background:center top/cover no-repeat;clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px)}
+.person b{display:block;margin-top:12px;font:400 18px/1.1 var(--f-display);text-transform:uppercase;word-spacing:-.14em}
+.person span{display:block;margin-top:4px;font-size:14px;color:var(--mute)}
+@media (max-width:760px){.heroes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.two{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center;margin-top:72px;padding:clamp(24px,4vw,44px);background:linear-gradient(120deg,rgba(90,15,34,.28),rgba(242,232,230,.03));box-shadow:inset 0 0 0 1px var(--line)}
+.two .pair{display:flex;justify-content:center}
+.two .pair figure{margin:0;display:flex;flex-direction:column;gap:10px;align-items:center}
+.two .duo{position:relative;width:min(340px,80vw);aspect-ratio:3/4;max-width:100%}
+.two .duo .c1{position:absolute;inset:0;background:center top/cover no-repeat;clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px);box-shadow:0 20px 40px rgba(0,0,0,.5)}
+.two .duo .c1::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,transparent 45%,rgba(70,8,24,.55))}
+.two .duo .spr{position:absolute;right:3%;bottom:0;width:46%;height:58%;background-repeat:no-repeat;background-position:center top;background-size:100% auto;filter:drop-shadow(0 0 2px rgba(255,236,230,.8)) drop-shadow(0 0 18px rgba(179,22,62,.7)) drop-shadow(0 12px 18px rgba(0,0,0,.6))}
+.two figcaption{font-size:13px;color:var(--dim)}
+.two h3{font-size:clamp(24px,2.6vw,34px);color:#fff;margin-bottom:12px}
+.two p{color:var(--mute);max-width:52ch}
+@media (max-width:820px){.two{grid-template-columns:1fr}}
+
+/* ЛИНЕЙКИ */
+.media{background:linear-gradient(180deg,var(--ink),var(--wine) 50%,var(--ink))}
+.mgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:44px}
+.m{position:relative;display:flex;flex-direction:column;gap:10px;padding:22px 20px 22px;min-height:200px;background:rgba(12,5,7,.55);box-shadow:inset 0 0 0 1px var(--line);clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)}
+.m svg{width:34px;height:34px;fill:none;stroke:var(--red-hi);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.m h3{font-size:20px;color:var(--light)}
+.m p{font-size:14.5px;color:var(--mute);line-height:1.45}
+.m .st{align-self:flex-start;margin-top:auto;padding:4px 9px;font-size:12px;font-weight:600;color:var(--gold);box-shadow:inset 0 0 0 1px rgba(166,161,168,.45)}
+@media (max-width:980px){.mgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.mgrid{grid-template-columns:1fr}.m{min-height:0}}
+
+/* ЦИФРЫ */
+.nums{background:var(--ink)}
+.ngrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:44px}
+.n{display:flex;flex-direction:column;gap:10px;padding:24px 20px 20px;background:linear-gradient(180deg,rgba(242,232,230,.05),rgba(242,232,230,.015));box-shadow:inset 0 0 0 1px var(--line)}
+.n .k{font-size:13px;font-weight:600;color:var(--red-hi)}
+.n strong{white-space:nowrap;font:400 clamp(30px,3vw,46px)/.92 var(--f-display);color:var(--light);font-variant-numeric:tabular-nums;text-shadow:0 0 30px rgba(166,161,168,.22)}
+.n strong i{font-style:normal;font-size:.42em;color:var(--mute)}
+.n strong i u{text-decoration:none;font-family:var(--f-body);font-weight:700;font-size:.92em;margin-left:.1em}
+.n p{font-size:14.5px;line-height:1.45;color:var(--cream)}
+.n .src-l{margin-top:auto}
+@media (max-width:980px){.ngrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.ngrid{grid-template-columns:1fr}}
+
+/* КАССА */
+.myth{background:radial-gradient(50% 70% at 85% 50%,rgba(179,22,62,.25),transparent 70%),var(--wine)}
+.myth .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center}
+.bars{display:flex;flex-direction:column;gap:14px}
+.bar{display:grid;grid-template-columns:minmax(0,170px) 1fr;gap:14px;align-items:center}
+.bar span{font-size:14.5px;color:var(--cream);line-height:1.25}
+.bar div{position:relative;height:38px;background:rgba(242,232,230,.05)}
+.bar i{position:absolute;left:0;top:0;bottom:0;width:var(--w);background:linear-gradient(90deg,var(--blood),var(--red));display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font:400 16px/1 var(--f-display);font-style:normal;color:#fff;white-space:nowrap}
+.bar.hl i{background:linear-gradient(90deg,#2E2B32,#6E6973);color:var(--cream)}
+.myth .txt{display:flex;flex-direction:column;gap:16px}
+.myth .txt p{color:var(--mute)}
+.myth .txt p strong{color:var(--cream);font-weight:600}
+@media (max-width:860px){.myth .wrap{grid-template-columns:1fr}.bar{grid-template-columns:minmax(0,120px) 1fr}}
+
+/* ПАРТНЁРСТВО */
+.fit{background:var(--ink)}
+.biz{display:flex;flex-wrap:wrap;gap:8px;margin-top:36px}
+.biz button{min-height:44px;padding:0 16px;font-size:15px;color:var(--mute);box-shadow:inset 0 0 0 1px var(--line);transition:color .15s ease-out,background-color .15s ease-out}
+.biz button[aria-pressed=true]{background:var(--cream);color:var(--ink)}
+@media (hover:hover){.biz button:not([aria-pressed=true]):hover{color:var(--cream);box-shadow:inset 0 0 0 1px var(--line-2)}}
+.case{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);margin-top:20px;background:rgba(242,232,230,.03);box-shadow:inset 0 0 0 1px var(--line-2)}
+.case .ph{min-height:320px;background:center/cover no-repeat;position:relative}
+.case .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,rgba(12,5,7,.6))}
+.case .body{padding:clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:18px}
+.case h3{font-size:clamp(24px,2.6vw,34px);color:#fff}
+.case .lead{color:var(--light);font-size:17px}
+.case dl{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:10px 18px}
+.case dt{font-size:14px;font-weight:600;color:var(--gold);padding-top:2px}
+.case dd{margin:0;font-size:15.5px;color:var(--mute);line-height:1.5}
+@media (max-width:820px){.case{grid-template-columns:1fr}.case .ph{min-height:0;aspect-ratio:16/9}.case .ph::after{background:linear-gradient(180deg,transparent 60%,rgba(12,5,7,.6))}}
+@media (max-width:480px){.case dl{grid-template-columns:1fr;gap:4px}.case dd{margin-bottom:8px}}
+.ladder{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;align-items:end}
+.ladder li{position:relative;padding:22px 20px 24px;background:linear-gradient(180deg,rgba(179,22,62,var(--a)),rgba(179,22,62,.03));box-shadow:inset 0 0 0 1px var(--line);min-height:var(--h)}
+.ladder li b{display:block;font:400 clamp(20px,2vw,26px)/1 var(--f-display);text-transform:uppercase;word-spacing:-.14em;color:#fff;margin-bottom:10px}
+.ladder li p{font-size:14.5px;color:var(--mute);line-height:1.45}
+.ladder li small{display:block;margin-top:12px;font-size:13px;color:var(--light)}
+.ladcap{display:flex;justify-content:space-between;margin-top:10px;font-size:13px;color:var(--dim)}
+@media (max-width:860px){.ladder{grid-template-columns:1fr 1fr;gap:10px}.ladder li{min-height:0}}
+@media (max-width:480px){.ladder{grid-template-columns:1fr}}
+
+/* КОМАНДА */
+.team{background:linear-gradient(180deg,var(--ink),var(--wine))}
+.team .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:start}
+.tnums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.tnums div{display:flex;flex-direction:column;gap:6px;padding:20px 18px;box-shadow:inset 0 0 0 1px var(--line)}
+.tnums b{font:400 clamp(48px,5vw,72px)/.85 var(--f-display);color:var(--light)}
+.tnums span{font-size:14px;color:var(--mute);line-height:1.35}
+.tlist{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column}
+.tlist li{padding:14px 0;box-shadow:inset 0 -1px 0 var(--line);font-size:16px;color:var(--cream)}
+.tlist li strong{color:var(--light);font-weight:600}
+@media (max-width:860px){.team .wrap{grid-template-columns:1fr}}
+
+/* ВЫГОДЫ */
+.gains{background:var(--wine)}
+.ggrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:40px}
+.g{padding:24px 22px;box-shadow:inset 0 0 0 1px var(--line);background:rgba(12,5,7,.4)}
+.g h3{font-size:19px;color:var(--light);margin-bottom:10px}
+.g p{font-size:15px;color:var(--mute);line-height:1.5}
+@media (max-width:900px){.ggrid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.ggrid{grid-template-columns:1fr}}
+
+/* ФИНАЛ */
+.final{text-align:center;padding-block:clamp(80px,11vw,150px);background:radial-gradient(55% 60% at 50% 60%,rgba(179,22,62,.3),transparent 70%),var(--ink);overflow:hidden}
+.final .wrap{display:flex;flex-direction:column;align-items:center;gap:20px}
+.final h2{font-size:clamp(36px,6vw,84px);color:#fff;text-shadow:0 0 40px rgba(210,50,90,.55)}
+.final p{color:var(--mute);max-width:58ch;font-size:clamp(17px,1.5vw,19px)}
+.contact{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin-top:8px}
+.contact code{font:600 17px/1 var(--f-body);color:var(--light);padding:18px 20px;background:rgba(242,232,230,.06);box-shadow:inset 0 0 0 1px var(--line-2);user-select:all}
+.copied{font-size:14px;color:var(--gold);min-height:1.4em}
+.srcs{background:var(--ink);padding-block:48px 64px;box-shadow:inset 0 1px 0 var(--line)}
+.srcs h2{font-size:20px;color:var(--mute)}
+.srcs ol{margin:18px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--dim);max-width:920px}
+.srcs a{color:var(--mute);text-underline-offset:2px}
+.srcs p{margin-top:24px;font-size:13px;color:var(--dim)}
+
+.nav{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:50;transition:background-color .3s ease-out,box-shadow .3s ease-out}
+.nav.solid{background:rgba(10,4,5,.72);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:24px;min-height:72px}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none;min-width:0}
+.nav ul::-webkit-scrollbar{display:none}
+.nav ul a{text-decoration:none;font-size:15px;color:var(--mute);white-space:nowrap;transition:color .15s ease-out}
+@media (hover:hover){.nav ul a:hover{color:var(--cream)}}
+.nav .btn{min-height:44px;padding:0 18px;font-size:14px;margin-left:auto;flex:none}
+.burger{display:none;width:44px;height:44px;align-items:center;justify-content:center;flex:none;box-shadow:inset 0 0 0 1px var(--line-2)}
+.burger i{position:relative;display:block;width:18px;height:2px;background:var(--cream);transition:background-color .2s ease-out}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--cream);transition:translate .25s ease-out,rotate .25s ease-out}
+.burger i::before{translate:0 -6px}.burger i::after{translate:0 6px}
+.nav.open .burger i{background:transparent}.nav.open .burger i::before{translate:0 0;rotate:45deg}.nav.open .burger i::after{translate:0 0;rotate:-45deg}
+@media (max-width:900px){
+  .burger{display:flex}
+  .nav ul{position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;padding:8px max(16px,env(safe-area-inset-right,0px)) 20px max(16px,env(safe-area-inset-left,0px));background:rgba(10,4,5,.96);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line),0 20px 40px rgba(0,0,0,.5);overflow:visible;visibility:hidden;opacity:0;translate:0 -8px;transition:opacity .2s ease-out,translate .2s ease-out,visibility .2s}
+  .nav.open ul{visibility:visible;opacity:1;translate:0 0}
+  .nav.open{background:rgba(10,4,5,.96)}
+  .nav ul li a{display:block;padding:14px 0;font-size:17px;color:var(--cream);border-bottom:1px solid var(--line)}
+  .nav .btn{margin-left:auto}
+}
+.nav ul a[aria-current=page]{color:var(--cream)}
+.nav ul a[aria-current=page]::after{content:"";display:block;height:2px;margin-top:4px;background:var(--red);box-shadow:0 0 10px var(--red)}
+footer.site{position:relative;padding-block:56px 44px;background:var(--ink)}
+footer.site .wrap{border-top:1px solid var(--line);padding-top:28px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;color:var(--dim);font-size:14px}
+footer.site nav{display:flex;gap:20px;flex-wrap:wrap}
+footer.site a{text-decoration:none;color:var(--mute)}
+.season{background:var(--ink);padding-block:clamp(48px,6vw,80px)}
+.ev{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:clamp(24px,4vw,48px);text-decoration:none;color:inherit;overflow:hidden;background:radial-gradient(60% 120% at 100% 0%,rgba(231,194,122,.18),transparent 60%),linear-gradient(120deg,rgba(179,22,62,.35),rgba(242,232,230,.03));box-shadow:inset 0 0 0 1px var(--line-2);clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px)}
+.ev::after{content:"";position:absolute;right:-40px;top:-40px;width:220px;height:220px;background:radial-gradient(circle,rgba(255,240,210,.25) 0 2px,transparent 3px) 0 0/28px 28px;opacity:.6;pointer-events:none}
+.ev-k{font-size:13px;font-weight:600;color:#E7C27A}
+.ev h2{font-size:clamp(28px,3.6vw,48px);color:#fff}
+.ev p{color:var(--mute);max-width:56ch}
+.ev .btn{margin-top:6px}
+.ev-all{margin-top:16px;font-size:15px}
+.ev-all a{color:var(--mute);text-underline-offset:3px}
+</style>
+</head>
+<body>
+<header class="nav" id="nav"><div class="wrap"><ul id="navList"><li><a href="./#game">Игра</a></li><li><a href="universe.html">Вселенная</a></li><li><a href="./#map">Карта</a></li><li><a href="team.html">Команда</a></li><li><a href="events.html">События</a></li><li><a href="partners.html" aria-current="page">Партнёрам</a></li></ul><a class="btn" href="./#prereg">Войти в штаб</a><button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navList"><i></i></button></div></header>
+
+
+<div id="smoke" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div id="grain" aria-hidden="true"></div>
+
+<header class="hero" aria-label="Вселенная Алисы Вельской">
+  <div class="grid-bg"></div>
+  <div class="bloom"></div>
+  <canvas id="rays" aria-hidden="true"></canvas>
+  <div class="stage">
+    <img class="ch sofi" alt="Софи Зайцева" src="img/ph_sofi_nobg.webp">
+    <img class="ch velsky" alt="Александр Вельский" src="img/ph_velsky_nobg.webp">
+    <img class="ch alice" alt="Алиса Вельская" src="img/ph_alice_nobg.webp">
+  </div>
+  <div class="shade"></div>
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <div class="vign"></div>
+  <div class="stars" aria-hidden="true"><i></i><i></i></div>
+  <div class="hero-copy">
+    <h1>Вселенная, в которой есть место вашему делу</h1>
+    <p class="sub">«Алиса Вельская» — детективная история о современной России. Фильм, сериал, игры, книги, комиксы, мерч и экспедиции по настоящим городам. Партнёр становится частью сюжета: от стакана кофе до целой экспедиции.</p>
+    <div class="row"><a class="btn" href="#fit">Найти своё место</a><a class="btn ghost" href="#contact">Обсудить партнёрство</a></div>
+    <div class="lines"><span>Фильм</span><span>Сериал</span><span>Игры</span><span>Книги</span><span>Комиксы</span><span>Мерч</span><span>Ивенты</span><span>Экспедиции</span></div>
+  </div>
+</header>
+
+<section class="essence">
+  <div class="wrap">
+    <div class="head">
+      <h2>Детектив, который ведёт по настоящим местам</h2>
+      <p>Профессор истории Александр Вельский исчезает без следа. Его дочь, капитан ФСБ Алиса Вельская, начинает собственное расследование. Маршрут профессора проходит через реальные города, музеи и монастыри, и пройти его можно в фильме, в игре и самому.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><h3>Современная Россия</h3><p>Никаких выдуманных стран. Герои живут здесь и сейчас: пьют кофе, ездят по трассе, останавливаются в гостиницах. Любой реальный бизнес вписывается в их день органично.</p></div>
+      <div class="pillar"><h3>Реальный маршрут</h3><p>Каждая точка сюжета существует на карте. Город, музей или кафе из истории можно посетить, и зрители едут туда сами.</p></div>
+      <div class="pillar"><h3>Наследия</h3><p>Предметы с историей, за которыми охотятся герои. Каждый можно выпустить: улика, коллекционная карточка, совместная серия с брендом.</p></div>
+    </div>
+    <div class="heroes">
+      <div class="person"><div class="ph" style="background-image:url(img/ph_alice_bg.webp)" role="img" aria-label="Алиса Вельская"></div><b>Алиса Вельская</b><span>Капитан ФСБ</span></div>
+      <div class="person"><div class="ph" style="background-image:url(img/ph_sofi_bg.webp)" role="img" aria-label="Софи Зайцева"></div><b>Софи Зайцева</b><span>Координатор экспедиций</span></div>
+      <div class="person"><div class="ph" style="background-image:url(img/ph_velsky_bg.webp)" role="img" aria-label="Александр Вельский"></div><b>Александр Вельский</b><span>Профессор истории</span></div>
+      <div class="person"><div class="ph" style="background-image:url(img/ph_semen_bg.webp)" role="img" aria-label="Семён Попов"></div><b>Семён Попов</b><span>Служба, долг и семья</span></div>
+    </div>
+    <div class="two">
+      <div class="pair">
+        <figure><div class="duo"><div class="c1" role="img" aria-label="Алиса в фильме" style="background-image:url(img/ph_alice_bg.webp)"></div><div class="spr" role="img" aria-label="Алиса в игре, рисунок" style="background-image:url(img/alice.webp)"></div></div><figcaption>Алиса в кино и в игре</figcaption></figure>
+      </div>
+      <div>
+        <h3>Одни герои во всех форматах</h3>
+        <p>Алису играет актриса в фильме, а в игре её рисуют художники команды вручную. Зритель, игрок и читатель встречают одних и тех же героев, поэтому партнёр, однажды попавший в историю, остаётся в ней во всех линейках.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="media">
+  <div class="wrap">
+    <div class="head">
+      <h2>Одна история, много входов</h2>
+      <p>Партнёру не нужно выбирать один формат. Можно войти в одну линейку и вырасти в остальные.</p>
+    </div>
+    <div class="mgrid">
+      <div class="m"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13"/><path d="M3 10h18M7 6l2 4M12 6l2 4M17 6l2 4"/></svg><h3>Фильм</h3><p>Полнометражный детектив, главный продукт вселенной. Локации, предметы и бренды в кадре.</p><span class="st">Производство с января 2027</span></div>
+      <div class="m"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12"/><path d="M8 21h8M12 17v4"/></svg><h3>Сериал</h3><p>Продолжение расследований: больше эпизодов, городов и героев второго плана.</p></div>
+      <div class="m"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="11" rx="2"/><path d="M7 11v3M5.5 12.5h3M16 12h.01M18 14h.01"/></svg><h3>Игры</h3><p>Визуальная новелла, штаб игрока с картой экспедиций и мини-игры. Точки партнёров прямо на карте.</p><span class="st">Пролог в разработке</span></div>
+      <div class="m"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h7"/></svg><h3>Книги</h3><p>Расследования Алисы в прозе. Тайник или улика может оказаться в вашем городе.</p></div>
+      <div class="m"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="18" height="8"/></svg><h3>Комиксы</h3><p>Короткие дела в картинках. Быстро делаются, легко встраивают бренд и место.</p></div>
+      <div class="m"><svg viewBox="0 0 24 24"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7c-2-4-6-4-6-1s6 1 6 1zM12 7c2-4 6-4 6-1s-6 1-6 1z"/></svg><h3>Мерч</h3><p>Дело в конверте, улики, коллекционные карточки, упаковка с шифром, совместные серии.</p></div>
+      <div class="m"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 6 6.5.5-5 4.3 1.6 6.4L12 15.8 6.4 19.2 8 12.8 3 8.5 9.5 8z"/></svg><h3>Ивенты</h3><p>Ночи расследования, премьеры, встречи с командой, городские квесты.</p></div>
+      <div class="m"><svg viewBox="0 0 24 24"><path d="M3 20l6-14 4 8 3-5 5 11z"/><circle cx="17" cy="5" r="2"/></svg><h3>Экспедиции</h3><p>Реальные поездки по маршруту профессора: туры, отели, музеи и задания на месте.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap">
+    <div class="head">
+      <h2>Рынки, в которых живёт вселенная</h2>
+      <p>Каждая линейка выходит на рынок, который растёт или держится на миллиардах. Цифры из открытых источников.</p>
+    </div>
+    <div class="ngrid">
+      <div class="n"><span class="k">Кинопрокат</span><strong>50,7 <i>млрд <u>₽</u></i></strong><p>сборы кинотеатров в 2025 году, +9,3%. 77% собрали российские фильмы</p><span class="src-l">ЕАИС Фонда кино, <a href="https://www.interfax.ru/russia/1066382" target="_blank" rel="noopener">Интерфакс</a></span></div>
+      <div class="n"><span class="k">Онлайн-кинотеатры</span><strong>200,4 <i>млрд <u>₽</u></i></strong><p>оборот в 2025 году, почти +40% за год. Впервые больше 200 млрд</p><span class="src-l">TelecomDaily, <a href="https://amp.rbc.ru/rbcnews/technology_and_media/03/03/2026/69a58f199a79476947d7c552" target="_blank" rel="noopener">РБК</a></span></div>
+      <div class="n"><span class="k">Внутренний туризм</span><strong>164 <i>млн</i></strong><p>поездок по России за 11 месяцев 2025 года, +7,5%. Потрачено 1,83 трлн ₽</p><span class="src-l">СберАналитика, <a href="https://www.kommersant.ru/doc/8313841" target="_blank" rel="noopener">«Коммерсант»</a></span></div>
+      <div class="n"><span class="k">Видеоигры</span><strong>200 <i>млрд <u>₽</u></i></strong><p>объём игрового рынка России в 2025 году против 173 млрд годом раньше</p><span class="src-l">Play Port Fest, <a href="https://rg.ru/2025/09/20/videoigrovoj-rynok-rossii-dostig-200-mlrd-rublej.html" target="_blank" rel="noopener">«Российская газета»</a></span></div>
+      <div class="n"><span class="k">Книги</span><strong>111 <i>млрд <u>₽</u></i></strong><p>книжный рынок в 2025 году, +13%. Детектив поднялся на второе место по выручке в «Литрес»</p><span class="src-l">Эксмо и «Литрес», <a href="https://www.kommersant.ru/doc/8459643" target="_blank" rel="noopener">«Коммерсант»</a></span></div>
+      <div class="n"><span class="k">Комиксы и манга</span><strong>+55%</strong><p>выручки от цифровых азиатских комиксов в «Литрес», I квартал 2026 к прошлому году</p><span class="src-l">«Литрес», <a href="https://www.retail.ru/news/knizhnye-servisy-uvelichili-vyruchku-blagodarya-aziatskim-komiksam-10-aprelya-2026-276538/" target="_blank" rel="noopener">Retail.ru</a></span></div>
+      <div class="n"><span class="k">Игрушки и мерч</span><strong>250 <i>млрд <u>₽</u></i></strong><p>рынок игрушек в 2025 году, на котором живут лицензионные коллекции</p><span class="src-l">АИДТ, <a href="https://tpmag.ru/news/retail/novaya-model-licenzionnogo-ryinka/" target="_blank" rel="noopener">«Точка продаж»</a></span></div>
+      <div class="n"><span class="k">Коллекции в ритейле</span><strong>+4–7%</strong><p>трафика дали «Прилипалы» в «Дикси». Акция принесла 20% квартальной выручки</p><span class="src-l">РБК, <a href="https://skillbox.ru/media/marketing/ot-prilipal-do-skrepyshey-razbiraem-kollekcionnye-akcii-v-rossiyskom-reteyle/" target="_blank" rel="noopener">Skillbox Media</a></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="myth">
+  <div class="wrap">
+    <div class="bars" aria-label="Сборы российских фильмов 2025 года, млрд рублей">
+      <div class="bar"><span>Волшебник Изумрудного города</span><div><i style="--w:100%">3,34</i></div></div>
+      <div class="bar hl"><span>Финист. Первый богатырь</span><div><i style="--w:80%">2,68</i></div></div>
+      <div class="bar"><span>Батя 2. Дед</span><div><i style="--w:47.6%">1,59</i></div></div>
+      <div class="bar"><span>Август</span><div><i style="--w:46.7%">1,56</i></div></div>
+      <div class="bar hl"><span>Горыныч</span><div><i style="--w:46.1%">1,54</i></div></div>
+      <p class="src-l">Сборы в 2025 году, млрд ₽. ЕАИС Фонда кино, <a href="https://www.interfax.ru/russia/1066382" target="_blank" rel="noopener">Интерфакс</a></p>
+    </div>
+    <div class="txt">
+      <h2 style="font-size:clamp(28px,3.8vw,48px);color:#fff">Свои истории собирают кассу</h2>
+      <p>В 2025 году российские фильмы собрали <strong>39 млрд ₽</strong> из 50,7 млрд, то есть больше трёх четвертей проката. Две картины из пятёрки лидеров выросли из русских сказок и мифов.</p>
+      <p>У Алисы Вельской те же корни: древние Наследия, славянские мифы в мини-играх, маршрут по настоящей стране. Только жанр взрослее: современный детектив с характером.</p>
+      <p>В кино интеграцию планируют примерно за два года (<a href="https://kinobusiness.com/news/prodakt-pleysment-v-kino-pochemu-rynok-v-rossii-poka-ne-sformirovalsya/" target="_blank" rel="noopener" style="color:var(--mute)">Kinobusiness</a>). Фильм входит в производство в январе 2027 года, поэтому места в сюжете распределяются сейчас.</p>
+    </div>
+  </div>
+</section>
+
+<section class="fit" id="fit">
+  <div class="wrap">
+    <div class="head">
+      <h2>Найдите своё место в истории</h2>
+      <p>Выберите сферу, и мы покажем, кем ваш бизнес станет в сюжете и какие форматы ему подойдут.</p>
+    </div>
+    <div class="biz" id="biz" role="group" aria-label="Сфера бизнеса"></div>
+    <article class="case" id="case" aria-live="polite"></article>
+
+    <ol class="ladder" aria-label="Уровни партнёрства от точечного до титульного">
+      <li style="--h:200px;--a:.06"><b>Улика</b><p>Точечное участие: улика на стакане, награда для игроков, точка на карте штаба.</p><small>Кофейни, магазины, салоны</small></li>
+      <li style="--h:240px;--a:.12"><b>Локация</b><p>Ваше место в игре и на маршруте, ивент на вашей площадке, квест у вас.</p><small>Рестораны, музеи, отели, площадки</small></li>
+      <li style="--h:280px;--a:.2"><b>Глава</b><p>Эпизод сериала, книги или комикса, совместная коллекция мерча.</p><small>Бренды, издатели, производители</small></li>
+      <li style="--h:320px;--a:.32"><b>Экспедиция</b><p>Съёмки в регионе, туры по маршруту профессора, титульное партнёрство во всех линейках.</p><small>Регионы, туроператоры, банки и экосистемы</small></li>
+    </ol>
+    <div class="ladcap"><span>Быстрый старт</span><span>Партнёр всей вселенной</span></div>
+  </div>
+</section>
+
+<section class="team">
+  <div class="wrap">
+    <div class="head">
+      <h2>Команда, которая делает всё сама</h2>
+      <p>Сценарий, съёмки, арт, игры и мерч в одних руках. Партнёру не нужно собирать подрядчиков.</p>
+    </div>
+    <div>
+      <div class="tnums">
+        <div><b>8</b><span>актёров в главных ролях</span></div>
+        <div><b>30</b><span>человек в съёмочной группе</span></div>
+        <div><b>15</b><span>человек в игровой команде</span></div>
+      </div>
+      <ul class="tlist">
+        <li><strong>Свои художники в штате.</strong> Игровой арт рисуется вручную, без нейросетей.</li>
+        <li><strong>Российские и турецкие продюсеры</strong> в съёмочной группе.</li>
+        <li><strong>Свои сценаристы</strong> пишут роль партнёра под сюжет.</li>
+        <li><strong>Сайт запущен</strong>, игра в разработке, а точки партнёров появляются на карте штаба.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="gains">
+  <div class="wrap">
+    <div class="head"><h2>Что получает партнёр</h2></div>
+    <div class="ggrid">
+      <div class="g"><h3>Гостей с целью</h3><p>Игроки приходят не за скидкой, а потому что без вашего места дело не раскрыть.</p></div>
+      <div class="g"><h3>Место в сюжете</h3><p>Локацию из истории помнят дольше рекламы и советуют друзьям.</p></div>
+      <div class="g"><h3>Все линейки сразу</h3><p>Попав в историю, вы появляетесь в игре, на карте, в мерче и в анонсах.</p></div>
+      <div class="g"><h3>Живой контент</h3><p>Игроки снимают находки и выкладывают их вместе с вашим местом.</p></div>
+      <div class="g"><h3>Цифры по итогам</h3><p>Сколько улик собрали, сколько дел раскрыли и сколько гостей пришло к вам.</p></div>
+      <div class="g"><h3>Вход на старте</h3><p>Сейчас вселенная только раскрывается. Ранний партнёр получает лучшие места.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="season" id="events">
+  <div class="wrap">
+    <a class="ev" href="novogodnee-delo.html">
+      <span class="ev-k">Сезонное событие</span>
+      <h2>Новогоднее дело на стакане</h2>
+      <p>Квест для кофеен на декабрь и январские каникулы: улики на стаканах, пять визитов и награда у партнёра.</p>
+      <span class="btn">Смотреть событие</span>
+    </a>
+    <p class="ev-all"><a href="events.html">Все события для партнёров</a></p>
+  </div>
+</section>
+
+<section class="final" id="contact">
+  <div class="wrap">
+    <h2>Впишем ваше дело в историю</h2>
+    <p>Расскажите, чем вы занимаетесь и в каком городе. Предложим роль в сюжете и формат под ваш бюджет: от одной улики до экспедиции.</p>
+    <div class="contact"><a class="btn" href="./#apply">Оставить заявку</a></div>
+    <p class="copied" id="copied" aria-live="polite"></p>
+  </div>
+</section>
+
+<footer class="srcs">
+  <div class="wrap">
+    <h2>Откуда цифры</h2>
+    <ol>
+      <li><a href="https://www.interfax.ru/russia/1066382" target="_blank" rel="noopener">Интерфакс: кассовые сборы 2025 года составили 50,7 млрд рублей</a>, данные ЕАИС, январь 2026.</li>
+      <li><a href="https://amp.rbc.ru/rbcnews/technology_and_media/03/03/2026/69a58f199a79476947d7c552" target="_blank" rel="noopener">РБК: оборот онлайн-кинотеатров впервые превысил 200 млрд ₽</a>, TelecomDaily, март 2026.</li>
+      <li><a href="https://www.kommersant.ru/doc/8313841" target="_blank" rel="noopener">«Коммерсант»: внутренний туризм в 2025 году</a>, СберАналитика, декабрь 2025.</li>
+      <li><a href="https://rg.ru/2025/09/20/videoigrovoj-rynok-rossii-dostig-200-mlrd-rublej.html" target="_blank" rel="noopener">«Российская газета»: видеоигровой рынок России достиг 200 млрд рублей</a>, сентябрь 2025.</li>
+      <li><a href="https://www.kommersant.ru/doc/8459643" target="_blank" rel="noopener">«Коммерсант»: «Безудержные фэнтези»</a>, книжный рынок 2025, февраль 2026.</li>
+      <li><a href="https://www.retail.ru/news/knizhnye-servisy-uvelichili-vyruchku-blagodarya-aziatskim-komiksam-10-aprelya-2026-276538/" target="_blank" rel="noopener">Retail.ru: книжные сервисы увеличили выручку благодаря азиатским комиксам</a>, апрель 2026.</li>
+      <li><a href="https://tpmag.ru/news/retail/novaya-model-licenzionnogo-ryinka/" target="_blank" rel="noopener">«Точка продаж»: новая модель российского рынка лицензирования</a>, август 2026.</li>
+      <li><a href="https://skillbox.ru/media/marketing/ot-prilipal-do-skrepyshey-razbiraem-kollekcionnye-akcii-v-rossiyskom-reteyle/" target="_blank" rel="noopener">Skillbox Media: от «Прилипал» до «Скрепышей»</a>.</li>
+      <li><a href="https://kinobusiness.com/news/prodakt-pleysment-v-kino-pochemu-rynok-v-rossii-poka-ne-sformirovalsya/" target="_blank" rel="noopener">Kinobusiness: продакт-плейсмент в кино</a>, октябрь 2025.</li>
+    </ol>
+    <p>© 2026 «Алиса Вельская». Фотографии актёров и иллюстрации предварительные.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var $=function(id){return document.getElementById(id)};
+var IMG={quest:'img/items/fmt-quest.webp',map:'img/items/fmt-map.webp',event:'img/items/fmt-event.webp',reward:'img/items/fmt-reward.webp',item:'img/items/fmt-item.webp',film:'img/items/fmt-film.webp',route:'img/items/game-route.webp',museum:'img/items/board-museum.webp'};
+var BIZ=[
+ ['Кофейня','quest','Место встречи героев','Здесь назначают встречи. Бариста передаёт записку от Софи, а на стакане спрятана часть шифра.','Улика на стакане, награда за раскрытое дело, ночь расследования','Повторные визиты: за каждой новой уликой гость возвращается'],
+ ['Ресторан','event','Стол, за которым всё решилось','Герои ужинают и допрашивают свидетеля. Блюдо из меню становится уликой.','Меню-улика, ивент в зале, локация в сериале','Гостей на вечер и повод для брони'],
+ ['Книжный и издательство','item','Тайник с шифром','В одной из книг на полке спрятан ключ к делу. Игрок находит его у вас.','Книги и комиксы вселенной, коллекционные издания, автограф-сессии','Тираж с готовой аудиторией и трафик в магазин'],
+ ['Музей','museum','Витрина с Наследием','Профессор работал с экспонатом из вашей коллекции. Сюда приходят за ответом.','Точка маршрута, выставка артефактов вселенной, съёмки в залах','Новую молодую аудиторию и поводы для СМИ'],
+ ['Отель','reward','Штаб экспедиции','Алиса и Софи останавливаются у вас по пути. В номере ждёт конверт с делом.','Квест в номере, пакет «Экспедиция», база для съёмок','Брони в межсезонье и гостей, которые приезжают за сюжетом'],
+ ['Регион и турагентство','route','Точка на маршруте профессора','Город становится главой расследования. Его видят в фильме и проходят в игре.','Туры по местам сюжета, съёмки в регионе, городские квесты','Турпоток и узнаваемость города через кино'],
+ ['Бренд и производитель','film','Предмет из истории','Ваш продукт становится артефактом: им пользуются герои, его ищут игроки.','Продакт-плейсмент в фильме и сериале, совместный мерч, упаковка с шифром','Продукт в кадре и в руках у фанатов'],
+ ['Банк и экосистема','map','Партнёр всей вселенной','Ваш сервис помогает героям во всех линейках, от фильма до штаба игрока.','Титульное партнёрство, спецпроект в игре, премьеры и ивенты','Присутствие во всех форматах и единая кампания'],
+ ['Площадка и кинотеатр','event','Место премьеры','Здесь проходит ночь расследования или закрытый показ для игроков.','Премьеры, фан-встречи, детективные вечера','Заполненный зал и событие, о котором пишут']
+];
+var biz=$('biz'),cs=$('case');
+function show(i){
+  var b=BIZ[i];
+  biz.querySelectorAll('button').forEach(function(x,j){x.setAttribute('aria-pressed',j===i)});
+  cs.innerHTML='<div class="ph" role="img" aria-label="'+b[0]+'" style="background-image:url('+IMG[b[1]]+')"></div><div class="body"><h3>'+b[2]+'</h3><p class="lead">'+b[3]+'</p><dl><dt>Форматы</dt><dd>'+b[4]+'</dd><dt>Что получаете</dt><dd>'+b[5]+'</dd></dl></div>';
+  if(!RM&&cs.animate)cs.animate([{opacity:.4,transform:'translateY(6px)'},{opacity:1,transform:'none'}],{duration:260,easing:'cubic-bezier(.2,0,0,1)'});
+}
+BIZ.forEach(function(b,i){var x=document.createElement('button');x.textContent=b[0];x.onclick=function(){show(i)};biz.appendChild(x)});
+show(0);
+
+
+/* лучи и мерцающие звёзды в контровом свете */
+(function(){
+  var hero=document.querySelector('.hero'),cr=$('rays'),cd=$('dust'),xr=cr.getContext('2d'),xd=cd.getContext('2d'),W,H,D=Math.min(devicePixelRatio||1,2);
+  function rs(){W=hero.clientWidth;H=hero.clientHeight;[cr,cd].forEach(function(c){c.width=W*D;c.height=H*D});xr.setTransform(D,0,0,D,0,0);xd.setTransform(D,0,0,D,0,0)}
+  rs();addEventListener('resize',rs);
+  var RAYS=[];for(var i=0;i<14;i++)RAYS.push({a:Math.PI*(.1+Math.random()*.8),w:.03+Math.random()*.07,t:Math.random(),v:.0015+Math.random()*.002,gold:i%4===0});
+  var P=[];for(var j=0;j<46;j++)P.push({x:Math.random(),y:Math.random(),s:1.5+Math.random()*3.5,v:.0003+Math.random()*.0008,ph:Math.random()*6,rot:Math.random()*Math.PI,vr:(Math.random()-.5)*.02,gold:Math.random()<.35});
+  var vis=true;try{new IntersectionObserver(function(e){vis=e[0].isIntersecting}).observe(hero)}catch(e){}
+  function rays(){xr.clearRect(0,0,W,H);var sx=W*.5,sy=H*.22,R=Math.hypot(W,H);xr.globalCompositeOperation='lighter';
+    RAYS.forEach(function(r){if(!RM){r.t+=r.v;if(r.t>1){r.t=0;r.a=Math.PI*(.1+Math.random()*.8);r.w=.03+Math.random()*.07}}
+      var al=Math.sin(r.t*Math.PI)*.42,L=R*(.5+r.t*.7),g=xr.createRadialGradient(sx,sy,0,sx,sy,L);
+      g.addColorStop(0,r.gold?'rgba(236,232,238,'+al+')':'rgba(255,215,222,'+al+')');g.addColorStop(.4,r.gold?'rgba(166,161,168,'+(al*.4)+')':'rgba(210,50,90,'+(al*.45)+')');g.addColorStop(1,'rgba(179,22,62,0)');
+      xr.fillStyle=g;xr.beginPath();xr.moveTo(sx,sy);xr.arc(sx,sy,L,r.a-r.w/2,r.a+r.w/2);xr.closePath();xr.fill()});}
+  function star(x,y,r,a){xd.fillStyle='rgba(255,238,240,'+a.toFixed(2)+')';xd.beginPath();xd.moveTo(x,y-r);xd.lineTo(x+r*.16,y-r*.16);xd.lineTo(x+r,y);xd.lineTo(x+r*.16,y+r*.16);xd.lineTo(x,y+r);xd.lineTo(x-r*.16,y+r*.16);xd.lineTo(x-r,y);xd.lineTo(x-r*.16,y-r*.16);xd.closePath();xd.fill()}
+  function crystals(){xd.clearRect(0,0,W,H);
+    for(var i=0;i<P.length;i++){var p=P[i];if(!RM){p.ph+=.012+p.v*8}
+      var tw=Math.pow(.5+.5*Math.sin(p.ph*1.6),3),px=p.x*W,py=p.y*H*.8,dx=px/W-.5,dy=py/H-.25,near=Math.max(0,1-Math.sqrt(dx*dx+dy*dy)*1.7);
+      star(px,py,(p.s*1.8)*(.5+tw*.8),(.12+near*.3)+tw*.6)}}
+  function f(){if(vis){rays();crystals()}if(!RM)requestAnimationFrame(f)}
+  f();
+})();
+})();
+</script>
+<footer class="site"><div class="wrap"><span>© 2026 «Алиса Вельская»</span><nav><a href="./">Главная</a><a href="universe.html">Вселенная</a><a href="team.html">Команда</a><a href="events.html">События</a><a href="partners.html">Партнёрам</a></nav></div></footer>
+<script>
+(function(){var nav=document.getElementById('nav'),bg=document.getElementById('burger');
+function onScroll(){nav.classList.toggle('solid',scrollY>40);}addEventListener('scroll',onScroll,{passive:true});onScroll();
+function setNav(o){nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);}bg.onclick=function(){setNav(!nav.classList.contains('open'));};
+nav.querySelectorAll('ul a').forEach(function(a){a.addEventListener('click',function(){setNav(false);});});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')setNav(false);});})();
+</script>
+</body>
+</html>

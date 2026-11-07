@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Новогоднее дело на стакане</title>
+<meta name="description" content="Детективный квест Алисы Вельской для кофеен на декабрь и январские каникулы: улики на стаканах и повторные визиты.">
+<link rel="canonical" href="https://alicevelskaya.ru/novogodnee-delo.html">
+<meta name="theme-color" content="#0A0405">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Алиса Вельская">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://alicevelskaya.ru/novogodnee-delo.html">
+<meta property="og:title" content="Новогоднее дело на стакане">
+<meta property="og:description" content="Детективный квест Алисы Вельской для кофеен на декабрь и январские каникулы: улики на стаканах и повторные визиты.">
+<meta property="og:image" content="https://alicevelskaya.ru/img/og.jpg">
+<link rel="preload" href="fonts/molot.otf" as="font" type="font/otf" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+@font-face{font-family:"Molot";src:url(fonts/molot.otf) format("opentype");font-display:swap}
+/* Тёмная сцена сайта Алисы с красным контровым светом. Новогодний слой: гирлянда, снег, золото как второй тёплый свет. Слева текст, справа улики. Molot для заголовков и цифр, Inter для текста. */
+:root{
+  --ink:#0A0405;--wine:#1E070A;--blood:#7C0D16;--red:#E3262F;--red-hi:#FF4A4F;
+  --light:#FFE6C8;--cream:#F2E7D8;--mute:#BBA49B;--dim:#85706A;--gold:#E7C27A;--frost:#DCE8F2;
+  --line:rgba(242,231,216,.13);--line-2:rgba(242,231,216,.26);
+  --f-display:"Molot","Arial Black",Impact,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box;letter-spacing:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font:400 17px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--red-hi);outline-offset:3px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-transform:uppercase;word-spacing:-.14em;margin:0;line-height:1;text-wrap:balance}
+p{margin:0}
+.wrap{width:min(1200px,100%);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{position:relative;padding-block:clamp(64px,9vw,120px)}
+.head{display:flex;flex-direction:column;gap:14px;max-width:760px}
+.head h2{font-size:clamp(32px,4.6vw,60px);color:#fff}
+.head p{color:var(--mute);font-size:clamp(17px,1.4vw,19px);max-width:60ch}
+
+#snow,#grain{position:fixed;inset:0;pointer-events:none}
+#snow{z-index:3;width:100%;height:100%}
+#grain{inset:-64px;z-index:4;opacity:.08;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.4 0'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media (prefers-reduced-motion:no-preference){#grain{animation:grain .6s steps(1) infinite}}
+@keyframes grain{0%{translate:0 0}17%{translate:-24px 16px}33%{translate:16px -32px}50%{translate:-40px -8px}67%{translate:32px 24px}83%{translate:-8px 40px}}
+
+/* кнопки как на сайте */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 26px;font:400 16px/1 var(--f-display);text-transform:uppercase;word-spacing:-.12em;text-decoration:none;color:var(--cream);background:linear-gradient(180deg,var(--red),#A9141C);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);transition:filter .2s ease-out,translate .2s ease-out;overflow:hidden}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,230,200,.45) 50%,transparent 70%);background-size:250% 100%;background-position:150% 0;transition:background-position .7s ease-out;pointer-events:none}
+.btn.ghost{background:rgba(242,231,216,.06);box-shadow:inset 0 0 0 1px var(--line-2)}
+@media (hover:hover){.btn:hover{filter:brightness(1.15);translate:0 -2px}.btn:hover::after{background-position:-50% 0}}
+.btn:active{scale:.97}
+
+/* гирлянда */
+.garland{position:absolute;left:0;right:0;top:72px;height:90px;z-index:2;pointer-events:none}
+.garland svg{width:100%;height:100%;display:block}
+.bulb{transform-box:fill-box;transform-origin:50% 0}
+@media (prefers-reduced-motion:no-preference){.bulb .glow{animation:blink var(--d,3s) ease-in-out infinite;animation-delay:var(--dl,0s)}}
+@keyframes blink{0%,100%{opacity:1}45%{opacity:.25}55%{opacity:.9}}
+
+/* ГЕРОЙ */
+.hero{padding-block:clamp(110px,12vw,150px) clamp(56px,7vw,90px);background:radial-gradient(60% 60% at 75% 35%,rgba(227,38,47,.28),transparent 70%),radial-gradient(50% 50% at 20% 0%,rgba(231,194,122,.12),transparent 70%),linear-gradient(180deg,var(--wine),var(--ink));overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,72px);align-items:center}
+.hero h1{font-size:clamp(46px,7.4vw,104px);line-height:.94;color:#fff;text-shadow:0 0 40px rgba(255,90,80,.55),0 0 2px rgba(255,255,255,.8),0 8px 30px rgba(0,0,0,.6)}
+.hero h1 span{display:block;color:var(--light);text-shadow:0 0 40px rgba(231,194,122,.55),0 8px 30px rgba(0,0,0,.6)}
+.hero .sub{margin-top:22px;font-size:clamp(17px,1.5vw,20px);color:var(--cream);opacity:.88;max-width:52ch}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.facts{display:flex;gap:clamp(18px,3vw,40px);flex-wrap:wrap;margin-top:40px;padding-top:24px;box-shadow:inset 0 1px 0 var(--line)}
+.facts div{display:flex;flex-direction:column;gap:4px}
+.facts b{font:400 clamp(26px,2.6vw,36px)/1 var(--f-display);color:var(--light);font-variant-numeric:tabular-nums}
+.facts span{font-size:14px;color:var(--mute);max-width:18ch;line-height:1.35}
+.cupwrap{position:relative;justify-self:center;width:min(440px,100%)}
+.cupwrap .pic{position:relative;aspect-ratio:4/5;max-width:100%;background:center/cover no-repeat;clip-path:polygon(22px 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%,0 22px);box-shadow:0 30px 60px rgba(0,0,0,.6)}
+.cupwrap .pic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,4,5,.65)),radial-gradient(60% 40% at 50% 0%,rgba(220,232,242,.12),transparent)}
+.cupwrap::before{content:"";position:absolute;inset:-12% -10%;z-index:-1;background:radial-gradient(closest-side,rgba(227,38,47,.45),transparent);filter:blur(10px)}
+.tag{position:absolute;left:-18px;bottom:18%;z-index:2;width:min(230px,62%);padding:14px 16px 16px;background:linear-gradient(160deg,#F6EEE2,#D9C9B3);color:#1E1712;rotate:-5deg;box-shadow:0 18px 30px rgba(0,0,0,.55);clip-path:polygon(12px 0,100% 0,100% 100%,0 100%,0 12px)}
+.tag::before{content:"";position:absolute;right:14px;top:12px;width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 2px #8a6a48}
+.tag b{display:block;font:400 15px/1.05 var(--f-display);text-transform:uppercase;word-spacing:-.12em}
+.tag span{display:block;margin-top:6px;font-size:13px;line-height:1.35;color:#5a4636}
+.tag em{display:block;margin-top:10px;font-style:normal;font:600 12px/1 var(--f-body);color:var(--blood)}
+.stamp{position:absolute;right:-6px;top:8%;z-index:2;padding:10px 14px;font:400 15px/1 var(--f-display);text-transform:uppercase;word-spacing:-.12em;color:var(--gold);rotate:7deg;box-shadow:inset 0 0 0 2px var(--gold);background:rgba(10,4,5,.6);backdrop-filter:blur(4px)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.cupwrap{width:min(380px,100%);margin-top:10px}.tag{left:-6px}}
+
+/* ЦИФРЫ */
+.why{background:var(--ink)}
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:44px}
+.num{position:relative;display:flex;flex-direction:column;gap:12px;padding:26px 22px 22px;background:linear-gradient(180deg,rgba(242,231,216,.05),rgba(242,231,216,.015));box-shadow:inset 0 0 0 1px var(--line);clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)}
+.num strong{font:400 clamp(40px,4.4vw,62px)/.9 var(--f-display);color:var(--light);font-variant-numeric:tabular-nums;text-shadow:0 0 30px rgba(255,120,100,.25)}
+.num.neg strong{color:var(--red-hi)}
+.num p{font-size:15px;line-height:1.45;color:var(--cream)}
+.num small{margin-top:auto;font-size:12.5px;line-height:1.4;color:var(--dim)}
+.num small a{color:var(--mute);text-decoration-color:var(--line-2);text-underline-offset:2px}
+.verdict{margin-top:32px;max-width:62ch;font-size:clamp(19px,1.7vw,23px);line-height:1.45;color:var(--light)}
+@media (max-width:980px){.nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.nums{grid-template-columns:1fr}}
+
+/* КАНИКУЛЫ */
+.season{background:radial-gradient(50% 60% at 15% 50%,rgba(231,194,122,.14),transparent 70%),linear-gradient(180deg,var(--ink),var(--wine) 60%,var(--ink))}
+.season .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center}
+.cal{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:6px}
+.cal div{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 0 10px;background:rgba(242,231,216,.05);box-shadow:inset 0 0 0 1px var(--line)}
+.cal div b{font:400 clamp(16px,1.8vw,24px)/1 var(--f-display);color:var(--light);font-variant-numeric:tabular-nums}
+.cal div span{font-size:11px;color:var(--dim)}
+.cal div.ny{background:linear-gradient(180deg,rgba(227,38,47,.4),rgba(227,38,47,.12));box-shadow:inset 0 0 0 1px var(--red)}
+.cal div.ny b{color:#fff}
+.calcap{margin-top:14px;font-size:14px;color:var(--mute)}
+.calcap a{color:var(--mute)}
+.big11{font:400 clamp(110px,15vw,210px)/.8 var(--f-display);color:var(--gold);text-shadow:0 0 50px rgba(231,194,122,.35)}
+.season .side{display:flex;flex-direction:column;gap:18px}
+.season .side p{color:var(--mute);max-width:52ch}
+.season .side p strong{color:var(--cream);font-weight:600}
+@media (max-width:860px){.season .wrap{grid-template-columns:1fr}.cal{gap:3px}.cal div span{font-size:9px}}
+
+/* КАК РАБОТАЕТ */
+.how{background:var(--ink)}
+.steps{list-style:none;counter-reset:st;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:40px 0 0;padding:0}
+.steps li{counter-increment:st;position:relative;padding:22px 20px 24px;box-shadow:inset 0 0 0 1px var(--line)}
+.steps li::before{content:counter(st);display:block;font:400 40px/1 var(--f-display);color:var(--red);margin-bottom:14px}
+.steps b{display:block;font-size:17px;font-weight:600;color:var(--light);margin-bottom:6px}
+.steps p{font-size:15px;color:var(--mute);line-height:1.45}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+.demo{margin-top:56px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px);align-items:start}
+.demo .txt{display:flex;flex-direction:column;gap:14px}
+.demo .txt h3{font-size:clamp(24px,2.6vw,34px);color:#fff}
+.demo .txt p{color:var(--mute)}
+.demo .txt .note{font-size:14px;color:var(--dim)}
+.demo .txt .note a{color:var(--mute)}
+.prog{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.prog .bar{height:10px;background:rgba(242,231,216,.08);box-shadow:inset 0 0 0 1px var(--line)}
+.prog .bar i{display:block;height:100%;width:var(--p,20%);background:linear-gradient(90deg,var(--red),var(--gold));box-shadow:0 0 16px rgba(227,38,47,.6);transition:width .5s cubic-bezier(.2,0,0,1)}
+.prog span{font:400 18px/1 var(--f-display);text-transform:uppercase;word-spacing:-.12em;color:var(--light)}
+.sleeves{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.sleeve{position:relative;display:flex;flex-direction:column;gap:8px;min-height:230px;padding:14px 12px 14px;text-align:left;background:linear-gradient(170deg,#3A1A12,#1C0A07);box-shadow:inset 0 0 0 1px var(--line-2);clip-path:polygon(10% 0,90% 0,100% 100%,0 100%);transition:translate .25s cubic-bezier(.2,0,0,1),filter .25s ease-out}
+.sleeve::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(242,231,216,.04) 0 2px,transparent 2px 9px);pointer-events:none}
+.sleeve .n{font:400 13px/1 var(--f-display);text-transform:uppercase;color:var(--dim);padding-left:6%}
+.sleeve b{font:400 15px/1.05 var(--f-display);text-transform:uppercase;word-spacing:-.12em;color:var(--mute);padding:0 6%}
+.sleeve p{font-size:12.5px;line-height:1.35;color:var(--dim);padding:0 6%}
+.sleeve .seal{margin:auto auto 0;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;font:400 13px/1 var(--f-display);color:var(--dim);box-shadow:inset 0 0 0 2px var(--line-2)}
+.sleeve.got{background:linear-gradient(170deg,#F6EEE2,#D9C9B3)}
+.sleeve.got .n{color:#8a6a48}
+.sleeve.got b{color:#1E1712}
+.sleeve.got p{color:#5a4636}
+.sleeve.got .seal{background:radial-gradient(circle at 40% 35%,#E3262F,#7C0D16);color:var(--cream);box-shadow:0 4px 10px rgba(124,13,22,.5)}
+@media (hover:hover){.sleeve:not(.got):hover{translate:0 -6px;filter:brightness(1.25)}}
+.sleeve:disabled{cursor:default}
+.solved{margin-top:16px;padding:16px 18px;background:linear-gradient(90deg,rgba(231,194,122,.18),rgba(231,194,122,.04));box-shadow:inset 0 0 0 1px var(--gold);color:var(--light)}
+.solved b{font:400 18px/1.1 var(--f-display);text-transform:uppercase;word-spacing:-.12em;display:block;margin-bottom:4px;color:var(--gold)}
+.reset{margin-top:12px;font-size:14px;color:var(--mute);text-decoration:underline;text-underline-offset:3px}
+@media (max-width:900px){.demo{grid-template-columns:1fr}}
+@media (max-width:620px){.sleeves{grid-template-columns:repeat(3,minmax(0,1fr))}.sleeve{min-height:200px}}
+
+/* КОЛЛЕКЦИИ РАБОТАЮТ */
+.proof{background:linear-gradient(180deg,var(--ink),var(--wine) 50%,var(--ink))}
+.cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:44px}
+.case{display:flex;flex-direction:column;gap:12px;padding:24px 22px;box-shadow:inset 0 0 0 1px var(--line)}
+.case strong{font:400 clamp(34px,3.6vw,50px)/.95 var(--f-display);color:var(--light)}
+.case strong i{font-style:normal;color:var(--dim);font-size:.55em}
+.case h3{font-size:17px;color:var(--gold)}
+.case p{font-size:15px;color:var(--mute);line-height:1.45}
+.case small{margin-top:auto;font-size:12.5px;color:var(--dim)}
+.case small a{color:var(--mute)}
+@media (max-width:900px){.cases{grid-template-columns:1fr}}
+
+/* ФОРМАТЫ */
+.formats{background:var(--ink)}
+.fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:44px}
+.fmt{display:flex;flex-direction:column;background:rgba(242,231,216,.03);box-shadow:inset 0 0 0 1px var(--line)}
+.fmt .ph{aspect-ratio:16/9;max-width:100%;background:center/cover no-repeat;position:relative}
+.fmt .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(10,4,5,.85))}
+.fmt .body{display:flex;flex-direction:column;gap:8px;padding:20px 22px 24px;margin-top:-56px;position:relative}
+.fmt h3{font-size:clamp(22px,2.2vw,28px);color:#fff}
+.fmt p{font-size:15px;color:var(--mute);line-height:1.5}
+.fmt .when{font-size:13px;font-weight:600;color:var(--gold)}
+@media (max-width:760px){.fgrid{grid-template-columns:1fr}}
+
+/* ОТ ВАС */
+.ask{background:linear-gradient(180deg,var(--ink),var(--wine))}
+.ask .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px)}
+.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.list li{display:grid;grid-template-columns:28px 1fr;gap:12px;padding:16px 0;box-shadow:inset 0 -1px 0 var(--line);font-size:16px;color:var(--cream)}
+.list li svg{width:22px;height:22px;margin-top:2px;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.list.you svg{stroke:var(--red-hi)}
+.list.us svg{stroke:var(--gold)}
+.ask h3{font-size:clamp(22px,2.2vw,28px);color:#fff;margin-bottom:8px}
+@media (max-width:820px){.ask .wrap{grid-template-columns:1fr}}
+
+/* СРОКИ */
+.time{background:var(--wine)}
+.line{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:48px;list-style:none;padding:0}
+.line::before{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:linear-gradient(90deg,var(--line-2),var(--red),var(--gold),var(--line-2))}
+.line li{position:relative;padding-top:34px}
+.line li::before{content:"";position:absolute;left:0;top:0;width:20px;height:20px;background:var(--ink);box-shadow:inset 0 0 0 2px var(--red);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.line li.hot::before{background:var(--gold);box-shadow:0 0 18px var(--gold)}
+.line b{display:block;font:400 clamp(18px,1.8vw,24px)/1.05 var(--f-display);text-transform:uppercase;word-spacing:-.12em;color:var(--light);margin-bottom:8px}
+.line p{font-size:15px;color:var(--mute);line-height:1.45}
+@media (max-width:900px){.line{grid-template-columns:1fr;gap:0}.line::before{left:9px;right:auto;top:0;bottom:0;width:2px;height:auto;background:linear-gradient(180deg,var(--line-2),var(--red),var(--gold))}.line li{padding:0 0 26px 40px}.line li::before{top:2px}}
+
+/* ФИНАЛ */
+.final{text-align:center;padding-block:clamp(80px,11vw,150px);background:radial-gradient(55% 60% at 50% 60%,rgba(227,38,47,.3),transparent 70%),var(--ink);overflow:hidden}
+.final .wrap{display:flex;flex-direction:column;align-items:center;gap:20px}
+.final h2{font-size:clamp(36px,6vw,84px);color:#fff;text-shadow:0 0 40px rgba(255,90,80,.55)}
+.final p{color:var(--mute);max-width:56ch;font-size:clamp(17px,1.5vw,19px)}
+.contact{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin-top:8px}
+.contact code{font:600 17px/1 var(--f-body);color:var(--light);padding:18px 20px;background:rgba(242,231,216,.06);box-shadow:inset 0 0 0 1px var(--line-2);user-select:all}
+.copied{font-size:14px;color:var(--gold);min-height:1.4em}
+
+/* ИСТОЧНИКИ */
+.src{background:var(--ink);padding-block:48px 64px;box-shadow:inset 0 1px 0 var(--line)}
+.src h2{font-size:20px;color:var(--mute)}
+.src ol{margin:18px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--dim);max-width:900px}
+.src a{color:var(--mute);text-underline-offset:2px}
+.src p{margin-top:24px;font-size:13px;color:var(--dim)}
+.nav{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:50;transition:background-color .3s ease-out,box-shadow .3s ease-out}
+.nav.solid{background:rgba(10,4,5,.72);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:24px;min-height:72px}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none;min-width:0}
+.nav ul::-webkit-scrollbar{display:none}
+.nav ul a{text-decoration:none;font-size:15px;color:var(--mute);white-space:nowrap;transition:color .15s ease-out}
+@media (hover:hover){.nav ul a:hover{color:var(--cream)}}
+.nav .btn{min-height:44px;padding:0 18px;font-size:14px;margin-left:auto;flex:none}
+.burger{display:none;width:44px;height:44px;align-items:center;justify-content:center;flex:none;box-shadow:inset 0 0 0 1px var(--line-2)}
+.burger i{position:relative;display:block;width:18px;height:2px;background:var(--cream);transition:background-color .2s ease-out}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--cream);transition:translate .25s ease-out,rotate .25s ease-out}
+.burger i::before{translate:0 -6px}.burger i::after{translate:0 6px}
+.nav.open .burger i{background:transparent}.nav.open .burger i::before{translate:0 0;rotate:45deg}.nav.open .burger i::after{translate:0 0;rotate:-45deg}
+@media (max-width:900px){
+  .burger{display:flex}
+  .nav ul{position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;padding:8px max(16px,env(safe-area-inset-right,0px)) 20px max(16px,env(safe-area-inset-left,0px));background:rgba(10,4,5,.96);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line),0 20px 40px rgba(0,0,0,.5);overflow:visible;visibility:hidden;opacity:0;translate:0 -8px;transition:opacity .2s ease-out,translate .2s ease-out,visibility .2s}
+  .nav.open ul{visibility:visible;opacity:1;translate:0 0}
+  .nav.open{background:rgba(10,4,5,.96)}
+  .nav ul li a{display:block;padding:14px 0;font-size:17px;color:var(--cream);border-bottom:1px solid var(--line)}
+  .nav .btn{margin-left:auto}
+}
+.nav ul a[aria-current=page]{color:var(--cream)}
+.nav ul a[aria-current=page]::after{content:"";display:block;height:2px;margin-top:4px;background:var(--red);box-shadow:0 0 10px var(--red)}
+footer.site{position:relative;padding-block:56px 44px;background:var(--ink)}
+footer.site .wrap{border-top:1px solid var(--line);padding-top:28px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;color:var(--dim);font-size:14px}
+footer.site nav{display:flex;gap:20px;flex-wrap:wrap}
+footer.site a{text-decoration:none;color:var(--mute)}
+/* кнопка «Партнёрам», закреплённая на всех страницах */
+.pfab{position:fixed;z-index:53;left:max(16px,env(safe-area-inset-left,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));text-decoration:none;filter:drop-shadow(0 10px 24px rgba(0,0,0,.6));transition:translate .2s ease-out,filter .2s ease-out;-webkit-tap-highlight-color:transparent}
+.pfab span{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 20px 0 16px;font:400 15px/1 "Molot","Arial Black",Impact,sans-serif;text-transform:uppercase;word-spacing:-.12em;color:#fff;background:linear-gradient(180deg,#E3262F,#A9141C);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.pfab svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (hover:hover){.pfab:hover{translate:0 -2px;filter:drop-shadow(0 14px 28px rgba(227,38,47,.5))}}
+.pfab:active{scale:.96}
+@media (max-width:520px){.pfab span{min-height:46px;padding:0 14px 0 12px;font-size:13px}}
+</style>
+</head>
+<body>
+<header class="nav" id="nav"><div class="wrap"><ul id="navList"><li><a href="./#game">Игра</a></li><li><a href="universe.html">Вселенная</a></li><li><a href="./#map">Карта</a></li><li><a href="team.html">Команда</a></li><li><a href="events.html" aria-current="page">События</a></li><li><a href="partners.html">Партнёрам</a></li></ul><a class="btn" href="./#prereg">Войти в штаб</a><button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navList"><i></i></button></div></header>
+<a class="pfab" href="partners.html" aria-label="Страница для партнёров"><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 12h18M11 12v2h2v-2"/></svg>Партнёрам</span></a>
+
+
+<canvas id="snow" aria-hidden="true"></canvas><div id="grain" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="garland" aria-hidden="true"><svg id="garland" viewBox="0 0 1440 90" preserveAspectRatio="none"></svg></div>
+  <div class="wrap">
+    <div>
+      <h1>Новогоднее дело <span>на стакане</span></h1>
+      <p class="sub">Детективный квест вселенной Алисы Вельской для кофеен на декабрь и январские каникулы. Гость получает улику вместе с кофе и возвращается за следующей, чтобы раскрыть дело.</p>
+      <div class="row"><a class="btn" href="#contact">Обсудить участие</a><a class="btn ghost" href="#how">Как это работает</a></div>
+      <div class="facts">
+        <div><b>1 декабря</b><span>старт дела во всех кофейнях-партнёрах</span></div>
+        <div><b>11 дней</b><span>новогодних каникул подряд</span></div>
+        <div><b>5 улик</b><span>и пять поводов вернуться к вам</span></div>
+      </div>
+    </div>
+    <div class="cupwrap">
+      <div class="pic" role="img" aria-label="Стакан кофе с уликой на рукаве" style="background-image:url(img/items/game-cup.webp)"></div>
+      <div class="tag"><b>Улика 1 из 5</b><span>Почтовый штемпель «31.12». Открытку отправили из этого города.</span><em>Дело о новогодней открытке</em></div>
+      <div class="stamp">Зима 2026</div>
+    </div>
+  </div>
+</header>
+
+<section class="why">
+  <div class="wrap">
+    <div class="head">
+      <h2>Гости тратят больше, но приходят реже</h2>
+      <p>Кофейня зарабатывает на возвращениях. Сейчас их становится меньше, а точек с кофе навынос больше.</p>
+    </div>
+    <div class="nums">
+      <div class="num"><strong>463 ₽</strong><p>средний чек в кофейне, на 17% выше, чем годом раньше</p><small>Сентябрь–октябрь 2025, чеки Платформы ОФД. <a href="https://checkindex.ru/issledovaniya/za-kofeinym-teplom/" target="_blank" rel="noopener">CheckIndex</a></small></div>
+      <div class="num neg"><strong>−7,3%</strong><p>покупок в кофейнях при росте оборота на 10%: гости приходят реже и платят больше</p><small>Январь–октябрь 2025, Платформа ОФД. <a href="https://www.retail.ru/news/zhiteli-rossii-stali-rezhe-poseshchat-kofeyni-24-noyabrya-2025-271743/" target="_blank" rel="noopener">Retail.ru по данным «Коммерсанта»</a></small></div>
+      <div class="num neg"><strong>−13%</strong><p>классических кофеен за год, их осталось 7,7 тыс. Точек кофе с собой стало 9,3 тыс., это +4%</p><small>Февраль 2026, данные 2ГИС. <a href="https://www.sostav.ru/publication/v-rossii-sokrashchaetsya-chislo-klassicheskikh-kofeen-82358.html" target="_blank" rel="noopener">Sostav</a></small></div>
+      <div class="num"><strong>0,45</strong><p>стакана кофе из кофейни в месяц на взрослого горожанина. Рынок далёк от насыщения</p><small>Сентябрь–октябрь 2025, Платформа ОФД. <a href="https://www.rbc.ru/rbcfreenews/690623769a79473faf0607ae" target="_blank" rel="noopener">РБК</a></small></div>
+    </div>
+    <p class="verdict">Скидкой гостя уже не удержать, а историей можно. Мы даём ему причину зайти ещё раз: дело, которое без вашей кофейни не раскрыть.</p>
+  </div>
+</section>
+
+<section class="season">
+  <div class="wrap">
+    <div>
+      <div class="cal" id="cal" aria-label="Новогодние каникулы с 31 декабря 2026 по 10 января 2027"></div>
+      <p class="calcap">Производственный календарь на 2027 год. <a href="https://www.bitrix24.ru/journal/kak-otdykhaem-na-novyy-god-2027/" target="_blank" rel="noopener">Битрикс24</a></p>
+    </div>
+    <div class="side">
+      <div class="big11">11</div>
+      <h2 style="font-size:clamp(28px,3.6vw,46px);color:#fff">выходных подряд. Город гуляет и греется</h2>
+      <p>С 31 декабря 2026 по 10 января 2027 люди свободны, ходят по центру с детьми и друзьями и ищут, куда зайти. За прошлые каникулы, с 1 по 11 января 2026 года, только «Вкусно — и точка» приняла <strong>больше 13 млн гостей</strong> и продала <strong>больше 1,5 млн литров</strong> горячих напитков (<a href="https://sfera.fm/news/fud-reteil/15-millionov-litrov-goryachikh-napitkov-prodali-vo-vkusno-i-tochka-1-12-yanvarya-2026-goda" target="_blank" rel="noopener" style="color:var(--mute)">Sfera.fm</a>).</p>
+      <p>Новогоднее дело превращает прогулку в маршрут, а вашу кофейню в его обязательную точку.</p>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="head">
+      <h2>Как работает дело на стакане</h2>
+      <p>Гостю не нужно ничего устанавливать заранее. Всё начинается с обычного заказа.</p>
+    </div>
+    <ol class="steps">
+      <li><b>Гость берёт кофе</b><p>На стакане наклейка или рукав с уликой и QR-кодом.</p></li>
+      <li><b>Открывает дело</b><p>Сканирует код в телефоне. Первая улика засчитывается сразу.</p></li>
+      <li><b>Возвращается</b><p>Каждая следующая улика на новом стакане. Всего их пять.</p></li>
+      <li><b>Раскрывает дело у вас</b><p>Получает награду: ваш подарок или особое предложение.</p></li>
+    </ol>
+
+    <div class="demo">
+      <div class="txt">
+        <h3>Соберите улики сами</h3>
+        <p>Так выглядит дело для гостя. Нажимайте на рукава по очереди, будто это ваши визиты в кофейню.</p>
+        <div class="prog"><span id="progTxt">Улика 1 из 5</span><div class="bar"><i id="progBar"></i></div></div>
+        <div id="solved" class="solved" hidden><b>Дело раскрыто</b>Покажите экран бариста и заберите награду.</div>
+        <button class="reset" id="reset" hidden>Начать заново</button>
+        <p class="note">Первая улика уже засчитана, и это не случайно. В исследовании карт лояльности автомойки карту с двумя готовыми отметками из десяти доводили до конца 34% клиентов, а пустую карту на восемь отметок только 19% (<a href="https://coglode.com/nuggets/endowed-progress-effect" target="_blank" rel="noopener">Nunes и Drèze, Journal of Consumer Research, 2006</a>). Требование одно и то же, разница только в форе.</p>
+      </div>
+      <div class="sleeves" id="sleeves"></div>
+    </div>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="wrap">
+    <div class="head">
+      <h2>Коллекции возвращают людей</h2>
+      <p>Механика «собери все» давно проверена в российском ритейле. Мы переносим её в кофейню и добавляем то, чего у наклеек нет: сюжет.</p>
+    </div>
+    <div class="cases">
+      <div class="case"><strong>+4–7%</strong><h3>Трафик «Дикси»</h3><p>«Прилипалы», 2015–2016. Две волны, 29 и 36 млн игрушек. Акция дала 20% квартальной выручки сети.</p><small>РБК, по разбору <a href="https://skillbox.ru/media/marketing/ot-prilipal-do-skrepyshey-razbiraem-kollekcionnye-akcii-v-rossiyskom-reteyle/" target="_blank" rel="noopener">Skillbox Media</a></small></div>
+      <div class="case"><strong>249 <i>млн</i></strong><h3>«Скрепышей» в «Магните»</h3><p>Третья волна, 2021. Около 6 млн фигурок в день, больше миллиона участников в приложении, средний чек +1,1%.</p><small>Malls.ru, по разбору <a href="https://skillbox.ru/media/marketing/ot-prilipal-do-skrepyshey-razbiraem-kollekcionnye-akcii-v-rossiyskom-reteyle/" target="_blank" rel="noopener">Skillbox Media</a></small></div>
+      <div class="case"><strong>+10%</strong><h3>Сопоставимые продажи «Перекрёстка»</h3><p>«Собачки в кружках», 2010–2011. Коллекция кружек подняла продажи больше чем на 10%.</p><small>«Коммерсант», по разбору <a href="https://skillbox.ru/media/marketing/ot-prilipal-do-skrepyshey-razbiraem-kollekcionnye-akcii-v-rossiyskom-reteyle/" target="_blank" rel="noopener">Skillbox Media</a></small></div>
+    </div>
+  </div>
+</section>
+
+<section class="formats">
+  <div class="wrap">
+    <div class="head">
+      <h2>Что можно взять в новогоднее дело</h2>
+      <p>Форматы складываются. Можно начать с улики на стакане и добавить остальное.</p>
+    </div>
+    <div class="fgrid">
+      <article class="fmt"><div class="ph" style="background-image:url(img/items/fmt-quest.webp)" role="img" aria-label="Бариста передаёт стакан с QR-кодом"></div><div class="body"><span class="when">Основа</span><h3>Улика на стакане</h3><p>Наклейка или рукав с частью шифра и QR-кодом. Гость получает её с заказом и открывает дело в телефоне.</p></div></article>
+      <article class="fmt"><div class="ph" style="background-image:url(img/items/fmt-map.webp)" role="img" aria-label="Карта России с отмеченной точкой"></div><div class="body"><span class="when">Весь сезон</span><h3>Точка на карте штаба</h3><p>Ваша кофейня появляется на карте игры с адресом, заданием и предложением для детективов.</p></div></article>
+      <article class="fmt"><div class="ph" style="background-image:url(img/items/fmt-event.webp)" role="img" aria-label="Детективный вечер в кофейне"></div><div class="body"><span class="when">Каникулы</span><h3>Ночь расследования</h3><p>Вечер с делом в вашем зале: игроки разбирают улики за столами, мы ведём сюжет.</p></div></article>
+      <article class="fmt"><div class="ph" style="background-image:url(img/items/fmt-reward.webp)" role="img" aria-label="Подарок и значок детектива"></div><div class="body"><span class="when">Финал дела</span><h3>Награда для детективов</h3><p>Подарок или особое предложение, которое игрок получает только у вас. Например, сезонный напиток или десерт.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="ask">
+  <div class="wrap">
+    <div>
+      <h3>Что нужно от кофейни</h3>
+      <ul class="list you">
+        <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Ставить наклейку или рукав с уликой на стаканы в дни дела.</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Выдавать награду тем, кто раскрыл дело.</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Рассказать гостям: табличка у кассы и пост в ваших соцсетях.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Что делаем мы</h3>
+      <ul class="list us">
+        <li><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg>Пишем улику и роль вашей кофейни в сюжете.</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg>Готовим макеты наклеек, рукавов и таблички.</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg>Ставим вас на карту штаба и в анонсы проекта.</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg>Присылаем итоги: сколько улик собрали и сколько дел раскрыли у вас.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="time">
+  <div class="wrap">
+    <div class="head"><h2>Сроки</h2><p>Чтобы успеть к декабрю, договариваемся в ноябре.</p></div>
+    <ol class="line">
+      <li><b>Ноябрь</b><p>Знакомимся, выбираем формат, пишем вашу улику.</p></li>
+      <li><b>До 25 ноября</b><p>Утверждаем макеты, печатаем наклейки и рукава.</p></li>
+      <li><b>1 декабря</b><p>Старт дела. Первые улики на стаканах.</p></li>
+      <li class="hot"><b>31.12–10.01</b><p>Каникулы, пик прогулок и раскрытых дел.</p></li>
+      <li><b>31 января</b><p>Финал сезона и итоги для каждой кофейни.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="final" id="contact">
+  <div class="wrap">
+    <h2>Впишем вашу кофейню в дело</h2>
+    <p>Напишите нам, в каком городе вы работаете и сколько у вас точек. Предложим формат и улику под ваше место.</p>
+    <div class="contact"><a class="btn" href="./#apply">Оставить заявку</a></div>
+    <p class="copied" id="copied" aria-live="polite"></p>
+  </div>
+</section>
+
+<footer class="src">
+  <div class="wrap">
+    <h2>Откуда цифры</h2>
+    <ol>
+      <li><a href="https://checkindex.ru/issledovaniya/za-kofeinym-teplom/" target="_blank" rel="noopener">CheckIndex, «За кофейным теплом»</a>: чеки Платформы ОФД, 1 сентября – 15 октября 2025.</li>
+      <li><a href="https://www.rbc.ru/rbcfreenews/690623769a79473faf0607ae" target="_blank" rel="noopener">РБК, «Россияне за месяц выпивают в кофейнях более 10 млн литров кофе»</a>, ноябрь 2025.</li>
+      <li><a href="https://www.retail.ru/news/zhiteli-rossii-stali-rezhe-poseshchat-kofeyni-24-noyabrya-2025-271743/" target="_blank" rel="noopener">Retail.ru, «Жители России стали реже посещать кофейни»</a>, по данным Платформы ОФД, январь–октябрь 2025.</li>
+      <li><a href="https://www.sostav.ru/publication/v-rossii-sokrashchaetsya-chislo-klassicheskikh-kofeen-82358.html" target="_blank" rel="noopener">Sostav, «В России сокращается число классических кофеен»</a>, данные 2ГИС, март 2026.</li>
+      <li><a href="https://www.bitrix24.ru/journal/kak-otdykhaem-na-novyy-god-2027/" target="_blank" rel="noopener">Битрикс24, «Как отдыхаем на Новый год 2027»</a>.</li>
+      <li><a href="https://sfera.fm/news/fud-reteil/15-millionov-litrov-goryachikh-napitkov-prodali-vo-vkusno-i-tochka-1-12-yanvarya-2026-goda" target="_blank" rel="noopener">Sfera.fm, итоги новогодних праздников «Вкусно — и точка»</a>, январь 2026.</li>
+      <li><a href="https://coglode.com/nuggets/endowed-progress-effect" target="_blank" rel="noopener">Nunes J., Drèze X. The Endowed Progress Effect. Journal of Consumer Research, 2006</a>.</li>
+      <li><a href="https://skillbox.ru/media/marketing/ot-prilipal-do-skrepyshey-razbiraem-kollekcionnye-akcii-v-rossiyskom-reteyle/" target="_blank" rel="noopener">Skillbox Media, «От Прилипал до Скрепышей»</a>: разбор коллекционных акций со ссылками на РБК, «Коммерсант» и Malls.ru.</li>
+    </ol>
+    <p>© 2026 «Алиса Вельская». Иллюстрации предварительные.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var $=function(id){return document.getElementById(id)};
+
+/* гирлянда */
+(function(){
+  var svg=$('garland'),NS='http://www.w3.org/2000/svg',n=24,W=1440,parts=[];
+  var pts=[];for(var i=0;i<=n;i++){var x=i*W/n,y=18+Math.sin(i/n*Math.PI*6)*10+ (i%2?16:4);pts.push([x,y])}
+  var d='M'+pts[0][0]+' '+pts[0][1];for(var j=1;j<pts.length;j++){var p=pts[j-1],q=pts[j];d+=' Q'+((p[0]+q[0])/2)+' '+(Math.max(p[1],q[1])+12)+' '+q[0]+' '+q[1]}
+  parts.push('<path d="'+d+'" fill="none" stroke="#2a1410" stroke-width="2"/>');
+  var cols=['#FF4A4F','#E7C27A','#FFE6C8','#E3262F'];
+  for(var k=1;k<pts.length;k++){var a=pts[k-1],b=pts[k],cx=(a[0]+b[0])/2,cy=Math.max(a[1],b[1])+6,c=cols[k%cols.length];
+    parts.push('<g class="bulb" style="--d:'+(2.2+((k*7)%5)*.6)+'s;--dl:-'+((k*13)%7)*.4+'s"><rect x="'+(cx-2.5)+'" y="'+(cy-2)+'" width="5" height="5" fill="#3a2016"/><g class="glow"><ellipse cx="'+cx+'" cy="'+(cy+10)+'" rx="18" ry="18" fill="'+c+'" opacity=".22"/><ellipse cx="'+cx+'" cy="'+(cy+9)+'" rx="4.2" ry="6.5" fill="'+c+'"/></g></g>')}
+  svg.innerHTML=parts.join('');
+})();
+
+/* календарь каникул */
+(function(){
+  var days=[['31','чт'],['1','пт'],['2','сб'],['3','вс'],['4','пн'],['5','вт'],['6','ср'],['7','чт'],['8','пт'],['9','сб'],['10','вс']];
+  $('cal').innerHTML=days.map(function(d,i){return '<div'+(i===1?' class="ny"':'')+'><b>'+d[0]+'</b><span>'+d[1]+'</span></div>'}).join('');
+})();
+
+/* дело на стакане */
+var CLUES=[
+  ['Штемпель «31.12»','Почтовая марка: открытку отправили из этого города в канун Нового года.'],
+  ['Обрывок адреса','Половина улицы и номер дома. Вторая половина на другом стакане.'],
+  ['Метка на шаре','На ёлочном шаре нацарапан знак. Такой же есть на карте Софи.'],
+  ['Записка 21:40','Время встречи. Бариста помнит, кто заходил в это время.'],
+  ['Ключ от шкатулки','Последняя улика. Шкатулка ждёт в кофейне-партнёре.']
+];
+var got=1,box=$('sleeves');
+function draw(){
+  box.innerHTML='';
+  CLUES.forEach(function(c,i){
+    var b=document.createElement('button');b.className='sleeve'+(i<got?' got':'');
+    b.innerHTML='<span class="n">Стакан '+(i+1)+'</span><b>'+c[0]+'</b><p>'+(i<got?c[1]:'Улика ждёт на следующем стакане.')+'</p><span class="seal">'+(i<got?'✓':i+1)+'</span>';
+    b.setAttribute('aria-label',(i<got?'Улика собрана: ':'Собрать улику: ')+c[0]);
+    b.disabled=i!==got;
+    b.onclick=function(){got++;draw();if(!RM&&box.children[i].animate)box.children[i].animate([{transform:'rotateY(90deg)'},{transform:'none'}],{duration:360,easing:'cubic-bezier(.2,0,0,1)'})};
+    box.appendChild(b);
+  });
+  $('progTxt').textContent=got>=5?'Все 5 улик собраны':'Улика '+got+' из 5';
+  $('progBar').style.setProperty('--p',(got/5*100)+'%');
+  $('solved').hidden=got<5;$('reset').hidden=got<5;
+}
+$('reset').onclick=function(){got=1;draw()};
+draw();
+
+/* копирование контакта */
+
+/* снег */
+(function(){
+  var c=$('snow'),x=c.getContext('2d'),W,H,D=Math.min(devicePixelRatio||1,2),F=[];
+  function rs(){W=innerWidth;H=innerHeight;c.width=W*D;c.height=H*D;x.setTransform(D,0,0,D,0,0)}
+  rs();addEventListener('resize',rs);
+  var N=Math.round(Math.min(140,innerWidth/9));
+  for(var i=0;i<N;i++)F.push({x:Math.random()*W,y:Math.random()*H,r:.6+Math.random()*2.2,v:.3+Math.random()*.9,ph:Math.random()*6,ember:Math.random()<.12});
+  function frame(){
+    x.clearRect(0,0,W,H);
+    for(var i=0;i<F.length;i++){var f=F[i];
+      if(!RM){f.y+=f.ember?-f.v*.5:f.v;f.ph+=.012;f.x+=Math.sin(f.ph)*.4;
+        if(f.y>H+8){f.y=-8;f.x=Math.random()*W}if(f.y<-8){f.y=H+8;f.x=Math.random()*W}}
+      x.beginPath();x.arc(f.x,f.y,f.ember?f.r*.7:f.r,0,7);
+      x.fillStyle=f.ember?'rgba(255,110,80,'+(.35+.3*Math.sin(f.ph*3)**2).toFixed(2)+')':'rgba(236,240,246,'+(.25+f.r*.18).toFixed(2)+')';x.fill();
+    }
+    if(!RM)requestAnimationFrame(frame);
+  }
+  frame();
+})();
+})();
+</script>
+<footer class="site"><div class="wrap"><span>© 2026 «Алиса Вельская»</span><nav><a href="./">Главная</a><a href="universe.html">Вселенная</a><a href="team.html">Команда</a><a href="events.html">События</a><a href="partners.html">Партнёрам</a></nav></div></footer>
+<script>
+(function(){var nav=document.getElementById('nav'),bg=document.getElementById('burger');
+function onScroll(){nav.classList.toggle('solid',scrollY>40);}addEventListener('scroll',onScroll,{passive:true});onScroll();
+function setNav(o){nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);}bg.onclick=function(){setNav(!nav.classList.contains('open'));};
+nav.querySelectorAll('ul a').forEach(function(a){a.addEventListener('click',function(){setNav(false);});});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')setNav(false);});})();
+</script>
+</body>
+</html>

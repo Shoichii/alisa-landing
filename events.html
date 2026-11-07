@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>События для партнёров</title>
+<meta name="description" content="Сезонные события вселенной Алисы Вельской для кафе, магазинов, площадок и городов.">
+<link rel="canonical" href="https://alicevelskaya.ru/events.html">
+<meta name="theme-color" content="#0A0405">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Алиса Вельская">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://alicevelskaya.ru/events.html">
+<meta property="og:title" content="События для партнёров">
+<meta property="og:description" content="Сезонные события вселенной Алисы Вельской для кафе, магазинов, площадок и городов.">
+<meta property="og:image" content="https://alicevelskaya.ru/img/og.jpg">
+<link rel="preload" href="fonts/molot.otf" as="font" type="font/otf" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+@font-face{font-family:"Molot";src:url(fonts/molot.otf) format("opentype");font-display:swap}
+/* Хаб сезонных событий: та же тёмная сцена сайта, карточки событий в ряд, текущее событие крупно. */
+:root{
+  --ink:#0A0405;--wine:#1E070A;--blood:#7C0D16;--red:#E3262F;--red-hi:#FF4A4F;
+  --light:#FFE6C8;--cream:#F2E7D8;--mute:#BBA49B;--dim:#85706A;--gold:#E7C27A;
+  --line:rgba(242,231,216,.13);--line-2:rgba(242,231,216,.26);
+  --f-display:"Molot","Arial Black",Impact,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box;letter-spacing:0}
+[hidden]{display:none!important}
+body{margin:0;background:var(--ink);color:var(--cream);font:400 17px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--red-hi);outline-offset:3px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-transform:uppercase;word-spacing:-.14em;margin:0;line-height:1;text-wrap:balance}
+p{margin:0}
+.wrap{width:min(1200px,100%);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 26px;font:400 16px/1 var(--f-display);text-transform:uppercase;word-spacing:-.12em;text-decoration:none;color:var(--cream);background:linear-gradient(180deg,var(--red),#A9141C);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);transition:filter .2s ease-out,translate .2s ease-out}
+.btn.ghost{background:rgba(242,231,216,.06);box-shadow:inset 0 0 0 1px var(--line-2)}
+@media (hover:hover){.btn:hover{filter:brightness(1.15);translate:0 -2px}}
+.btn:active{scale:.97}
+#grain{position:fixed;inset:-64px;z-index:4;pointer-events:none;opacity:.08;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.4 0'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media (prefers-reduced-motion:no-preference){#grain{animation:grain .6s steps(1) infinite}}
+@keyframes grain{0%{translate:0 0}17%{translate:-24px 16px}33%{translate:16px -32px}50%{translate:-40px -8px}67%{translate:32px 24px}83%{translate:-8px 40px}}
+
+.top{padding-block:clamp(130px,14vw,180px) clamp(40px,5vw,64px);background:radial-gradient(55% 70% at 70% 0%,rgba(227,38,47,.3),transparent 70%),linear-gradient(180deg,var(--wine),var(--ink))}
+.top h1{font-size:clamp(40px,6vw,84px);color:#fff;text-shadow:0 0 40px rgba(255,90,80,.55),0 8px 30px rgba(0,0,0,.6)}
+.top p{margin-top:18px;max-width:60ch;color:var(--mute);font-size:clamp(17px,1.4vw,19px)}
+
+.list{padding-block:0 clamp(64px,8vw,110px)}
+.now{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);text-decoration:none;color:inherit;background:rgba(242,231,216,.03);box-shadow:inset 0 0 0 1px var(--line-2);clip-path:polygon(20px 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%,0 20px);transition:background-color .2s ease-out}
+@media (hover:hover){.now:hover{background:rgba(227,38,47,.08)}}
+.now .txt{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:clamp(24px,4vw,48px)}
+.now .when{display:inline-flex;gap:8px;align-items:center;font-size:14px;font-weight:600;color:var(--gold)}
+.now .when i{width:8px;height:8px;border-radius:50%;background:var(--red-hi);box-shadow:0 0 10px var(--red-hi)}
+.now h2{font-size:clamp(28px,3.8vw,52px);color:#fff}
+.now p{color:var(--mute);max-width:52ch}
+.now dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:4px 0 0;font-size:15px}
+.now dt{color:var(--dim)}
+.now dd{margin:0;color:var(--cream)}
+.now .pic{min-height:320px;background:url(img/items/game-cup.webp) center/cover no-repeat;position:relative}
+.now .pic::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,4,5,.5),transparent 40%)}
+@media (max-width:820px){.now{grid-template-columns:1fr}.now .pic{order:-1;min-height:0;aspect-ratio:16/9}.now .pic::after{background:linear-gradient(0deg,rgba(10,4,5,.6),transparent 50%)}}
+.more{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+.slot{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:26px 24px;box-shadow:inset 0 0 0 1px var(--line);background:repeating-linear-gradient(135deg,rgba(242,231,216,.03) 0 1px,transparent 1px 12px)}
+.slot h3{font-size:clamp(20px,2vw,26px);color:var(--light)}
+.slot p{color:var(--mute);font-size:15.5px;max-width:48ch}
+.slot .btn{margin-top:auto;min-height:48px;font-size:14px}
+@media (max-width:760px){.more{grid-template-columns:1fr}}
+.nav{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:50;transition:background-color .3s ease-out,box-shadow .3s ease-out}
+.nav.solid{background:rgba(10,4,5,.72);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:24px;min-height:72px}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none;min-width:0}
+.nav ul::-webkit-scrollbar{display:none}
+.nav ul a{text-decoration:none;font-size:15px;color:var(--mute);white-space:nowrap;transition:color .15s ease-out}
+@media (hover:hover){.nav ul a:hover{color:var(--cream)}}
+.nav .btn{min-height:44px;padding:0 18px;font-size:14px;margin-left:auto;flex:none}
+.burger{display:none;width:44px;height:44px;align-items:center;justify-content:center;flex:none;box-shadow:inset 0 0 0 1px var(--line-2)}
+.burger i{position:relative;display:block;width:18px;height:2px;background:var(--cream);transition:background-color .2s ease-out}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--cream);transition:translate .25s ease-out,rotate .25s ease-out}
+.burger i::before{translate:0 -6px}.burger i::after{translate:0 6px}
+.nav.open .burger i{background:transparent}.nav.open .burger i::before{translate:0 0;rotate:45deg}.nav.open .burger i::after{translate:0 0;rotate:-45deg}
+@media (max-width:900px){
+  .burger{display:flex}
+  .nav ul{position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;padding:8px max(16px,env(safe-area-inset-right,0px)) 20px max(16px,env(safe-area-inset-left,0px));background:rgba(10,4,5,.96);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line),0 20px 40px rgba(0,0,0,.5);overflow:visible;visibility:hidden;opacity:0;translate:0 -8px;transition:opacity .2s ease-out,translate .2s ease-out,visibility .2s}
+  .nav.open ul{visibility:visible;opacity:1;translate:0 0}
+  .nav.open{background:rgba(10,4,5,.96)}
+  .nav ul li a{display:block;padding:14px 0;font-size:17px;color:var(--cream);border-bottom:1px solid var(--line)}
+  .nav .btn{margin-left:auto}
+}
+.nav ul a[aria-current=page]{color:var(--cream)}
+.nav ul a[aria-current=page]::after{content:"";display:block;height:2px;margin-top:4px;background:var(--red);box-shadow:0 0 10px var(--red)}
+footer.site{position:relative;padding-block:56px 44px;background:var(--ink)}
+footer.site .wrap{border-top:1px solid var(--line);padding-top:28px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;color:var(--dim);font-size:14px}
+footer.site nav{display:flex;gap:20px;flex-wrap:wrap}
+footer.site a{text-decoration:none;color:var(--mute)}
+/* кнопка «Партнёрам», закреплённая на всех страницах */
+.pfab{position:fixed;z-index:53;left:max(16px,env(safe-area-inset-left,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));text-decoration:none;filter:drop-shadow(0 10px 24px rgba(0,0,0,.6));transition:translate .2s ease-out,filter .2s ease-out;-webkit-tap-highlight-color:transparent}
+.pfab span{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 20px 0 16px;font:400 15px/1 "Molot","Arial Black",Impact,sans-serif;text-transform:uppercase;word-spacing:-.12em;color:#fff;background:linear-gradient(180deg,#E3262F,#A9141C);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.pfab svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (hover:hover){.pfab:hover{translate:0 -2px;filter:drop-shadow(0 14px 28px rgba(227,38,47,.5))}}
+.pfab:active{scale:.96}
+@media (max-width:520px){.pfab span{min-height:46px;padding:0 14px 0 12px;font-size:13px}}
+
+</style>
+</head>
+<body>
+<div id="grain" aria-hidden="true"></div>
+<header class="nav" id="nav"><div class="wrap"><ul id="navList"><li><a href="./#game">Игра</a></li><li><a href="universe.html">Вселенная</a></li><li><a href="./#map">Карта</a></li><li><a href="team.html">Команда</a></li><li><a href="events.html" aria-current="page">События</a></li><li><a href="partners.html">Партнёрам</a></li></ul><a class="btn" href="./#prereg">Войти в штаб</a><button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navList"><i></i></button></div></header>
+<a class="pfab" href="partners.html" aria-label="Страница для партнёров"><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 12h18M11 12v2h2v-2"/></svg>Партнёрам</span></a>
+
+<main id="top">
+<section class="top">
+  <div class="wrap">
+    <h1>События для партнёров</h1>
+    <p>Сезонные дела вселенной Алисы Вельской. Каждое событие приводит игроков в места партнёров: за уликой, наградой или ночью расследования.</p>
+  </div>
+</section>
+<section class="list">
+  <div class="wrap">
+    <a class="now" href="novogodnee-delo.html">
+      <div class="txt">
+        <span class="when"><i></i>Декабрь 2026 и январские каникулы</span>
+        <h2>Новогоднее дело на стакане</h2>
+        <p>Улики на стаканах кофе: гость собирает пять, раскрывает дело и получает награду у партнёра.</p>
+        <dl><dt>Для кого</dt><dd>кофейни, пекарни, кафе с собой</dd><dt>Старт</dt><dd>1 декабря 2026</dd></dl>
+        <span class="btn">Подробнее о событии</span>
+      </div>
+      <div class="pic" role="img" aria-label="Стакан кофе с уликой"></div>
+    </a>
+    <div class="more">
+      <div class="slot"><h3>Своё событие</h3><p>Ночь расследования на вашей площадке, премьерный показ или городской квест. Придумаем дело под ваше место и сезон.</p><a class="btn ghost" href="./#apply">Предложить событие</a></div>
+      <div class="slot"><h3>Партнёрская программа</h3><p>Все форматы участия: от улики на стакане до съёмок в регионе и экспедиций по маршруту профессора.</p><a class="btn ghost" href="partners.html">Открыть программу</a></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site"><div class="wrap"><span>© 2026 «Алиса Вельская»</span><nav><a href="./">Главная</a><a href="universe.html">Вселенная</a><a href="team.html">Команда</a><a href="events.html">События</a><a href="partners.html">Партнёрам</a></nav></div></footer>
+<script>
+(function(){var nav=document.getElementById('nav'),bg=document.getElementById('burger');
+function onScroll(){nav.classList.toggle('solid',scrollY>40);}addEventListener('scroll',onScroll,{passive:true});onScroll();
+function setNav(o){nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);}bg.onclick=function(){setNav(!nav.classList.contains('open'));};
+nav.querySelectorAll('ul a').forEach(function(a){a.addEventListener('click',function(){setNav(false);});});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')setNav(false);});})();
+</script>
+
+</body>
+</html>
