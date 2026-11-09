@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Праздничный переполох</title>
+<meta name="theme-color" content="#0A0405">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+@font-face{font-family:"Molot";src:url(fonts/molot.otf) format("opentype");font-display:swap}
+/* Игра на стакане. Язык сайта: красная сцена, нить с полароидами. Новогодний слой: лампочки на нити, снег. */
+:root{
+  --ink:#0A0405;--wine:#1E070A;--blood:#7C0D16;--red:#E3262F;--red-hi:#FF4A4F;
+  --light:#FFE6C8;--cream:#F2E7D8;--mute:#BBA49B;--dim:#85706A;--gold:#E7C27A;
+  --paper:#EDE3D3;--paper-ink:#2A1C14;--paper-mute:#6b5646;
+  --line:rgba(242,231,216,.13);--line-2:rgba(242,231,216,.26);
+  --f-display:"Molot","Arial Black",Impact,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box;letter-spacing:0}
+[hidden]{display:none!important}
+html,body{min-height:100%}
+body{margin:0;background:var(--ink);color:var(--cream);font:400 16px/1.5 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:2px solid var(--red-hi);outline-offset:3px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-transform:uppercase;word-spacing:-.14em;margin:0;line-height:1.02;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+.app{position:relative;max-width:460px;min-height:100svh;margin:0 auto;padding:0 16px 120px;isolation:isolate;
+  background:radial-gradient(120% 50% at 50% 0%,#8C0F19 0%,#4A060C 35%,#1A0306 65%,var(--ink) 90%)}
+#snow{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+#grain{position:fixed;inset:-64px;pointer-events:none;z-index:1;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.4 0'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E")}
+.app>*{position:relative;z-index:2}
+
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:54px;padding:0 20px;font:400 16px/1 var(--f-display);text-transform:uppercase;word-spacing:-.12em;color:var(--cream);background:linear-gradient(180deg,var(--red),#A9141C);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);transition:filter .15s ease-out,scale .15s ease-out}
+.btn.ghost{background:rgba(242,231,216,.06);box-shadow:inset 0 0 0 1px var(--line-2)}
+.btn:active{scale:.97}
+.btn:disabled{filter:grayscale(1);opacity:.45}
+
+/* шапка */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(14px + env(safe-area-inset-top,0px)) 0 0;font-size:13px;color:var(--mute)}
+.top b{font-weight:600;color:var(--cream)}
+.live{display:inline-flex;align-items:center;gap:6px}
+.live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red-hi);box-shadow:0 0 8px var(--red-hi)}
+@media (prefers-reduced-motion:no-preference){.live::before{animation:pulse 1.6s ease-in-out infinite}}
+@keyframes pulse{50%{opacity:.35}}
+.head{padding:22px 0 0}
+.head .k{font-size:13px;font-weight:600;color:var(--gold)}
+.head h1{margin-top:8px;font-size:clamp(34px,10vw,46px);color:#fff;text-shadow:0 0 30px rgba(255,90,80,.5),0 6px 20px rgba(0,0,0,.6)}
+.head p{margin-top:12px;color:rgba(242,231,216,.88);font-size:15.5px}
+
+/* нить с полароидами */
+.line{position:relative;height:190px;margin:18px -6px 0}
+.line svg{position:absolute;left:0;right:0;top:0;width:100%;height:40%;overflow:visible}
+.line path{fill:none;stroke:rgba(255,80,80,.85);stroke-width:1.4;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 3px rgba(255,50,50,.8))}
+.bulb{position:absolute;width:7px;height:10px;translate:-50% 0;border-radius:50% 50% 45% 45%;background:var(--c);box-shadow:0 0 10px 2px var(--c)}
+@media (prefers-reduced-motion:no-preference){.bulb{animation:blink var(--d,3s) ease-in-out infinite;animation-delay:var(--dl,0s)}}
+@keyframes blink{0%,100%{opacity:1}45%{opacity:.3}}
+.pol{position:absolute;width:21%;translate:-50% 0;transform-origin:50% 0;rotate:var(--r,0deg);text-align:left}
+@media (prefers-reduced-motion:no-preference){.pol{animation:sway 6s ease-in-out infinite}}
+@keyframes sway{0%,100%{rotate:var(--r,0deg)}50%{rotate:calc(var(--r,0deg) * -0.6)}}
+.pol .peg{position:absolute;left:50%;top:-11px;width:9px;height:22px;translate:-50% 0;background:linear-gradient(90deg,#8a6a48,#b48d62 50%,#7a5a3a);border-radius:2px;z-index:1}
+.pol .card{display:flex;flex-direction:column;gap:4px;padding:6px 6px 9px;background:var(--paper);color:var(--paper-ink);box-shadow:0 14px 22px rgba(0,0,0,.55)}
+.pol .pic{aspect-ratio:1;display:grid;place-items:center;background:#1C080C;color:var(--light)}
+.pol .pic svg{width:58%;height:58%}
+.pol b{font:400 10.5px/1.05 var(--f-display);text-transform:uppercase;word-spacing:-.1em}
+.pol small{font-size:9.5px;line-height:1.25;color:var(--paper-mute)}
+.pol.lock .card{background:#CFC2AE}
+.pol.lock .pic{background:repeating-linear-gradient(135deg,rgba(42,28,20,.1) 0 2px,transparent 2px 8px),#BFB19A;color:var(--paper-mute)}
+.pol.open .card{box-shadow:0 0 0 2px var(--red-hi),0 0 26px rgba(227,38,47,.65),0 14px 22px rgba(0,0,0,.55)}
+.pol.open .pic{background:radial-gradient(circle,rgba(227,38,47,.5),#1C080C 70%)}
+.pol.done .pic{background:radial-gradient(circle,#3a1015,#1C080C 70%)}
+
+.prog{display:flex;align-items:center;gap:12px;margin-top:6px}
+.prog .bar{flex:1;height:8px;background:rgba(242,231,216,.08);box-shadow:inset 0 0 0 1px var(--line)}
+.prog .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--blood),var(--red-hi));box-shadow:0 0 12px rgba(227,38,47,.6);transition:width .4s cubic-bezier(.2,0,0,1)}
+.prog span{font:400 15px/1 var(--f-display);text-transform:uppercase;color:var(--light);white-space:nowrap}
+.cta{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.note{font-size:13px;line-height:1.45;color:var(--dim)}
+.clues{margin-top:22px;display:flex;flex-direction:column;gap:8px}
+.clue{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;padding:12px 14px;background:rgba(242,231,216,.05);box-shadow:inset 0 0 0 1px var(--line)}
+.clue i{font:400 20px/1 var(--f-display);font-style:normal;color:var(--red-hi)}
+.clue b{display:block;font-size:14.5px;color:#fff}
+.clue span{font-size:13.5px;color:var(--mute)}
+
+/* демо-сканер */
+.scan{position:fixed;left:50%;bottom:0;translate:-50% 0;z-index:20;width:min(460px,100%);padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(10,4,5,.94);box-shadow:0 -1px 0 var(--line);backdrop-filter:blur(10px)}
+.scan small{display:block;margin-bottom:8px;font-size:11.5px;color:var(--dim);text-align:center}
+.scan div{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.scan button{min-height:44px;font-size:12px;white-space:nowrap;font-weight:600;color:var(--cream);background:rgba(242,231,216,.06);box-shadow:inset 0 0 0 1px var(--line-2)}
+.scan button.d{color:var(--red-hi);box-shadow:inset 0 0 0 1px rgba(255,74,79,.5)}
+
+/* загадка */
+.sheet{position:fixed;inset:0;z-index:30;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;background:radial-gradient(120% 40% at 50% 0%,rgba(140,15,25,.85),transparent 70%),var(--ink)}
+.sheet .in{max-width:460px;margin:0 auto;padding:calc(14px + env(safe-area-inset-top,0px)) 16px calc(28px + env(safe-area-inset-bottom,0px))}
+.sh-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sh-top span{font-size:13px;color:var(--mute)}
+.x{width:44px;height:44px;display:grid;place-items:center;margin-right:-10px;color:var(--cream)}
+.x svg{width:22px;height:22px;stroke:currentColor;stroke-width:2;fill:none}
+.sheet .type{margin-top:8px;font-size:13px;font-weight:600;color:var(--red-hi)}
+.sheet h2{margin-top:6px;font-size:30px;color:#fff}
+.sheet .q{margin-top:10px;font-size:15.5px;color:rgba(242,231,216,.9)}
+.pz{margin-top:18px}
+.fb{margin-top:14px;padding:12px 14px;font-size:14px;line-height:1.45;background:rgba(242,231,216,.06)}
+.fb.ok{background:rgba(46,139,87,.18);box-shadow:inset 3px 0 0 #3fb27a}
+.fb.bad{box-shadow:inset 3px 0 0 var(--red-hi)}
+.got{margin-top:16px;display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:center;padding:14px;background:var(--paper);color:var(--paper-ink)}
+.got .pic{aspect-ratio:1;display:grid;place-items:center;background:#1C080C;color:var(--light)}
+.got .pic svg{width:60%;height:60%}
+.got b{display:block;font:400 17px/1.05 var(--f-display);text-transform:uppercase}
+.got span{font-size:13.5px;color:var(--paper-mute)}
+.sheet .btn{margin-top:16px}
+
+/* 1. Сравни кадры */
+.frames{display:flex;flex-direction:column;gap:10px}
+.frame{position:relative;padding:10px;background:#1C080C;box-shadow:inset 0 0 0 1px var(--line-2)}
+.frame small{position:absolute;left:10px;top:8px;font-size:11px;font-weight:600;color:var(--mute)}
+.shelf{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:16px;padding-bottom:6px;border-bottom:3px solid #5a3a28}
+.slot{aspect-ratio:1;display:grid;place-items:center;color:var(--light)}
+.slot svg{width:66%;height:66%}
+.frame.b .slot{background:rgba(242,231,216,.03);box-shadow:inset 0 0 0 1px transparent;transition:background-color .15s ease-out}
+.frame.b .slot.no{box-shadow:inset 0 0 0 1px rgba(255,74,79,.6)}
+.frame.b .slot.yes{box-shadow:inset 0 0 0 2px var(--gold),0 0 18px rgba(231,194,122,.5)}
+.slot.red{color:var(--red-hi)}
+/* 2. Карта */
+.map{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;padding:8px;background:#1C080C;box-shadow:inset 0 0 0 1px var(--line-2)}
+.cell{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:9.5px;line-height:1.1;text-align:center;color:var(--mute);background:rgba(242,231,216,.05)}
+.cell svg{width:46%;height:46%;color:var(--light)}
+.cell.home{background:rgba(227,38,47,.3);color:#fff}
+.cell.no{box-shadow:inset 0 0 0 1px rgba(255,74,79,.6)}
+.cell.yes{box-shadow:inset 0 0 0 2px var(--gold);background:rgba(231,194,122,.18);color:#fff}
+.compass{display:flex;justify-content:space-between;margin-top:6px;font-size:12px;color:var(--dim)}
+/* 3. Пары */
+.pairs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.pc{min-width:0;overflow:hidden;aspect-ratio:3/4;display:grid;place-items:center;background:repeating-linear-gradient(135deg,rgba(124,13,22,.55) 0 6px,rgba(124,13,22,.35) 6px 12px);box-shadow:inset 0 0 0 1px rgba(255,74,79,.4);transition:background-color .15s ease-out}
+.pc span{display:none;flex-direction:column;align-items:center;gap:4px;font-size:10.5px;color:var(--paper-mute)}
+.pc svg{width:56%;height:auto;color:var(--paper-ink)}
+.pc.up,.pc.ok{background:var(--paper);box-shadow:none}
+.pc.up span,.pc.ok span{display:flex}
+.pc.ok{opacity:.55}
+.moves{margin-top:10px;font-size:13px;color:var(--dim)}
+/* 4. Отбор */
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.it{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-height:92px;padding:12px;text-align:left;font-size:13.5px;line-height:1.3;color:var(--cream);background:rgba(242,231,216,.05);box-shadow:inset 0 0 0 1px var(--line-2)}
+.it svg{width:24px;height:24px;color:var(--light)}
+.it[aria-pressed=true]{background:rgba(227,38,47,.24);box-shadow:inset 0 0 0 2px var(--red-hi);color:#fff}
+.it.right{box-shadow:inset 0 0 0 2px var(--gold)}
+/* 5. Версия */
+.ver{padding:16px;background:var(--paper);color:var(--paper-ink);font-size:17px;line-height:1.9}
+.blank{display:inline-flex;align-items:center;min-height:34px;padding:0 10px;margin:0 2px;font-weight:600;color:var(--red);background:rgba(176,18,27,.08);box-shadow:inset 0 -2px 0 var(--red)}
+.blank.on{background:var(--red);color:#fff}
+.blank.ok{color:#1d6a43;box-shadow:inset 0 -2px 0 #1d6a43;background:rgba(46,139,87,.12)}
+.words{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.words button{min-height:44px;padding:0 14px;font-size:14px;color:var(--cream);background:rgba(242,231,216,.06);box-shadow:inset 0 0 0 1px var(--line-2)}
+
+.hints{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.hints small{font-size:12px;font-weight:600;color:var(--dim)}
+.hint{display:flex;align-items:center;gap:12px;min-height:46px;padding:10px 12px;text-align:left;font-size:14px;line-height:1.4;color:var(--mute);box-shadow:inset 0 0 0 1px var(--line-2)}
+.hint i{flex:none;width:24px;height:24px;display:grid;place-items:center;border-radius:50%;font:600 12px/1 var(--f-body);font-style:normal;background:rgba(242,231,216,.1);color:var(--cream)}
+.hint.open{background:rgba(242,231,216,.05);color:var(--cream)}
+.hint.open i{background:var(--red)}
+.hint.lock{box-shadow:inset 3px 0 0 var(--red),inset 0 0 0 1px var(--line)}
+.hint.lock em{margin-left:auto;font-style:normal;font-weight:600;color:var(--red-hi);white-space:nowrap}
+.share{position:fixed;inset:0;z-index:35;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.6)}
+.share .box{width:100%;max-width:460px;display:flex;flex-direction:column;gap:10px;padding:20px 16px calc(20px + env(safe-area-inset-bottom,0px));background:var(--wine);box-shadow:0 -1px 0 var(--line-2)}
+.share h3{font-size:24px;color:#fff}
+.share p{font-size:14.5px;color:var(--mute)}
+.share .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+/* финал для бариста */
+.win{text-align:center}
+.stamp{display:inline-block;margin-top:22px;padding:12px 18px;font:400 30px/1 var(--f-display);text-transform:uppercase;color:var(--red-hi);box-shadow:inset 0 0 0 4px var(--red-hi);rotate:-6deg}
+.reward{margin-top:24px;padding:20px 16px;background:var(--paper);color:var(--paper-ink)}
+.reward small{display:block;font-size:13px;color:var(--paper-mute)}
+.reward b{display:block;margin-top:4px;font:400 22px/1.1 var(--f-display);text-transform:uppercase}
+.clock{margin-top:16px;font:400 44px/1 var(--f-display);color:#fff;font-variant-numeric:tabular-nums}
+.code{margin-top:6px;font-size:14px;color:var(--mute)}
+.code b{color:var(--gold);font-weight:600}
+@media (prefers-reduced-motion:no-preference){.pulse{animation:glow 1.4s ease-in-out infinite}}
+@keyframes glow{50%{box-shadow:0 0 0 2px var(--red-hi),0 0 30px rgba(227,38,47,.8)}}
+
+.toast{position:fixed;left:50%;bottom:110px;translate:-50% 0;z-index:40;padding:12px 16px;font-size:14px;color:var(--paper-ink);background:var(--paper);box-shadow:0 10px 30px rgba(0,0,0,.6)}
+</style>
+</head>
+<body>
+<canvas id="snow" aria-hidden="true"></canvas><div id="grain" aria-hidden="true"></div>
+<main class="app" id="app" aria-live="polite"></main>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shT" hidden><div class="in" id="shIn"></div></div>
+<nav class="scan" id="scan" aria-label="Демо: отсканировать стакан" hidden><small>Демо. В кофейне код на стакане открывает загадку сам</small><div id="scanB"></div></nav>
+<div class="share" id="share" hidden><div class="box" role="dialog" aria-modal="true" aria-labelledby="shareT"><h3 id="shareT">Вторая подсказка за сторис</h3><p>Сфотографируйте стакан с загадкой и отметьте кофейню. Взамен откроются вторые подсказки во всех загадках.</p><div class="row"><button class="btn" type="button" data-net="ВКонтакте">ВКонтакте</button><button class="btn" type="button" data-net="Telegram">Telegram</button></div><button class="btn ghost" type="button" id="shareNo">Не сейчас</button><p class="note">В демо публикации нет: кнопка просто открывает подсказки.</p></div></div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5l2.8 6 6.5.7-4.9 4.4 1.4 6.4L12 16.8 6.2 20l1.4-6.4L2.7 9.2l6.5-.7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-cup" viewBox="0 0 24 24"><path d="M6 5h12l-1.6 15H7.6z M5 5h14M7.2 10h9.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 6h18v12H3z M3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-gift" viewBox="0 0 24 24"><path d="M4 10h16v10H4z M3 7h18v3H3z M12 7v13 M12 7c-2-4-6-3-5 0 M12 7c2-4 6-3 5 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="i-candle" viewBox="0 0 24 24"><path d="M9 10h6v11H9z M12 10V8 M12 3c-1.5 2-1.5 3 0 4.5 1.5-1.5 1.5-2.5 0-4.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 12h10 M17 12v3 M20 12v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 7h18v3a2 2 0 0 0 0 4v3H3v-3a2 2 0 0 0 0-4z M14 7v10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-dasharray="0"/></symbol>
+<symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20 M3.3 7l17.4 10 M3.3 17l17.4-10 M9.5 3.5L12 6l2.5-2.5 M9.5 20.5L12 18l2.5 2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4z M10 21h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-train" viewBox="0 0 24 24"><path d="M6 3h12v13H6z M6 10h12 M8 20l-2 2 M16 20l2 2 M9 16v4 M15 16v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="9" cy="13" r="1" fill="currentColor"/><circle cx="15" cy="13" r="1" fill="currentColor"/></symbol>
+<symbol id="i-mitten" viewBox="0 0 24 24"><path d="M8 21v-4c-3-2-4-6-3-9 1-4 6-5 8-2l1 3 2-2c1.5-1.2 3 .5 2 2l-4 6v6z M7 17h8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-ball" viewBox="0 0 24 24"><circle cx="12" cy="14" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 7V4h4v3 M6 13c4 2 8 2 12 0" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+<symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 2l5 7h-3l5 7h-4l3 4H6l3-4H5l5-7H7z M12 20v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-house" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7 M5 10v10h14V10 M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-post" viewBox="0 0 24 24"><path d="M4 8h16v12H4z M4 8l3-4h10l3 4 M9 13h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-tool" viewBox="0 0 24 24"><path d="M14 4a4 4 0 0 0 5 5l-9 9a2 2 0 0 1-3-3l9-9a4 4 0 0 0-2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6v3H9z M8 6h8v15H8z M8 11h8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-paper" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z M15 3v4h4 M9 12h7 M9 16h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-card" viewBox="0 0 24 24"><path d="M3 6h18v12H3z M3 10h18 M6 15h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-umbrella" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 18 0z M12 12v7a2 2 0 0 1-4 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-glove" viewBox="0 0 24 24"><path d="M7 21v-6L5 9c-.4-1.5 1.6-2.2 2.3-.8L9 12V4.5c0-1.5 2.2-1.5 2.2 0V11 M11.2 10V3.5c0-1.5 2.2-1.5 2.2 0V11 M13.4 10.5V5c0-1.5 2.2-1.5 2.2 0v6 M15.6 11V7.5c0-1.5 2.2-1.5 2.2 0V15l-2 6z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+<symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h3l2 11h11l2-8H7 M10 19a1 1 0 1 0 0 .1 M17 19a1 1 0 1 0 0 .1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-cross" viewBox="0 0 24 24"><path d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-news" viewBox="0 0 24 24"><path d="M4 5h13v14H4z M17 8h3v9a2 2 0 0 1-2 2 M7 9h7 M7 13h7 M7 16h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-film" viewBox="0 0 24 24"><path d="M4 5h16v14H4z M8 5v14 M16 5v14 M4 9h4 M4 15h4 M16 9h4 M16 15h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-wrench" viewBox="0 0 24 24"><path d="M3 21l8-8 M14 3a5 5 0 0 0-3 9l2 2a5 5 0 0 0 8-5l-3 3-3-1-1-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+</defs>
+</svg>
+
+<script>
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id)};
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+var ic=function(n,cls){return '<svg'+(cls?' class="'+cls+'"':'')+' aria-hidden="true"><use href="#i-'+n+'"/></svg>'};
+var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+var TYPES=['Сравни кадры','Карта следов','Парные улики','Отбор улик','Версия'];
+
+/* Три истории. Каждая достаётся одной кофейне. Карта 5×5: кофейня в центре (2,2), север сверху. */
+var STORIES={
+letter:{title:'Письмо без адреса',setup:'В ящик для отзывов опустили письмо Деду Морозу. Ни адреса, ни подписи. Алиса Вельская просит найти отправителя до 31 декабря.',
+ c:[
+ {kind:'diff',q:'Камера над кассой: вечер 18-го и утро 19-го. Что появилось у ящика для отзывов? Нажмите на нижнем кадре.',a:['ball','candle','cup','bell','gift','cup','star','mail'],b:{i:6,to:'mitten',red:true},clue:['mitten','Детская варежка','Красная, лежала у ящика утром 19-го'],why:'Красная варежка. Ночью у ящика был ребёнок.'},
+ {kind:'map',q:'Бариста видел, куда ушла девочка: два квартала на север, потом один на восток. Нажмите на её дом.',marks:{'0,1':['tree','Ёлка'],'4,3':['post','Почта'],'1,4':['house','Школа'],'3,0':['house','Каток']},ans:'0,3',clue:['house','Дом у ёлки','Садовая, 5. Отсюда видно ящик кофейни'],why:'Дом на Садовой, 5, окна выходят на кофейню.'},
+ {kind:'pairs',q:'На конверте были марки. Найдите все пары, чтобы понять, откуда они.',set:[['star','Звезда'],['bell','Колокол'],['snow','Снежинка'],['tree','Ёлка']],clue:['post','Набор марок','Все из одного набора, продают только на почте рядом'],why:'Марки из одного набора с ближней почты, но без штемпелей.'},
+ {kind:'pick',q:'В конверте и рядом нашлось шесть вещей. Выберите три, которые относятся к делу.',items:[['mitten','Варежка у ящика',1],['card','Скидочная карта кофейни',0],['post','Марка без штемпеля',1],['film','Билет в кино',0],['paper','Записка «верните папе выходной»',1],['cup','Чек на какао',0]],clue:['paper','Просьба в письме','Девочка просит не подарок, а время с папой'],why:'Варежка, марка без штемпеля и записка: письмо не шло по почте, его опустили рядом.'},
+ {kind:'final',q:'Соберите версию из улик.',text:'Письмо опустил {0}, потому что {1}. Поэтому {2}.',blanks:[['папа девочки','бариста','почтальон'],['хотел, чтобы она поверила в чудо','потерял адрес','хотел скидку'],['31-го он берёт выходной','письмо вернут на почту','девочку накажут']],ans:[0,0,0],why:'Папа опустил письмо сам и взял выходной 31-го.'}
+ ]},
+star:{title:'Пропавшая звезда',setup:'Ночью с главной ёлки города исчезла звезда. Утром на подоконнике кофейни нашли блёстки и чек на два американо. Алиса Вельская берёт дело.',
+ c:[
+ {kind:'diff',q:'Камера на площади: 1:50 и 2:30. Что появилось у ёлки? Нажмите на нижнем кадре.',a:['tree','ball','candle','bell','gift','star','snow','ball'],b:{i:3,to:'key',red:true},clue:['key','Ключ от щитка','Висел в замке электрощитка у ёлки'],why:'Ключ в щитке. Звезду обесточили перед тем, как снять.'},
+ {kind:'map',q:'Следы тяжёлой машины от ёлки: один квартал на юг, потом два на восток. Куда она уехала?',marks:{'1,2':['tree','Ёлка'],'0,0':['house','Мэрия'],'4,1':['house','Рынок'],'3,4':['post','Почта']},ans:'2,4',clue:['wrench','Мастерская','Городская мастерская по ремонту иллюминации'],why:'Машина уехала в мастерскую по ремонту иллюминации.'},
+ {kind:'pairs',q:'В блёстках на подоконнике смешались осколки. Найдите пары, чтобы понять, что разбилось.',set:[['star','Луч звезды'],['ball','Шар'],['bell','Колокол'],['snow','Снежинка']],clue:['star','Луч звезды','Сломан, а не срезан. Звезду уронили'],why:'Лучи звезды сломаны: её уронили, а не украли целой.'},
+ {kind:'pick',q:'Шесть находок с площади. Выберите три, которые относятся к делу.',items:[['cup','Чек: два американо, карта сторожа',1],['key','Ключ от щитка',1],['glove','Перчатка электрика',1],['news','Афиша концерта',0],['cart','Тележка из магазина',0],['candle','Огарок свечи',0]],clue:['glove','Перчатка электрика','С блёстками звезды на пальцах'],why:'Сторож ушёл за кофе, электрик открыл щиток и снял звезду.'},
+ {kind:'final',q:'Соберите версию из улик.',text:'Звезду уронил {0}, увёз её {1}, а сторож в это время {2}.',blanks:[['электрик','сторож','крановщик'],['в мастерскую','на вокзал','на рынок'],['пил кофе в кофейне','спал у ёлки','звонил в мэрию']],ans:[0,0,0],why:'Электрик уронил звезду и увёз в мастерскую. 31-го она вернётся на ёлку.'}
+ ]},
+train:{title:'Последний поезд 31-го',setup:'В кофейне забыли термос. Внутри билет на последний поезд года и половинка открытки. Алиса Вельская хочет понять, кто его оставил и кого он ждёт.',
+ c:[
+ {kind:'diff',q:'Столик у окна: вечер 29-го и вечер 30-го. Что появилось на столе? Нажмите на нижнем кадре.',a:['cup','candle','clock','bell','gift','cup','ball','star'],b:{i:5,to:'flask',red:true},clue:['flask','Термос','С гравировкой «Машинисту от бригады»'],why:'Термос с гравировкой. Его хозяин работает на железной дороге.'},
+ {kind:'map',q:'На открытке нарисован путь: один квартал на север, потом два на запад. Куда он ведёт?',marks:{'0,4':['tree','Ёлка'],'3,3':['post','Почта'],'4,0':['house','Депо'],'2,0':['house','Рынок']},ans:'1,0',clue:['train','Вокзал','Перрон № 2, последний поезд в 23:10'],why:'Путь ведёт на вокзал, к перрону последнего поезда.'},
+ {kind:'pairs',q:'В термосе две половинки старых открыток. Найдите пары, чтобы сложить их.',set:[['train','Поезд'],['ticket','Билет'],['clock','Часы'],['snow','Снег']],clue:['mail','Открытка 1996 года','Подпись: «Жду, как договорились»'],why:'Открытки из 1996 года: встречу назначили тридцать лет назад.'},
+ {kind:'pick',q:'Шесть вещей с того столика. Выберите три, которые относятся к делу.',items:[['ticket','Билет: вагон 9, место 13',1],['glove','Рукавицы с нашивкой РЖД',1],['flask','Термос «Машинисту»',1],['news','Свежая газета',0],['umbrella','Зонт',0],['cross','Чек из аптеки',0]],clue:['ticket','Вагон 9','В поезде всего восемь вагонов. Билет — знак, а не поездка'],why:'Девятого вагона нет: билет написал сам машинист.'},
+ {kind:'final',q:'Соберите версию из улик.',text:'Термос оставил {0}, чтобы позвать {1} на {2}.',blanks:[['машинист','проводница','бариста'],['старого друга','кассира','Деда Мороза'],['перрон в 23:10','рынок утром','почту в обед']],ans:[0,0,0],why:'Машинист зовёт старого друга на перрон, как договорились в 1996 году.'}
+ ]}
+};
+
+var Q=new URLSearchParams(location.search);
+var storyId=STORIES[Q.get('story')]?Q.get('story'):'letter';
+var partner=Q.get('p')||'Кофейня «Улика»';
+var reward=Q.get('r')||'Новогодний напиток в подарок';
+var demo=!Q.get('cup')||Q.get('demo')==='1';
+var S;
+
+function key(){return 'perepoloh:'+storyId}
+function load(){var d={scanned:[],solved:[]};try{var v=JSON.parse(localStorage.getItem(key())||'null');if(v&&v.solved)d=v}catch(e){}S=d}
+function save(){try{localStorage.setItem(key(),JSON.stringify(S))}catch(e){}}
+function story(){return STORIES[storyId]}
+function toast(t){var el=$('toast');el.textContent=t;el.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(function(){el.hidden=true},2400)}
+function can(i){return i<4?S.scanned.indexOf(i)>=0:(S.scanned.indexOf(4)>=0&&[0,1,2,3].every(function(n){return S.solved.indexOf(n)>=0}))}
+
+function scan(i,silent){
+  if(S.scanned.indexOf(i)<0){S.scanned.push(i);save()}
+  if(!silent)toast('Стакан '+(i+1)+' отсканирован');
+  draw();
+  if(S.solved.indexOf(i)<0&&can(i))openPz(i);
+  else if(i===4&&!can(4))toast('Финал откроется, когда будут четыре улики');
+}
+
+/* главный экран */
+function draw(){
+  var s=story(),n=S.solved.length;
+  var h='<div class="top"><span class="live">Дело открыто до 10 января</span><b>'+esc(partner)+'</b></div>';
+  h+='<div class="head"><div class="k">Праздничный переполох</div><h1>'+esc(s.title)+'</h1><p>'+esc(s.setup)+'</p></div>';
+  h+='<div class="line" id="line"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M-5 14 C 20 50, 35 46, 50 30 S 80 44, 105 14"/></svg>';
+  var cols=['#FF4A4F','#E7C27A','#FFE6C8'];
+  for(var b=0;b<15;b++){h+='<span class="bulb" data-t="'+((b+.5)/15).toFixed(3)+'" style="--c:'+cols[b%3]+';--d:'+(2.4+(b%4)*.5)+'s;--dl:-'+(b*.37).toFixed(2)+'s"></span>'}
+  s.c.forEach(function(c,i){
+    var st=S.solved.indexOf(i)>=0?'done':can(i)?'open':'lock';
+    var r=[-5,3,-2,4,-3][i];
+    var cl=c.clue||['star','Развязка'];
+    var pic=st==='done'?ic(cl[0]):st==='open'?ic(i===4?'star':'cup'):ic('cup');
+    var cap=st==='done'?'<b>'+esc(cl[1])+'</b>':'<b>Стакан '+(i+1)+'</b><small>'+(st==='open'?'Можно разгадать':i===4?'Финал':TYPES[i])+'</small>';
+    h+='<button type="button" class="pol '+st+'" data-t="'+[.14,.32,.5,.68,.86][i]+'" style="--r:'+r+'deg;animation-delay:-'+(i*1.2)+'s" data-c="'+i+'" aria-label="Стакан '+(i+1)+': '+(st==='done'?'улика '+esc(cl[1]):st==='open'?'можно разгадать':'ещё не отсканирован')+'"'+(st==='lock'?' aria-disabled="true"':'')+'><span class="peg"></span><span class="card"><span class="pic">'+pic+'</span>'+cap+'</span></button>';
+  });
+  h+='</div>';
+  h+='<div class="prog"><div class="bar"><i style="width:'+(n/5*100)+'%"></i></div><span>Улики '+Math.min(n,4)+' из 4</span></div>';
+  var next=[0,1,2,3,4].filter(function(i){return can(i)&&S.solved.indexOf(i)<0})[0];
+  h+='<div class="cta">';
+  if(S.solved.indexOf(4)>=0)h+='<button class="btn pulse" type="button" id="showWin">Показать экран бариста</button>';
+  else if(next!==undefined)h+='<button class="btn pulse" type="button" data-open="'+next+'">'+(next===4?'Собрать версию':'Разгадать стакан '+(next+1))+'</button>';
+  else h+='<p class="note">Следующая загадка на следующем стакане. Отсканируйте код на рукаве, когда снова возьмёте кофе в «'+esc(partner.replace(/^Кофейня\s*«|»$/g,''))+'».</p>';
+  h+='</div>';
+  if(n){h+='<div class="clues">'+S.solved.filter(function(i){return i<4}).sort().map(function(i){var c=s.c[i];return '<div class="clue"><i>'+(i+1)+'</i><div><b>'+esc(c.clue[1])+'</b><span>'+esc(c.clue[2])+'</span></div></div>'}).join('')+'</div>'}
+  $('app').innerHTML=h;
+  var path=document.querySelector('#line path'),L=path.getTotalLength();
+  [].forEach.call(document.querySelectorAll('#line [data-t]'),function(el){var pt=path.getPointAtLength(L*(+el.dataset.t));el.style.left=pt.x+'%';el.style.top='calc('+(pt.y*0.4)+'% + 2px)'});
+  [].forEach.call(document.querySelectorAll('.pol'),function(p){p.onclick=function(){var i=+p.dataset.c;if(S.solved.indexOf(i)>=0){if(i===4)openPz(4);else toast(s.c[i].clue[1]+': '+s.c[i].clue[2])}else if(can(i))openPz(i);else toast(i===4&&S.scanned.indexOf(4)>=0?'Финал откроется, когда будут четыре улики':'Этот код на стакане '+(i+1))}});
+  var o=document.querySelector('[data-open]');if(o)o.onclick=function(){openPz(+o.dataset.open)};
+  var w=$('showWin');if(w)w.onclick=function(){openPz(4)};
+  if(demo){$('scan').hidden=false;$('scanB').innerHTML=[0,1,2,3,4].map(function(i){return '<button type="button" class="'+(S.scanned.indexOf(i)>=0?'d':'')+'" data-s="'+i+'">'+(i<4?'Стакан '+(i+1):'Финал')+'</button>'}).join('');
+    [].forEach.call($('scanB').children,function(b){b.onclick=function(){scan(+b.dataset.s)}})}
+}
+
+/* загадки */
+var P={};
+function openPz(i){
+  var c=story().c[i];P={i:i,done:S.solved.indexOf(i)>=0};
+  $('sheet').hidden=false;document.body.style.overflow='hidden';
+  renderPz();
+  var x=document.querySelector('#shIn .x');if(x)x.focus();
+}
+function closePz(){$('sheet').hidden=true;document.body.style.overflow='';draw()}
+function solve(){var i=P.i;if(S.solved.indexOf(i)<0){S.solved.push(i);save()}P.done=true;renderPz()}
+function renderPz(){
+  var i=P.i,c=story().c[i];
+  if(i===4&&P.done)return renderWin();
+  var h='<div class="sh-top"><span>Стакан '+(i+1)+' из 5</span><button class="x" type="button" id="shX" aria-label="Закрыть">'+'<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>';
+  h+='<div class="type">'+TYPES[i]+'</div><h2 id="shT">'+esc(story().title)+'</h2><p class="q">'+esc(c.q)+'</p><div class="pz" id="pz"></div>';
+  if(P.done&&i<4){h+='<div class="fb ok">'+esc(c.why)+'</div><div class="got"><span class="pic">'+ic(c.clue[0])+'</span><div><b>'+esc(c.clue[1])+'</b><span>'+esc(c.clue[2])+'</span></div></div><button class="btn" type="button" id="back">На доску</button>'}
+  else if(P.msg)h+='<div class="fb bad">'+esc(P.msg)+'</div>';
+  if(!P.done)h+=hintBox(c);
+  $('shIn').innerHTML=h;
+  $('shX').onclick=closePz;var bk=$('back');if(bk)bk.onclick=closePz;
+  ({diff:pDiff,map:pMap,pairs:pPairs,pick:pPick,final:pFinal})[c.kind](c,$('pz'));
+  if(!P.done)bindHints();
+}
+function pDiff(c,el){
+  var row=function(list,b){return '<div class="shelf">'+list.map(function(n,k){var isB=b&&k===c.b.i;var name=isB?c.b.to:n;
+    var cls='slot'+(isB&&c.b.red?' red':'')+(b&&P.done&&k===c.b.i?' yes':'')+(b&&P.no===k?' no':'');
+    return b?'<button type="button" class="'+cls+'" data-k="'+k+'" aria-label="Предмет '+(k+1)+'">'+ic(name)+'</button>':'<span class="'+cls+'">'+ic(name)+'</span>'}).join('')+'</div>'};
+  el.innerHTML='<div class="frames"><div class="frame"><small>Кадр 1</small>'+row(c.a,false)+'</div><div class="frame b"><small>Кадр 2</small>'+row(c.a,true)+'</div></div>';
+  if(P.done)return;
+  [].forEach.call(el.querySelectorAll('[data-k]'),function(b){b.onclick=function(){var k=+b.dataset.k;if(k===c.b.i){P.no=null;P.msg=null;solve()}else{P.no=k;P.msg='Этот предмет стоял и вчера. Сравните ряды ещё раз.';renderPz()}}});
+}
+function pMap(c,el){
+  var h='<div class="map">';
+  for(var r=0;r<5;r++)for(var q=0;q<5;q++){var k=r+','+q;var m=c.marks[k];var home=r===2&&q===2;
+    var cls='cell'+(home?' home':'')+(P.done&&k===c.ans?' yes':'')+(P.no===k?' no':'');
+    var inner=home?ic('cup')+'Кофейня':m?ic(m[0])+esc(m[1]):'';
+    h+='<button type="button" class="'+cls+'" data-k="'+k+'" aria-label="'+(home?'Кофейня':m?m[1]:'Квартал')+'">'+inner+'</button>'}
+  h+='</div><div class="compass"><span>Запад</span><span>Север сверху</span><span>Восток</span></div>';
+  el.innerHTML=h;if(P.done)return;
+  [].forEach.call(el.querySelectorAll('[data-k]'),function(b){b.onclick=function(){var k=b.dataset.k;if(k==='2,2')return;if(k===c.ans){P.no=null;P.msg=null;solve()}else{P.no=k;P.msg='Не тот квартал. Начните от кофейни: север вверх, восток вправо.';renderPz()}}});
+}
+function pPairs(c,el){
+  if(!P.deck){var d=[];c.set.forEach(function(x,k){d.push(k,k)});var order=[3,0,5,1,7,2,6,4];P.deck=order.map(function(o){return d[o]});P.ok=[];P.up=[];P.moves=0}
+  if(P.done)P.ok=[0,1,2,3];
+  el.innerHTML='<div class="pairs">'+P.deck.map(function(k,n){var s=c.set[k];var cls='pc'+(P.ok.indexOf(k)>=0?' ok':P.up.indexOf(n)>=0?' up':'');
+    return '<button type="button" class="'+cls+'" data-n="'+n+'" aria-label="'+(cls==='pc'?'Закрытая карточка':s[1])+'"><span>'+ic(s[0])+esc(s[1])+'</span></button>'}).join('')+'</div><p class="moves">Ходов: '+P.moves+'</p>';
+  if(P.done)return;
+  [].forEach.call(el.querySelectorAll('[data-n]'),function(b){b.onclick=function(){var n=+b.dataset.n;var k=P.deck[n];
+    if(P.ok.indexOf(k)>=0||P.up.indexOf(n)>=0||P.up.length===2)return;
+    P.up.push(n);P.msg=null;
+    if(P.up.length===2){P.moves++;var a=P.deck[P.up[0]],z=P.deck[P.up[1]];
+      if(a===z){P.ok.push(a);P.up=[];if(P.ok.length===4)return solve()}
+      else{renderPz();setTimeout(function(){P.up=[];renderPz()},RM?300:700);return}}
+    renderPz()}});
+}
+function pPick(c,el){
+  P.sel=P.sel||[];
+  el.innerHTML='<div class="pick">'+c.items.map(function(it,n){var on=P.done?it[2]===1:P.sel.indexOf(n)>=0;
+    return '<button type="button" class="it'+(P.done&&it[2]?' right':'')+'" aria-pressed="'+on+'" data-n="'+n+'">'+ic(it[0])+esc(it[1])+'</button>'}).join('')+'</div>'+(P.done?'':'<button class="btn" type="button" id="chk"'+(P.sel.length!==3?' disabled':'')+'>Проверить: выбрано '+P.sel.length+' из 3</button>');
+  if(P.done)return;
+  [].forEach.call(el.querySelectorAll('[data-n]'),function(b){b.onclick=function(){var n=+b.dataset.n;var at=P.sel.indexOf(n);
+    if(at>=0)P.sel.splice(at,1);else if(P.sel.length<3)P.sel.push(n);P.msg=null;renderPz()}});
+  $('chk').onclick=function(){var right=P.sel.filter(function(n){return c.items[n][2]===1}).length;
+    if(right===3){P.msg=null;solve()}else{P.msg='Совпало '+right+' из 3. Что-то из выбранного к делу не относится.';renderPz()}};
+}
+function pFinal(c,el){
+  P.f=P.f||[null,null,null];if(P.cur===undefined)P.cur=0;
+  var parts=c.text.split(/\{(\d)\}/);var h='<div class="ver">';
+  parts.forEach(function(p,n){if(n%2===0)h+=esc(p);else{var b=+p;var v=P.f[b];var cls='blank'+(P.cur===b?' on':'')+(P.okb&&P.okb[b]?' ok':'');
+    h+='<button type="button" class="'+cls+'" data-b="'+b+'">'+(v===null?'…':esc(c.blanks[b][v]))+'</button>'}});
+  h+='</div><div class="words">'+c.blanks[P.cur].map(function(w,n){return '<button type="button" data-w="'+n+'">'+esc(w)+'</button>'}).join('')+'</div>';
+  var full=P.f.every(function(v){return v!==null});
+  h+='<button class="btn" type="button" id="fin"'+(full?'':' disabled')+'>Раскрыть дело</button>';
+  el.innerHTML=h;
+  [].forEach.call(el.querySelectorAll('[data-b]'),function(b){b.onclick=function(){P.cur=+b.dataset.b;renderPz()}});
+  [].forEach.call(el.querySelectorAll('[data-w]'),function(b){b.onclick=function(){P.f[P.cur]=+b.dataset.w;P.okb=null;P.msg=null;var nx=P.f.indexOf(null);P.cur=nx<0?P.cur:nx;renderPz()}});
+  $('fin').onclick=function(){P.okb=P.f.map(function(v,n){return v===c.ans[n]});
+    if(P.okb.every(Boolean)){solve()}else{P.msg='Не всё сходится с уликами. Верные части отмечены зелёным.';renderPz()}};
+}
+
+/* подсказки: первая бесплатно, вторая за сторис */
+function hintsFor(c){
+  if(c.kind==='diff'){var row=c.b.i<4?'верхнем':'нижнем';return ['Сравнивайте по одному предмету, слева направо.','Изменился предмет в '+row+' ряду, он другого цвета.']}
+  if(c.kind==='map'){var r=+c.ans.split(',')[0];return ['Начните с точки из описания. Север сверху, восток справа.','Нужный квартал в '+(r+1)+'-м ряду сверху.']}
+  if(c.kind==='pairs'){return ['Запоминайте, где лежали открытые карточки.','На каждую картинку ровно две карточки. Начните с углов.']}
+  if(c.kind==='pick'){var f=c.items.filter(function(x){return x[2]})[0];return ['Лишние вещи могли оказаться рядом случайно.','Одна из нужных: «'+f[1]+'».']}
+  return ['Перечитайте улики на доске под нитью.','Первое слово: «'+c.blanks[0][c.ans[0]]+'».']
+}
+function hintBox(c){
+  var h=hintsFor(c),n=S.hints?S.hints[storyId+P.i]||0:0;
+  var out='<div class="hints"><small>Подсказки</small>';
+  out+=n>=1?'<div class="hint open"><i>1</i><span>'+esc(h[0])+'</span></div>':'<button class="hint" type="button" data-h="1"><i>1</i><span>Открыть подсказку</span></button>';
+  if(n>=2)out+='<div class="hint open"><i>2</i><span>'+esc(h[1])+'</span></div>';
+  else if(n>=1)out+=S.shared?'<button class="hint" type="button" data-h="2"><i>2</i><span>Открыть вторую подсказку</span></button>':'<button class="hint lock" type="button" data-share="1"><i>2</i><span>Вторая подсказка за сторис</span><em>Выложить</em></button>';
+  return out+'</div>';
+}
+function bindHints(){
+  [].forEach.call(document.querySelectorAll('#shIn [data-h]'),function(b){b.onclick=function(){S.hints=S.hints||{};S.hints[storyId+P.i]=+b.dataset.h;save();renderPz()}});
+  var sh=document.querySelector('#shIn [data-share]');if(sh)sh.onclick=function(){$('share').hidden=false;$('share').querySelector('[data-net]').focus()};
+}
+[].forEach.call(document.querySelectorAll('#share [data-net]'),function(b){b.onclick=function(){S.shared=true;save();$('share').hidden=true;toast('Сторис в '+b.dataset.net+': вторые подсказки открыты');renderPz()}});
+$('shareNo').onclick=function(){$('share').hidden=true};
+function code(){var s=storyId+partner,h=7;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))%9973;return 'ПП-'+String(1000+h%9000)}
+function renderWin(){
+  var c=story().c[4];
+  $('shIn').innerHTML='<div class="sh-top"><span>Стакан 5 из 5</span><button class="x" type="button" id="shX" aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="win"><span class="stamp">Дело раскрыто</span><h2 id="shT" style="margin-top:22px;font-size:28px;color:#fff">'+esc(story().title)+'</h2><p class="q">'+esc(c.why)+'</p><div class="reward"><small>Покажите этот экран бариста</small><b>'+esc(reward)+'</b></div><div class="clock" id="clock"></div><p class="code">Код дела <b>'+code()+'</b>. Часы идут, значит, экран живой</p></div><button class="btn ghost" type="button" id="back">На доску</button>';
+  $('shX').onclick=closePz;$('back').onclick=closePz;
+  var tick=function(){var el=$('clock');if(!el)return;var d=new Date(),p=function(n){return(n<10?'0':'')+n};el.textContent=p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());setTimeout(tick,1000)};tick();
+}
+addEventListener('keydown',function(e){if(e.key!=='Escape')return;if(!$('share').hidden){$('share').hidden=true;return}if(!$('sheet').hidden)closePz()});
+
+/* встраивание в промо-страницу: смена истории */
+addEventListener('message',function(e){var d=e.data;if(d&&d.perepoloh&&STORIES[d.story]){storyId=d.story;load();if(d.reset){S={scanned:[],solved:[],hints:{},shared:false};save()}$('sheet').hidden=true;document.body.style.overflow='';draw()}});
+
+load();
+var cupQ=+Q.get('cup');
+draw();
+if(cupQ>=1&&cupQ<=5)scan(cupQ-1,false);
+
+/* снег */
+(function(){var cv=$('snow'),x=cv.getContext('2d'),W,H,D=Math.min(devicePixelRatio||1,2),F=[];
+  function rs(){W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;x.setTransform(D,0,0,D,0,0)}rs();addEventListener('resize',rs);
+  for(var i=0;i<60;i++)F.push({x:Math.random()*W,y:Math.random()*H,r:.6+Math.random()*1.8,v:.3+Math.random()*.7,ph:Math.random()*6});
+  (function fr(){x.clearRect(0,0,W,H);F.forEach(function(f){if(!RM){f.y+=f.v;f.ph+=.012;f.x+=Math.sin(f.ph)*.35;if(f.y>H+6){f.y=-6;f.x=Math.random()*W}}
+    x.beginPath();x.arc(f.x,f.y,f.r,0,7);x.fillStyle='rgba(236,240,246,'+(.18+f.r*.15).toFixed(2)+')';x.fill()});if(!RM)requestAnimationFrame(fr)})();
+})();
+})();
+</script>
+</body>
+</html>

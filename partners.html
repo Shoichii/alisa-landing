@@ -193,6 +193,14 @@ section{position:relative;padding-block:clamp(64px,9vw,120px)}
 @media (max-width:860px){.team .wrap{grid-template-columns:1fr}}
 
 /* ВЫГОДЫ */
+.aud{background:linear-gradient(180deg,var(--wine),var(--ink) 55%,var(--wine))}
+.aud-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center;margin-top:44px}
+.aud-num{display:flex;flex-direction:column;gap:12px;padding:30px 28px 26px;background:linear-gradient(180deg,rgba(242,232,230,.05),rgba(242,232,230,.015));box-shadow:inset 0 0 0 1px var(--line)}
+.aud-num strong{font:400 clamp(40px,6vw,92px)/.9 var(--f-display);color:var(--light);font-variant-numeric:tabular-nums;text-shadow:0 0 30px rgba(255,120,100,.25);word-spacing:-.3em}
+.aud-num span{font-size:clamp(17px,1.5vw,20px);color:var(--cream)}
+.aud-num small{font-size:14px;color:var(--mute)}
+.aud-txt{margin:0;font-size:clamp(16px,1.3vw,18px);line-height:1.65;color:var(--mute);max-width:52ch}
+@media (max-width:860px){.aud-grid{grid-template-columns:1fr}}
 .gains{background:var(--wine)}
 .ggrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:40px}
 .g{padding:24px 22px;box-shadow:inset 0 0 0 1px var(--line);background:rgba(12,5,7,.4)}
@@ -424,6 +432,18 @@ body{margin:0}
   </div>
 </section>
 
+<section class="aud">
+  <div class="wrap">
+    <div class="head">
+      <h2>Аудитория и прогнозируемый трафик</h2>
+    </div>
+    <div class="aud-grid">
+      <div class="aud-num"><strong>500&nbsp;000–<wbr>750&nbsp;000</strong><span>посещений в месяц</span><small>Планируемый трафик за I квартал 2027 года</small></div>
+      <p class="aud-txt">Прогноз формируется с учётом стартового запуска проекта и планируемого масштабного продвижения с привлечением региональных и федеральных СМИ, PR и маркетинговых кампаний, блогеров и партнёрских медиаплощадок.</p>
+    </div>
+  </div>
+</section>
+
 <section class="gains">
   <div class="wrap">
     <div class="head"><h2>Что получает партнёр</h2></div>
@@ -440,10 +460,10 @@ body{margin:0}
 
 <section class="season" id="events">
   <div class="wrap">
-    <a class="ev" href="novogodnee-delo.html">
+    <a class="ev" href="prazdnichnyj-perepoloh.html">
       <span class="ev-k">Сезонное событие</span>
-      <h2>Новогоднее дело на стакане</h2>
-      <p>Квест для кофеен на декабрь и январские каникулы: улики на стаканах, пять визитов и награда у партнёра.</p>
+      <h2>Праздничный переполох</h2>
+      <p>Новогоднее дело для кофейни на декабрь и каникулы: пять стаканов, пять загадок в телефоне. Одна история на одну кофейню.</p>
       <span class="btn">Смотреть событие</span>
     </a>
     <p class="ev-all"><a href="events.html">Все события для партнёров</a></p>
