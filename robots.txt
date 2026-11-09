@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://alicevelskaya.ru/sitemap.xml
+Sitemap: https://alisavelskaya.ru/sitemap.xml
